@@ -45,8 +45,8 @@
       type: "mcq",
       prompt: "______ I submit my work, I usually review it for errors before sending it to my supervisor.",
       options: { A: "After", B: "Before", C: "Unless", D: "Now that" },
-      correct: "A",
-      explanation: "“After I submit my work, I usually review it for errors before sending it to my supervisor.” (Official Answer Key: A. After)"
+      correct: "B",
+      explanation: "“Before I submit my work, I usually review it for errors before sending it to my supervisor.” — reviewing happens before submission. (Answer Key: B. Before)"
     },
     {
       id: 2,
@@ -310,10 +310,10 @@
       partName: "Part 3: Grammatical Correctness",
       instruction: "Determine whether the sentence is grammatically correct or incorrect. Select CORRECT or INCORRECT.",
       type: "true_false",
-      prompt: "The personnel remained at the designated location until further instructions are provided.",
+      prompt: "The personnel remained at the designated location until further instructions were provided.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "A",
-      explanation: "“Until further instructions are provided” is grammatically correct."
+      explanation: "“Until further instructions were provided” is grammatically correct, with consistent past tense throughout."
     },
     {
       id: 25,
