@@ -43,10 +43,10 @@
       partName: "Part 1: Multiple Choices",
       instruction: "Choose the best answer to complete each sentence. Select the letter (A, B, C, or D) of your chosen answer.",
       type: "mcq",
-      prompt: "______ I submit my work, I usually review it for errors before sending it to my supervisor.",
+      prompt: "______ I submit my work, I usually review it for errors.",
       options: { A: "After", B: "Before", C: "Unless", D: "Now that" },
       correct: "B",
-      explanation: "“Before I submit my work, I usually review it for errors before sending it to my supervisor.” — reviewing happens before submission. (Answer Key: B. Before)"
+      explanation: "“Before I submit my work, I usually review it for errors.” — reviewing happens before submission. (Answer Key: B. Before)"
     },
     {
       id: 2,
@@ -774,6 +774,11 @@
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length === DEFAULT_QUESTIONS.length) {
           activeQuizQuestions = parsed;
+          if (activeQuizQuestions[0] && DEFAULT_QUESTIONS[0]) {
+            activeQuizQuestions[0].prompt = DEFAULT_QUESTIONS[0].prompt;
+            activeQuizQuestions[0].correct = DEFAULT_QUESTIONS[0].correct;
+            activeQuizQuestions[0].explanation = DEFAULT_QUESTIONS[0].explanation;
+          }
           for (let i = 30; i < 40; i++) {
             const def = DEFAULT_QUESTIONS[i];
             const cur = activeQuizQuestions[i];
