@@ -970,7 +970,48 @@
     if (el) el.textContent = new Date().toLocaleTimeString();
   }
 
+  // Supabase Cloud Database Configuration (24/7 Centralized Storage)
+  const SUPABASE_CONFIG = {
+    url: "https://okcwkbfrbclebnnqskpx.supabase.co/rest/v1/quiz_submissions",
+    key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rY3drYmZyYmNsZWJubnFza3B4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA0NjY2MTYsImV4cCI6MjEwNjA0MjYxNn0.pS0J7YXHrF_iHDpzUrE1LM5bdSe_R_Uxwm3LHtlG5iQ"
+  };
+
   async function syncSubmissionToServer(submission) {
+    let synced = false;
+
+    // 1. Sync to Supabase Cloud Database
+    try {
+      const row = {
+        id: submission.id || ('sub-' + Date.now()),
+        name: submission.name || 'Anonymous',
+        device: submission.device || 'Web',
+        score: submission.score || 0,
+        total_questions: submission.totalQuestions || 40,
+        accuracy: submission.accuracy || 0,
+        time_spent_formatted: submission.timeSpentFormatted || '',
+        time_spent_seconds: submission.timeSpentSeconds || 0,
+        is_late: Boolean(submission.isLate),
+        status_label: submission.statusLabel || 'On Time',
+        timestamp: submission.timestamp || new Date().toLocaleString(),
+        answers: submission.answers || {}
+      };
+
+      const supaRes = await fetch(SUPABASE_CONFIG.url, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_CONFIG.key,
+          'Authorization': `Bearer ${SUPABASE_CONFIG.key}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(row)
+      });
+      if (supaRes.ok) synced = true;
+    } catch (e) {
+      console.warn("Supabase submission sync skipped:", e);
+    }
+
+    // 2. Sync to Local Server (if running locally)
     try {
       const res = await fetch('/api/history', {
         method: 'POST',
@@ -978,12 +1019,13 @@
         body: JSON.stringify(submission)
       });
       const data = await res.json();
-      updateDbSyncTime();
-      return data.success;
+      if (data.success) synced = true;
     } catch (e) {
-      console.warn("Server sync skipped (offline or standalone):", e);
-      return false;
+      // Local server offline or on static host
     }
+
+    updateDbSyncTime();
+    return synced;
   }
 
   async function syncQuestionReplaceToServer(questionId, question) {
@@ -1013,26 +1055,76 @@
   }
 
   async function syncSubmissionDeleteToServer(submissionId) {
+    // Delete from Supabase
+    try {
+      await fetch(`${SUPABASE_CONFIG.url}?id=eq.${encodeURIComponent(submissionId)}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_CONFIG.key,
+          'Authorization': `Bearer ${SUPABASE_CONFIG.key}`
+        }
+      });
+    } catch (e) {
+      console.warn("Supabase delete skipped:", e);
+    }
+
+    // Delete from Local Server (if online)
     try {
       await fetch('/api/history/delete', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: submissionId })
       });
-      updateDbSyncTime();
-    } catch (e) {
-      console.warn("Submission delete sync skipped:", e);
-    }
+    } catch (e) {}
+
+    updateDbSyncTime();
   }
 
   async function loadDatabaseFromServer() {
+    let cloudLoaded = false;
+
+    // 1. Fetch live student submissions from Supabase Cloud Database
+    try {
+      const supaRes = await fetch(`${SUPABASE_CONFIG.url}?select=*&order=timestamp.desc`, {
+        headers: {
+          'apikey': SUPABASE_CONFIG.key,
+          'Authorization': `Bearer ${SUPABASE_CONFIG.key}`
+        }
+      });
+      if (supaRes.ok) {
+        const rows = await supaRes.json();
+        if (Array.isArray(rows) && rows.length > 0) {
+          const formattedSubmissions = rows.map(r => ({
+            id: r.id,
+            name: r.name,
+            device: r.device,
+            score: r.score,
+            totalQuestions: r.total_questions,
+            accuracy: r.accuracy,
+            timeSpentFormatted: r.time_spent_formatted,
+            timeSpentSeconds: r.time_spent_seconds,
+            isLate: r.is_late,
+            statusLabel: r.status_label,
+            timestamp: r.timestamp,
+            answers: r.answers || {}
+          }));
+          localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(formattedSubmissions));
+          cloudLoaded = true;
+          updateDbSyncTime();
+        }
+      }
+    } catch (e) {
+      console.warn("Supabase load skipped:", e);
+    }
+
+    // 2. Fetch from Local server (if running)
     try {
       const [histRes, qRes] = await Promise.all([
         fetch('/api/history').catch(() => null),
         fetch('/api/questions').catch(() => null)
       ]);
 
-      if (histRes && histRes.ok) {
+      if (histRes && histRes.ok && !cloudLoaded) {
         const histData = await histRes.json();
         if (histData.submissions && Array.isArray(histData.submissions) && histData.submissions.length > 0) {
           localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(histData.submissions));
