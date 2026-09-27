@@ -401,7 +401,7 @@
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "successfully / but / The training / completed / was / demanding / the personnel / it.",
-      scrambledChips: ["successfully", "completed", "demanding,", "The training", "was", "but", "the personnel", "it."],
+      scrambledChips: ["successfully.", "completed", "demanding,", "The training", "was", "but", "the personnel", "it"],
       target: "The training was demanding, but the personnel completed it successfully.",
       explanation: "The training was demanding, but the personnel completed it successfully."
     },
@@ -411,10 +411,10 @@
       partName: "Part 4: Sentence Rearrangement",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "Either / the soldiers / will / attend / the morning session / or / participate / in / the afternoon session.",
-      scrambledChips: ["the afternoon session.", "the morning session", "or", "Either", "attend", "the soldiers", "will", "participate", "in"],
-      target: "Either the soldiers will attend the morning session or participate in the afternoon session.",
-      explanation: "Either the soldiers will attend the morning session or participate in the afternoon session."
+      prompt: "Either / the soldiers / will / attend / the morning session / or / they will / participate / in / the afternoon session.",
+      scrambledChips: ["the afternoon session.", "the morning session", "or", "Either", "attend", "the soldiers", "will", "they will", "participate", "in"],
+      target: "Either the soldiers will attend the morning session or they will participate in the afternoon session.",
+      explanation: "Either the soldiers will attend the morning session or they will participate in the afternoon session."
     },
     {
       id: 34,
@@ -673,8 +673,8 @@
   function normalizeSentence(str) {
     if (!str) return "";
     return str
+      .replace(/[,.]/g, '')
       .replace(/\s+/g, ' ')
-      .replace(/\s+([,.!?])/g, '$1')
       .trim()
       .toLowerCase();
   }
@@ -751,6 +751,16 @@
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length === DEFAULT_QUESTIONS.length) {
           activeQuizQuestions = parsed;
+          const q32 = activeQuizQuestions.find(q => q.id === 32);
+          if (q32 && q32.scrambledChips && q32.scrambledChips.includes("it.")) {
+            const def32 = DEFAULT_QUESTIONS.find(q => q.id === 32);
+            if (def32) Object.assign(q32, def32);
+          }
+          const q33 = activeQuizQuestions.find(q => q.id === 33);
+          if (q33 && q33.target && !q33.target.includes("they will")) {
+            const def33 = DEFAULT_QUESTIONS.find(q => q.id === 33);
+            if (def33) Object.assign(q33, def33);
+          }
         }
       } catch (e) {}
     }
