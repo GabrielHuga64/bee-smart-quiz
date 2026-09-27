@@ -497,9 +497,12 @@
       partName: "Part 4: Sentence Rearrangement",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "available / Neither / nor / the facilities / were / ready. / the equipment / was",
+      prompt: "the facilities / Neither / ready. / the equipment / were / nor",
       scrambledChips: ["the facilities", "Neither", "ready.", "the equipment", "were", "nor"],
       target: "Neither the equipment nor the facilities were ready.",
+      alternateTargets: [
+        "Neither the facilities nor the equipment were ready."
+      ],
       explanation: "Neither the equipment nor the facilities were ready."
     },
     {
