@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <title>Bee Smart Learning — English Quiz Time (40 Questions)</title>
+  <meta name="description" content="Subordinating Conjunctions and English Grammar Quiz with 40 questions across 4 comprehensive parts. Inspired by Bee Smart Learning.">
+  
+  <!-- Google Fonts: Fredoka, Outfit & Nunito for playful, rounded typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
+</head>
+<body>
+  <!-- Ambient Floating Background Elements -->
+  <div class="ambient-decorations" aria-hidden="true">
+    <div class="floating-star star-top-left">⭐</div>
+    <div class="floating-star star-top-right">✨</div>
+    <div class="floating-star star-bottom-left">✨</div>
+    <div class="floating-star star-bottom-right">⭐</div>
+    <div class="floating-hex hex-1"></div>
+    <div class="floating-hex hex-2"></div>
+    <div class="floating-hex hex-3"></div>
+    <div class="floating-bee bee-bg-1">🐝</div>
+  </div>
+
+  <!-- Header Controls (Sound Switch & Smartphone Online Access Button) -->
+  <header class="app-top-header">
+    <div class="header-left-actions">
+      <!-- Smartphone Active Online Link Button -->
+      <button id="openSmartphoneModalBtn" class="header-pill-btn smartphone-pill-btn" title="Open Smartphone Online Active Link & QR Code" aria-label="Smartphone Online Access">
+        <span class="btn-icon">📱</span> <span class="btn-text">Smartphone Access</span>
+        <span class="online-indicator-dot" title="Server Active"></span>
+      </button>
+    </div>
+
+    <div class="header-right-actions">
+      <!-- Audio Toggle Switch -->
+      <button id="soundToggleBtn" class="header-pill-btn sound-toggle-btn" title="Toggle Sound Effects" aria-label="Toggle Sound Effects">
+        <span id="soundIcon">🔊</span> <span id="soundLabel">Sound</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main App Shell -->
+  <main class="quiz-app-container">
+    
+    <!-- ========================================== -->
+    <!-- SCREEN 1: WELCOME SCREEN                   -->
+    <!-- ========================================== -->
+    <section id="welcomeScreen" class="screen-view active">
+      <div class="quiz-card welcome-card">
+        <div class="welcome-content">
+          <!-- Fun Badge -->
+          <div class="fun-pill-badge">
+            <span class="badge-icon">🐝</span> Be Smart, Be Awesome!
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="main-title">
+            <span class="text-blue">English</span> <span class="text-orange">Quiz Time</span>
+          </h1>
+
+          <!-- Subtitle / Intro -->
+          <p class="subtitle-text">
+            Forty subordinating conjunction and grammar questions across 4 parts. Forty friendly minutes. Let's see how sweet your grammar is! ✨
+          </p>
+
+          <!-- User Name Input Form -->
+          <form id="startQuizForm" class="name-input-group" onsubmit="event.preventDefault();">
+            <label for="userNameInput" class="input-label">Full Name</label>
+            <div class="input-field-wrapper">
+              <input 
+                type="text" 
+                id="userNameInput" 
+                class="user-input" 
+                placeholder="Type your full name..." 
+                autocomplete="name" 
+                maxlength="50"
+                required
+              >
+            </div>
+            
+            <!-- Action Button -->
+            <button type="submit" id="startQuizBtn" class="btn btn-primary btn-bounce" disabled>
+              <span class="btn-icon">🚀</span> Start Quiz
+            </button>
+          </form>
+
+          <!-- Smartphone Quick Connect Banner -->
+          <div class="mobile-cta-banner" id="welcomeMobileBanner">
+            <div class="mobile-cta-icon">📱</div>
+            <div class="mobile-cta-text">
+              <strong>Want to play on your smartphone?</strong>
+              <span>Tap here to scan QR or get active online link</span>
+            </div>
+            <button type="button" class="btn-sm-banner" id="bannerMobileBtn">Connect Phone</button>
+          </div>
+
+          <!-- Metadata Pill Badges -->
+          <div class="meta-badges-row">
+            <div class="meta-badge">
+              <span class="meta-icon">📝</span> 40 questions (Parts 1–4)
+            </div>
+            <div class="meta-badge">
+              <span class="meta-icon">🎯</span> 100 Points (Part 1–3: 1pt | Part 4: 2pts)
+            </div>
+            <div class="meta-badge">
+              <span class="meta-icon">⏱️</span> 40 minutes recommended
+            </div>
+            <div class="meta-badge">
+              <span class="meta-icon">💾</span> Live Database Sync
+            </div>
+          </div>
+        </div>
+
+        <!-- Mascot Graphic on Welcome Card -->
+        <div class="welcome-mascot-wrapper">
+          <div class="mascot-frame">
+            <img 
+              src="assets/bee-reading.jpg" 
+              alt="Cute Bee Mascot reading a book" 
+              class="mascot-img mascot-float"
+              id="welcomeMascotImg"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SCREEN 2: QUIZ ARENA                       -->
+    <!-- ========================================== -->
+    <section id="quizScreen" class="screen-view">
+      <!-- Quiz Top Navigation Bar -->
+      <div class="quiz-top-bar">
+        <div class="top-bar-left">
+          <div class="user-greeting-pill">
+            <span class="greeting-icon">👋</span> Hi, <span id="displayUserName" class="user-name-highlight">Learner</span>!
+          </div>
+          <button id="togglePaletteBtn" class="palette-toggle-btn" title="Open Question Review & Navigator Palette">
+            📋 Review Questions (<span id="answeredCountBadge">0/40</span><span id="flaggedCountBadge" class="flag-mini-pill" style="display:none;">0 🚩</span>)
+          </button>
+        </div>
+
+        <div class="top-bar-right">
+          <div id="timerPill" class="timer-pill" title="Time remaining">
+            <span class="timer-icon">⏱️</span>
+            <span id="timerDisplay" class="timer-digits">40:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overtime Alert Banner (Revealed if timer exceeds 40 minutes) -->
+      <div id="overtimeBanner" class="overtime-banner hidden" role="alert">
+        <span class="banner-icon">⚠️</span>
+        <span>Recommended 40 minutes reached! Take your time to complete all remaining questions.</span>
+      </div>
+
+      <!-- Quiz Card -->
+      <div class="quiz-card question-card">
+        
+        <!-- Part Header Badge -->
+        <div class="part-header-row">
+          <div id="partBadge" class="part-badge">
+            Part 1: Multiple Choices
+          </div>
+          <div class="progress-info-row">
+            <span id="questionCounter" class="question-counter-text">Question 1 of 40</span>
+            <span id="progressPercent" class="progress-percent-text">2%</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar Track -->
+        <div class="progress-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+          <div id="progressBarFill" class="progress-bar-fill" style="width: 2.5%;"></div>
+        </div>
+
+        <!-- Instructions Box (Collapsible/Contextual for each Part) -->
+        <div id="partInstructionsBox" class="part-instructions-box">
+          <div class="instructions-header">
+            <span class="instructions-title">💡 Instructions:</span>
+            <span id="instructionText">Choose the best answer to complete each sentence.</span>
+          </div>
+        </div>
+
+        <!-- Reading Passage Box (Displayed dynamically for Part 2) -->
+        <div id="readingPassageBox" class="reading-passage-box hidden">
+          <div class="passage-header">
+            <div class="passage-header-title">
+              <span class="passage-icon">📖</span> <strong id="passageTitle">Reading Context</strong>
+            </div>
+            <button id="togglePassageCollapseBtn" type="button" class="btn-passage-toggle" title="Toggle passage view on mobile">
+              <span id="passageToggleText">Hide Context</span> ▾
+            </button>
+          </div>
+          <div id="passageContent" class="passage-text"></div>
+        </div>
+
+        <!-- Question Prompt Area -->
+        <div class="question-prompt-area">
+          <h2 id="questionPrompt" class="question-text">
+            ______ I submit my work, I usually review it for errors before sending it to my supervisor.
+          </h2>
+        </div>
+
+        <!-- Part 4: Sentence Word Ordering Arena (Interactive Chips Ordering) -->
+        <div id="sentenceAssemblyArea" class="sentence-assembly-area hidden">
+          <div class="assembly-instruction-row">
+            <span class="assembly-label">🧩 Tap word chips in correct order:</span>
+            <div class="assembly-action-btns">
+              <button id="undoChipBtn" type="button" class="btn-chip-action" title="Remove last placed word">⌫ Undo</button>
+              <button id="resetChipsBtn" type="button" class="btn-chip-action" title="Clear all and start over">↺ Reset</button>
+            </div>
+          </div>
+
+          <!-- Assembled Sentence Target Slot -->
+          <div id="assembledSlots" class="assembled-slots" aria-live="polite">
+            <span class="placeholder-tip">Click word chips below to build the sentence...</span>
+          </div>
+
+          <!-- Available Scrambled Word Chips Bank -->
+          <div class="available-chips-wrapper">
+            <div class="chips-bank-title">Word & Phrase Bank:</div>
+            <div id="availableChips" class="available-chips"></div>
+          </div>
+        </div>
+
+        <!-- Options Container Grid (For Parts 1, 2, and 3 only) -->
+        <div id="optionsGrid" class="options-grid" role="radiogroup" aria-labelledby="questionPrompt">
+          <!-- Dynamic options rendered by JS -->
+        </div>
+
+        <!-- Navigation Action Buttons -->
+        <div class="quiz-action-bar">
+          <button id="prevQuestionBtn" class="btn btn-secondary" aria-label="Previous question">
+            Previous
+          </button>
+          <button id="flagQuestionBtn" type="button" class="btn btn-flag" title="Mark this question if you are not sure about your answer">
+            <span id="flagIcon">⚐</span> <span id="flagBtnText">Mark as Not Sure</span>
+          </button>
+          <button id="nextQuestionBtn" class="btn btn-primary btn-next">
+            <span id="nextBtnText">Next Question</span> <span class="arrow-icon">➜</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SCREEN 3: RESULTS SCREEN                   -->
+    <!-- ========================================== -->
+    <section id="resultsScreen" class="screen-view">
+      <div class="quiz-card results-card">
+        
+        <div class="results-header">
+          <div class="results-mascot-wrapper">
+            <img 
+              src="assets/bee-celebrating.jpg" 
+              alt="Happy Bee Celebrating Achievement" 
+              class="results-mascot-img mascot-bounce"
+            >
+          </div>
+          <div class="results-title-group">
+            <div id="celebrationBadge" class="fun-pill-badge celebration-badge">
+              🎉 Exam Completed!
+            </div>
+            <h2 id="resultsHeadline" class="results-title">
+              Sweet Success, <span id="resultUserName">Champion</span>! 🐝
+            </h2>
+            <p id="resultsSubheadline" class="results-subtitle">
+              You've completed all 40 questions across all 4 parts. Your score has been recorded in the database!
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 Key Metrics Bento Cards -->
+        <div class="metrics-grid">
+          <!-- Metric 1: Score -->
+          <div class="metric-card metric-score">
+            <div class="metric-icon-circle">🎯</div>
+            <div class="metric-content">
+              <span class="metric-label">Final Score</span>
+              <div class="metric-value-row">
+                <span id="scoreValue" class="metric-value">100</span>
+                <span class="metric-total">/ 100</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metric 2: Accuracy -->
+          <div class="metric-card metric-accuracy">
+            <div class="metric-icon-circle">📊</div>
+            <div class="metric-content">
+              <span class="metric-label">Accuracy</span>
+              <span id="accuracyValue" class="metric-value">100%</span>
+            </div>
+          </div>
+
+          <!-- Metric 3: Time Spent -->
+          <div class="metric-card metric-time">
+            <div class="metric-icon-circle">⌛</div>
+            <div class="metric-content">
+              <span class="metric-label">Total Time</span>
+              <span id="timeSpentValue" class="metric-value">28m 15s</span>
+            </div>
+          </div>
+
+          <!-- Metric 4: Time Status (On Time / Late) -->
+          <div class="metric-card metric-status">
+            <div class="metric-icon-circle" id="statusIconCircle">⏰</div>
+            <div class="metric-content">
+              <span class="metric-label">Time Status</span>
+              <span id="timeStatusBadge" class="status-badge status-on-time">On Time</span>
+              <span id="timeStatusDetail" class="status-detail-text">Finished within 40 minutes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Database Save Status Notification -->
+        <div class="db-sync-card">
+          <span class="db-sync-icon">💾</span>
+          <span class="db-sync-text">Result securely saved to persistent server database: <strong id="dbSyncStatus">database.json</strong></span>
+        </div>
+
+        <!-- Review Section with Part Filters -->
+        <div class="review-section">
+          <div class="review-header-flex">
+            <div>
+              <h3 class="review-title">📝 Comprehensive 40-Question Review</h3>
+              <span class="review-hint">Inspect your choices and grammar explanations</span>
+            </div>
+            
+            <!-- Part Filter Tabs -->
+            <div class="review-filter-tabs">
+              <button class="review-filter-btn active" data-filter="all">All (40)</button>
+              <button class="review-filter-btn" data-filter="1">Part 1 (1–10)</button>
+              <button class="review-filter-btn" data-filter="2">Part 2 (11–20)</button>
+              <button class="review-filter-btn" data-filter="3">Part 3 (21–30)</button>
+              <button class="review-filter-btn" data-filter="4">Part 4 (31–40)</button>
+            </div>
+          </div>
+
+          <div id="answersReviewList" class="review-list">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Results Actions -->
+        <div class="results-action-row">
+          <button id="retakeQuizBtn" class="btn btn-primary btn-retake">
+            <span>🔄</span> Retake Exam
+          </button>
+          <button id="openAdminFromResultsBtn" class="btn btn-outline">
+            <span>⚙️</span> View Admin Portal
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MODAL: SMARTPHONE ONLINE ACCESS & QR CODE   -->
+  <!-- ========================================== -->
+  <div id="smartphoneModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="smartphoneModalTitle">
+    <div class="modal-card smartphone-modal-card">
+      <button id="closeSmartphoneModalBtn" class="modal-close-btn" aria-label="Close smartphone modal">&times;</button>
+      
+      <div class="modal-header text-center">
+        <div class="smartphone-icon-badge">📱</div>
+        <h3 id="smartphoneModalTitle" class="modal-title">Smartphone Online Access</h3>
+        <p class="modal-subtitle">Open this quiz instantly on any smartphone (iPhone, Android, tablet) with full database synchronization!</p>
+      </div>
+
+      <!-- Live Server Connection Status -->
+      <div class="server-status-pill">
+        <span class="pulse-indicator"></span>
+        <span id="serverStatusText">Server Online & Listening</span>
+      </div>
+
+      <!-- Dynamic QR Code Display -->
+      <div class="qr-code-wrapper">
+        <div id="qrCodeContainer" class="qr-canvas-box" title="Scan with your phone camera">
+          <!-- Rendered dynamically by JS -->
+        </div>
+        <p class="qr-caption">📷 Point your smartphone camera at this QR code to join instantly</p>
+        <div class="qr-direct-link-row" style="text-align: center; margin-top: 10px;">
+          <a id="directOpenLinkBtn" href="#" target="_blank" class="btn btn-outline btn-sm" style="display:inline-flex; align-items:center; gap:6px; font-weight:700;">
+            🔗 Open Quiz Link Directly
+          </a>
+        </div>
+      </div>
+
+      <!-- Connection Link 1: Public Internet / Online Link -->
+      <div class="link-access-group">
+        <label class="link-label">
+          <span>🌐 Public Online Link (Works anywhere, 4G/5G/Wi-Fi):</span>
+        </label>
+        <div class="link-input-copy-row">
+          <input type="text" id="publicTunnelUrlInput" class="form-input form-input-link" readonly value="Loading online link...">
+          <button type="button" id="copyPublicLinkBtn" class="btn btn-secondary btn-copy" title="Copy Public Online Link">
+            📋 Copy
+          </button>
+        </div>
+      </div>
+
+      <!-- Connection Link 2: Local Wi-Fi Link -->
+      <div class="link-access-group">
+        <label class="link-label">
+          <span>📶 Local Wi-Fi Network Link (Same Wi-Fi network):</span>
+        </label>
+        <div class="link-input-copy-row">
+          <input type="text" id="localWifiUrlInput" class="form-input form-input-link" readonly value="Loading local IP...">
+          <button type="button" id="copyWifiLinkBtn" class="btn btn-secondary btn-copy" title="Copy Local Wi-Fi Link">
+            📋 Copy
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-note-box">
+        💡 <strong>Tip:</strong> Submissions from your smartphone are automatically saved to the persistent <code>database.json</code> file and reflected live in the Admin Portal!
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: QUICK QUESTION PALETTE (1–40)       -->
+  <!-- ========================================== -->
+  <div id="paletteModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="paletteTitle">
+    <div class="modal-card palette-modal-card">
+      <button id="closePaletteBtn" class="modal-close-btn" aria-label="Close question review">&times;</button>
+      
+      <div class="modal-header">
+        <div class="fun-pill-badge" style="background:#EEF2FF; color:#4F46E5; margin-bottom:8px;">
+          📋 Test Progress & Question Review
+        </div>
+        <h3 id="paletteTitle" class="modal-title">Review All Questions (1–40)</h3>
+        <p class="modal-subtitle">Filter questions by status and tap any number to jump directly to it.</p>
+      </div>
+
+      <!-- Quick Filter Tabs / Summary Counters -->
+      <div class="review-status-tabs">
+        <button type="button" class="status-tab-btn active" data-palette-filter="all">
+          <span class="tab-label">All Questions</span>
+          <span class="tab-badge badge-all">40</span>
+        </button>
+        <button type="button" class="status-tab-btn" data-palette-filter="unanswered">
+          <span class="tab-label">⚪ Not Answered Yet</span>
+          <span class="tab-badge badge-unanswered" id="paletteUnansweredCount">40</span>
+        </button>
+        <button type="button" class="status-tab-btn" data-palette-filter="flagged">
+          <span class="tab-label">🚩 Not Sure</span>
+          <span class="tab-badge badge-flagged" id="paletteFlaggedCount">0</span>
+        </button>
+        <button type="button" class="status-tab-btn" data-palette-filter="answered">
+          <span class="tab-label">✓ Answered</span>
+          <span class="tab-badge badge-answered" id="paletteAnsweredCount">0</span>
+        </button>
+      </div>
+
+      <!-- Quick Jump Shortcuts -->
+      <div class="palette-quick-actions">
+        <button type="button" id="jumpFirstUnansweredBtn" class="btn btn-outline btn-xs" title="Jump to the first unanswered question">
+          ⚡ Jump to Next Unanswered
+        </button>
+        <button type="button" id="jumpFirstFlaggedBtn" class="btn btn-outline btn-xs" title="Jump to the first question marked Not Sure">
+          🚩 Jump to Next Not Sure
+        </button>
+      </div>
+
+      <!-- 40 Questions Grid -->
+      <div id="paletteGrid" class="palette-grid">
+        <!-- Rendered dynamically by JS -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="palette-footer-row">
+        <div class="palette-legend-compact">
+          <span class="legend-chip chip-answered"><span class="legend-sym">✓</span> Answered</span>
+          <span class="legend-chip chip-flagged"><span class="legend-sym">🚩</span> Not Sure</span>
+          <span class="legend-chip chip-unanswered"><span class="legend-sym">⚪</span> Not Answered</span>
+          <span class="legend-chip chip-current"><span class="legend-sym">⭐</span> Current</span>
+        </div>
+        <div class="palette-footer-actions">
+          <button type="button" id="paletteFinishExamBtn" class="btn btn-primary btn-sm" title="Submit your exam now">
+            🏁 Finish Exam
+          </button>
+          <button type="button" id="closePaletteModalBottomBtn" class="btn btn-secondary btn-sm">
+            Close Navigator
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: FINISH EXAM CONFIRMATION MODAL      -->
+  <!-- ========================================== -->
+  <div id="finishConfirmModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="finishConfirmTitle">
+    <div class="modal-card finish-confirm-card">
+      <button id="closeFinishConfirmBtn" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      
+      <div class="confirm-header text-center">
+        <div class="confirm-mascot-icon">🏁</div>
+        <h3 id="finishConfirmTitle" class="modal-title">Ready to Submit Your Exam?</h3>
+        <p class="modal-subtitle">Please confirm your completion status before final grading</p>
+      </div>
+
+      <!-- Completion Summary Cards (3 Columns) -->
+      <div class="confirm-summary-grid">
+        <div class="confirm-stat-card card-answered">
+          <span class="stat-card-icon">✅</span>
+          <div class="stat-card-val" id="confirmAnsweredCount">0 / 40</div>
+          <div class="stat-card-label">Answered</div>
+        </div>
+        <div class="confirm-stat-card card-unanswered" id="cardUnansweredWrap">
+          <span class="stat-card-icon">⚪</span>
+          <div class="stat-card-val" id="confirmUnansweredCount">0</div>
+          <div class="stat-card-label">Not Answered</div>
+        </div>
+        <div class="confirm-stat-card card-flagged" id="cardFlaggedWrap">
+          <span class="stat-card-icon">🚩</span>
+          <div class="stat-card-val" id="confirmFlaggedCount">0</div>
+          <div class="stat-card-label">Marked Not Sure</div>
+        </div>
+      </div>
+
+      <!-- Dynamic Detailed Status Notices -->
+      <div id="confirmDetailsArea" class="confirm-details-area">
+        <!-- Unanswered Alert (if > 0) -->
+        <div id="confirmUnansweredBox" class="confirm-status-box status-box-warn hidden">
+          <div class="status-box-header">
+            <strong>⚠️ Unanswered Questions (<span id="confirmUnansweredListCount">0</span>):</strong>
+          </div>
+          <p class="status-box-text">
+            You haven't answered these questions yet. Unanswered questions will receive <strong>0 points</strong>:
+          </p>
+          <div id="confirmUnansweredTags" class="confirm-q-tags-container"></div>
+        </div>
+
+        <!-- Not Sure Flagged Alert (if > 0) -->
+        <div id="confirmFlaggedBox" class="confirm-status-box status-box-info hidden">
+          <div class="status-box-header">
+            <strong>🚩 Marked as Not Sure (<span id="confirmFlaggedListCount">0</span>):</strong>
+          </div>
+          <p class="status-box-text">
+            Any choice you selected for these questions will be <strong>graded as your final answer</strong>.
+          </p>
+          <div id="confirmFlaggedTags" class="confirm-q-tags-container"></div>
+        </div>
+
+        <!-- All Answered Success Notice (if unanswered === 0) -->
+        <div id="confirmAllAnsweredBox" class="confirm-status-box status-box-success hidden">
+          <div class="status-box-header">
+            <strong>🎉 All 40 Questions Answered!</strong>
+          </div>
+          <p class="status-box-text">
+            Terrific job! You answered every single question. You can submit now or do a quick final review.
+          </p>
+        </div>
+      </div>
+
+      <!-- Informative Policy Reminder -->
+      <div class="confirm-notice-banner">
+        💡 <em>Reminder:</em> Once submitted, your score will be recorded. Questions you marked "Not Sure" will submit your chosen option as your final answer.
+      </div>
+
+      <!-- Modal Action Buttons -->
+      <div class="confirm-actions-row">
+        <button type="button" id="cancelFinishBtn" class="btn btn-secondary btn-review">
+          🔍 Review My Questions
+        </button>
+        <button type="button" id="confirmFinalSubmitBtn" class="btn btn-primary btn-submit-final">
+          🚀 Yes, Submit Exam Now
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- FOOTER                                     -->
+  <!-- ========================================== -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <span class="footer-brand">
+        🐝 Bee Smart Learning — English Quiz (40 Questions)
+      </span>
+      <span class="footer-divider">•</span>
+      <button id="openSmartphoneFooterBtn" class="footer-link-btn" title="Open Smartphone Online Active Link">
+        📱 Phone Link
+      </button>
+      <span class="footer-divider">•</span>
+      <button id="openAdminBtn" class="admin-link-btn" title="Open Admin Portal">
+        🔒 Admin Portal
+      </button>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL 1: ADMIN LOGIN MODAL                 -->
+  <!-- ========================================== -->
+  <div id="adminLoginModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+    <div class="modal-card login-modal-card">
+      <button id="closeLoginModalBtn" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-header text-center">
+        <div class="admin-shield-icon">🛡️</div>
+        <h3 id="loginModalTitle" class="modal-title">Admin Portal Login</h3>
+        <p class="modal-subtitle">Enter administrator credentials to view test history database and analytics.</p>
+      </div>
+
+      <form id="adminLoginForm" class="admin-login-form">
+        <div class="form-group">
+          <label for="adminUsername" class="form-label">Username</label>
+          <input 
+            type="text" 
+            id="adminUsername" 
+            class="form-input" 
+            placeholder="Username (admin123)" 
+            autocomplete="username"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="adminPassword" class="form-label">Password</label>
+          <input 
+            type="password" 
+            id="adminPassword" 
+            class="form-input" 
+            placeholder="Password (admin123)" 
+            autocomplete="current-password"
+            required
+          >
+        </div>
+
+        <div id="loginErrorMessage" class="form-error-msg hidden" role="alert">
+          Incorrect username or password. Please try again.
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" id="submitLoginBtn" class="btn btn-primary btn-block">
+            Login to Admin
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 2: ADMIN ANALYTICS DASHBOARD MODAL   -->
+  <!-- ========================================== -->
+  <div id="adminDashboardModal" class="modal-overlay modal-wide hidden" role="dialog" aria-modal="true" aria-labelledby="adminDashboardTitle">
+    <div class="modal-card dashboard-modal-card">
+      <div class="dashboard-header">
+        <div class="dashboard-title-group">
+          <div class="fun-pill-badge admin-badge">
+            ⚡ Administrator Portal
+          </div>
+          <h2 id="adminDashboardTitle" class="dashboard-title">Test Data History Database & Item Analytics</h2>
+          <p class="dashboard-subtitle">Monitor live student test records in <code>database.json</code> and replace extreme difficulty questions.</p>
+        </div>
+        <div class="dashboard-header-actions">
+          <button id="syncDbBtn" class="btn btn-outline btn-sm" title="Sync live data with server database">
+            🔄 Sync DB
+          </button>
+          <button id="exportJsonBtn" class="btn btn-outline btn-sm" title="Export Full Database as JSON file">
+            📥 JSON DB
+          </button>
+          <button id="exportCsvBtn" class="btn btn-outline btn-sm" title="Export Student Test History Log to CSV">
+            📋 Student Logs
+          </button>
+          <button id="exportItemAnalysisBtn" class="btn btn-outline btn-sm btn-excel" title="Export 40-Question Item Difficulty & Psychometric Analysis to Excel">
+            📈 Item Analysis (Excel)
+          </button>
+          <button id="exportMasterExcelBtn" class="btn btn-primary btn-sm btn-excel" title="Download Master Multi-Sheet Excel Workbook (Overview, Item Analysis, Answers Matrix & Dedicated Sheet for Each Student)">
+            📊 Master Excel (All Sheets)
+          </button>
+          <button id="resetDataBtn" class="btn btn-outline-danger btn-sm" title="Reset Database to 4 Baseline Seeds">
+            ⚠️ Reset DB
+          </button>
+          <button id="closeDashboardModalBtn" class="modal-close-btn" aria-label="Close dashboard">&times;</button>
+        </div>
+      </div>
+
+      <!-- Dashboard Navigation Tabs -->
+      <div class="dashboard-tabs" role="tablist">
+        <button id="tabUserLogs" class="tab-btn active" role="tab" aria-selected="true" aria-controls="userLogsPanel">
+          📋 Test Data History Database (<span id="userLogCount">4</span>)
+        </button>
+        <button id="tabQuestionAnalytics" class="tab-btn" role="tab" aria-selected="false" aria-controls="questionAnalyticsPanel">
+          📈 Item Difficulty & Question Replacement (<span id="totalAttemptsBadge">4 attempts</span>)
+        </button>
+      </div>
+
+      <!-- TAB 1: Test Data History Database -->
+      <div id="userLogsPanel" class="tab-panel active" role="tabpanel" aria-labelledby="tabUserLogs">
+        <!-- Database Status Header Pill -->
+        <div class="db-live-status-bar">
+          <div class="db-badge-left">
+            <span class="status-pulse-dot"></span>
+            <span>Database File: <strong>database.json</strong> (Persistent Server Storage)</span>
+          </div>
+          <div class="db-badge-right">
+            <span>Last Sync: <strong id="dbLastSyncTime">Just now</strong></span>
+          </div>
+        </div>
+
+        <div class="table-controls-row">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="userLogSearch" class="search-input" placeholder="Search student name or device...">
+          </div>
+          <div class="table-summary-badges">
+            <span class="badge-stat">Total Tests: <strong id="totalStudentsStat">4</strong></span>
+            <span class="badge-stat">Avg Score: <strong id="avgScoreStat">85.0 / 100</strong></span>
+            <span class="badge-stat">Avg Accuracy: <strong id="avgAccuracyStat">84%</strong></span>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Student Name</th>
+                <th>Device / Client</th>
+                <th>Score (/100)</th>
+                <th>Accuracy</th>
+                <th>Time Spent</th>
+                <th>Status</th>
+                <th>Date & Time</th>
+                <th>Answers Breakdown</th>
+              </tr>
+            </thead>
+            <tbody id="userLogsTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: Question-by-Question Analytics & Item Replacement -->
+      <div id="questionAnalyticsPanel" class="tab-panel" role="tabpanel" aria-labelledby="tabQuestionAnalytics">
+        
+        <!-- EXCEL-STYLE ITEM DIFFICULTY ANALYSIS & PEDAGOGICAL RECOMMENDATIONS -->
+        <div class="item-analysis-summary-card">
+          <div class="analysis-card-header">
+            <div>
+              <h4 class="analysis-card-title">📈 Item Difficulty & Outlier Replacement Criteria</h4>
+              <p class="analysis-card-subtitle">Based on live evaluation of all <strong id="analysisTotalStudentsText">4</strong> student test history submissions.</p>
+            </div>
+            <div class="analysis-card-header-right">
+              <button id="exportItemAnalysisBtnTab" class="btn btn-sm btn-excel" title="Download 40-Question Item Difficulty Analysis as Excel">
+                📊 Download Item Analysis (Excel)
+              </button>
+              <button id="exportMasterExcelBtnTab" class="btn btn-sm btn-primary" title="Download Master Multi-Sheet Excel Workbook with All Student Sheets">
+                📑 Master Excel (All Sheets)
+              </button>
+              <div id="replacementNoticeBadge" class="replacement-notice-badge hidden">
+                🚨 <strong id="replacementEligibleCount">0</strong> questions eligible for replacement (<span class="rule-hint">&lt;20% Very Hard or &gt;80% Too Easy</span>)
+              </div>
+            </div>
+          </div>
+
+          <!-- Difficulty Criteria Grid -->
+          <div class="criteria-cards-grid">
+            <!-- Card 1: Too Easy -->
+            <div class="criteria-card criteria-easy" id="criteriaCardEasy">
+              <div class="criteria-badge badge-easy">🟢 Too Easy (> 80% Correct)</div>
+              <div class="criteria-count"><span id="easyCountNum">0</span> Questions</div>
+              <div class="criteria-desc">Answered correctly by >80% of test takers. Low discrimination power.</div>
+              <div class="criteria-q-list" id="easyQuestionsList">Questions: -</div>
+              <div class="criteria-actions">
+                <button type="button" class="btn-criteria-action btn-filter-easy" data-triggerfilter="easy">
+                  🎯 Filter Too Easy Items
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 2: Balanced / Ideal -->
+            <div class="criteria-card criteria-ideal" id="criteriaCardIdeal">
+              <div class="criteria-badge badge-ideal">⚖️ Balanced / Ideal (20%–80% Correct)</div>
+              <div class="criteria-count"><span id="idealCountNum">0</span> Questions</div>
+              <div class="criteria-desc">Displays optimal discrimination power across learner abilities. Retain.</div>
+              <div class="criteria-q-list" id="idealQuestionsList">Questions: -</div>
+              <div class="criteria-actions">
+                <button type="button" class="btn-criteria-action btn-filter-ideal" data-triggerfilter="ideal">
+                  ✓ Filter Balanced Items
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 3: Very Hard -->
+            <div class="criteria-card criteria-difficult" id="criteriaCardHard">
+              <div class="criteria-badge badge-hard">🔴 Very Hard (&lt; 20% Correct)</div>
+              <div class="criteria-count"><span id="difficultCountNum">0</span> Questions</div>
+              <div class="criteria-desc">Answered correctly by &lt;20% of test takers. High student failure rate.</div>
+              <div class="criteria-q-list" id="difficultQuestionsList">Questions: -</div>
+              <div class="criteria-actions">
+                <button type="button" class="btn-criteria-action btn-filter-hard" data-triggerfilter="difficult">
+                  ⚠️ Filter Very Hard Items
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Buttons Bar -->
+        <div class="qa-filter-bar">
+          <div class="qa-filter-label">Quick Filter:</div>
+          <div class="qa-filter-group">
+            <button type="button" class="qa-filter-btn active" data-qfilter="all">All (40)</button>
+            <button type="button" class="qa-filter-btn qa-filter-extreme" data-qfilter="extreme">🚨 Needs Replacement (&lt;20% or &gt;80%)</button>
+            <button type="button" class="qa-filter-btn" data-qfilter="difficult">🔴 Very Hard (&lt;20%)</button>
+            <button type="button" class="qa-filter-btn" data-qfilter="easy">🟢 Too Easy (&gt;80%)</button>
+            <button type="button" class="qa-filter-btn" data-qfilter="ideal">⚖️ Balanced (20%–80%)</button>
+            <button type="button" class="qa-filter-btn" data-qfilter="1">Part 1</button>
+            <button type="button" class="qa-filter-btn" data-qfilter="2">Part 2</button>
+            <button type="button" class="qa-filter-btn" data-qfilter="3">Part 3</button>
+            <button type="button" class="qa-filter-btn" data-qfilter="4">Part 4</button>
+          </div>
+        </div>
+
+        <!-- List of 40 Question Analytics Cards -->
+        <div id="questionAnalyticsContainer" class="question-analytics-list">
+          <!-- Injected dynamically by JS -->
+        </div>
+
+      </div>
+
+      <div class="dashboard-footer">
+        <button id="logoutAdminBtn" class="btn btn-secondary">
+          Close Admin
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 3: ADMIN REPLACE QUESTION MODAL      -->
+  <!-- ========================================== -->
+  <div id="replaceQuestionModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="replaceModalTitle">
+    <div class="modal-card replace-modal-card">
+      <button id="closeReplaceModalBtn" class="modal-close-btn" aria-label="Close replace modal">&times;</button>
+      
+      <div class="modal-header">
+        <div class="fun-pill-badge" id="replaceModalBadge">🔄 Subordinating Conjunction Replacement</div>
+        <h3 id="replaceModalTitle" class="modal-title">Replace Question #<span id="replaceQNum">0</span></h3>
+        <p class="modal-subtitle" id="replaceModalSubtitle">Select a balanced item from the pre-calibrated Subordinating Conjunction bank or customize your replacement.</p>
+      </div>
+
+      <!-- Current Question Card -->
+      <div class="replace-current-box">
+        <div class="replace-box-top-row">
+          <span class="replace-box-label">Current Question Item:</span>
+          <span id="replaceItemStatusBadge" class="qa-diff-tag diff-tag-hard">● Very Hard (&lt;20%)</span>
+        </div>
+        <div id="replaceStatsCallout" class="replace-stats-callout">
+          <!-- Live accuracy callout inserted by JS -->
+        </div>
+        <div id="currentQPrompt" class="replace-q-prompt">...</div>
+        <div id="currentQMeta" class="replace-q-meta">...</div>
+      </div>
+
+      <!-- Preset Bank Dropdown -->
+      <div class="form-group">
+        <label for="replacementPresetSelect" class="form-label">
+          ✨ Choose from Subordinating Conjunction Balanced Bank:
+        </label>
+        <select id="replacementPresetSelect" class="form-input form-select">
+          <!-- Populated dynamically -->
+        </select>
+        <small class="form-help-text">Selecting a preset automatically fills the fields below and updates the live preview.</small>
+      </div>
+
+      <!-- Editable Replacement Prompt -->
+      <div class="form-group">
+        <label for="customPromptInput" class="form-label">Question Prompt / Sentence:</label>
+        <textarea id="customPromptInput" class="form-input form-textarea" rows="2" placeholder="Enter replacement prompt..."></textarea>
+      </div>
+
+      <!-- Options Editor (for Parts 1, 2, 3) -->
+      <div id="replaceOptionsEditorGroup" class="replace-options-group">
+        <div class="replace-options-grid">
+          <div>
+            <label class="form-label-sm">Option A</label>
+            <input type="text" id="replaceOptA" class="form-input form-input-sm" placeholder="Choice A">
+          </div>
+          <div>
+            <label class="form-label-sm">Option B</label>
+            <input type="text" id="replaceOptB" class="form-input form-input-sm" placeholder="Choice B">
+          </div>
+          <div>
+            <label class="form-label-sm">Option C</label>
+            <input type="text" id="replaceOptC" class="form-input form-input-sm" placeholder="Choice C">
+          </div>
+          <div>
+            <label class="form-label-sm">Option D</label>
+            <input type="text" id="replaceOptD" class="form-input form-input-sm" placeholder="Choice D">
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 10px;">
+          <label class="form-label-sm">Correct Answer Choice:</label>
+          <select id="replaceCorrectSelect" class="form-input form-select form-input-sm">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Target Sentence (for Part 4) -->
+      <div id="replacePart4Group" class="form-group hidden">
+        <label for="replacePart4Target" class="form-label-sm">Target Sentence Order (for Part 4):</label>
+        <input type="text" id="replacePart4Target" class="form-input form-input-sm" placeholder="e.g. Unless the supervisor arrives early, the team cannot commence the briefing.">
+        <label for="replacePart4Chips" class="form-label-sm" style="margin-top: 8px;">Scrambled Word Chunks (comma separated):</label>
+        <input type="text" id="replacePart4Chips" class="form-input form-input-sm" placeholder="e.g. Unless, arrives, early,, the supervisor, the team, cannot commence, the briefing.">
+      </div>
+
+      <!-- Explanation Input -->
+      <div class="form-group">
+        <label for="replaceExplanation" class="form-label">Grammar Explanation (Shown in Student Review):</label>
+        <textarea id="replaceExplanation" class="form-input form-textarea" rows="2" placeholder="Explain the subordinating conjunction rule..."></textarea>
+      </div>
+
+      <!-- Live Preview Card -->
+      <div class="replace-preview-box">
+        <span class="preview-badge">Live Question Card Preview for Students:</span>
+        <div id="replaceLivePreviewContent" class="preview-card-body">
+          <!-- Rendered live -->
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" id="cancelReplaceBtn" class="btn btn-secondary">
+          Cancel
+        </button>
+        <button type="button" id="confirmReplaceBtn" class="btn btn-primary">
+          💾 Save & Deploy to Database
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 4: STUDENT ANSWERS INSPECTION MODAL   -->
+  <!-- ========================================== -->
+  <div id="studentAnswersModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="studentModalTitle">
+    <div class="modal-card student-inspection-card">
+      <button id="closeStudentModalBtn" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-header">
+        <div class="fun-pill-badge">🔍 Test History Inspection</div>
+        <h3 id="studentModalTitle" class="modal-title">Student Answer Sheet</h3>
+        <p class="modal-subtitle" id="studentModalSubtitle">Review student's detailed responses for all 40 questions.</p>
+      </div>
+
+      <div class="student-meta-summary" id="studentModalMetaSummary">
+        <!-- Injected dynamically -->
+      </div>
+
+      <div class="inspection-filter-tabs">
+        <button type="button" class="insp-filter-btn active" data-inspfilter="all">All 40 Questions</button>
+        <button type="button" class="insp-filter-btn" data-inspfilter="wrong">❌ Incorrect Only</button>
+        <button type="button" class="insp-filter-btn" data-inspfilter="correct">✓ Correct Only</button>
+      </div>
+
+      <div id="studentAnswersListContainer" class="student-answers-list">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" id="closeStudentModalBtnBottom" class="btn btn-secondary">
+          Close Inspection
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas for Celebrations -->
+  <canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
+  <script src="assets/xlsx.full.min.js"></script>
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
