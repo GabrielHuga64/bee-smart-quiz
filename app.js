@@ -20,7 +20,7 @@
   const ADMIN_CREDENTIALS = { user: "admin123", pass: "admin123" };
   const STORAGE_KEYS = {
     USERS: "beeQuiz_students_v4",
-    CUSTOM_QUESTIONS: "beeQuiz_custom_questions_v4",
+    CUSTOM_QUESTIONS: "beeQuiz_custom_questions_v5",
     SOUND: "beeQuiz_sound_v1"
   };
 
@@ -768,6 +768,9 @@
   let activeQuizQuestions = [...DEFAULT_QUESTIONS];
 
   function loadActiveQuestions() {
+    try {
+      localStorage.removeItem("beeQuiz_custom_questions_v4");
+    } catch(e) {}
     const saved = localStorage.getItem(STORAGE_KEYS.CUSTOM_QUESTIONS);
     if (saved) {
       try {
