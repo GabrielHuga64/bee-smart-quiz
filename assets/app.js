@@ -1357,7 +1357,6 @@
   const paletteAnsweredCount = document.getElementById("paletteAnsweredCount");
   const jumpFirstUnansweredBtn = document.getElementById("jumpFirstUnansweredBtn");
   const jumpFirstFlaggedBtn = document.getElementById("jumpFirstFlaggedBtn");
-  const directOpenLinkBtn = document.getElementById("directOpenLinkBtn");
   const paletteFinishExamBtn = document.getElementById("paletteFinishExamBtn");
 
   // Finish Exam Confirmation Modal Elements
