@@ -2,7 +2,7 @@
 /**
  * Bee Smart Learning — Subordinating Conjunction Master Quiz
  * Comprehensive 40-Question Exam Across 4 Parts
- * Recommended Duration: 40 Minutes (2400 Seconds)
+ * Recommended Duration: 30 Minutes (1800 Seconds)
  * 
  * Features:
  * - Parts 1–3: Multiple Choice & Correct/Incorrect
@@ -16,7 +16,7 @@
 (function () {
   'use strict';
 
-  const RECOMMENDED_TIME_SECONDS = 40 * 60; // 40 minutes = 2400s
+  const RECOMMENDED_TIME_SECONDS = 30 * 60; // 30 minutes = 1800s
   const ADMIN_CREDENTIALS = { user: "admin123", pass: "admin123" };
   const STORAGE_KEYS = {
     USERS: "beeQuiz_students_v4",
@@ -901,8 +901,8 @@
           maxScore: 100,
           totalQuestions: 40,
           accuracy: 90,
-          timeSpentSeconds: 1940,
-          timeSpentFormatted: "32m 20s",
+          timeSpentSeconds: 1280,
+          timeSpentFormatted: "21m 20s",
           isLate: false,
           overtimeSeconds: 0,
           statusLabel: "On Time",
@@ -918,8 +918,8 @@
           maxScore: 100,
           totalQuestions: 40,
           accuracy: 85,
-          timeSpentSeconds: 2150,
-          timeSpentFormatted: "35m 50s",
+          timeSpentSeconds: 1490,
+          timeSpentFormatted: "24m 50s",
           isLate: false,
           overtimeSeconds: 0,
           statusLabel: "On Time",
@@ -935,8 +935,8 @@
           maxScore: 100,
           totalQuestions: 40,
           accuracy: 80,
-          timeSpentSeconds: 2340,
-          timeSpentFormatted: "39m 00s",
+          timeSpentSeconds: 1650,
+          timeSpentFormatted: "27m 30s",
           isLate: false,
           overtimeSeconds: 0,
           statusLabel: "On Time",
@@ -952,8 +952,8 @@
           maxScore: 100,
           totalQuestions: 40,
           accuracy: 70,
-          timeSpentSeconds: 2510,
-          timeSpentFormatted: "41m 50s",
+          timeSpentSeconds: 1910,
+          timeSpentFormatted: "31m 50s",
           isLate: true,
           overtimeSeconds: 110,
           statusLabel: "Late (+1m 50s)",
@@ -2223,11 +2223,11 @@
     if (data.isLate) {
       timeStatusBadge.className = "status-badge status-late";
       timeStatusBadge.textContent = "Late";
-      timeStatusDetail.textContent = `Exceeded 40 mins by ${formatReadableDuration(data.overtimeSeconds)}`;
+      timeStatusDetail.textContent = `Exceeded 30 mins by ${formatReadableDuration(data.overtimeSeconds)}`;
     } else {
       timeStatusBadge.className = "status-badge status-on-time";
       timeStatusBadge.textContent = "On Time";
-      timeStatusDetail.textContent = `Completed within 40 minutes (${formatReadableDuration(data.spareSeconds)} left)`;
+      timeStatusDetail.textContent = `Completed within 30 minutes (${formatReadableDuration(data.spareSeconds)} left)`;
     }
 
     let activeFilter = "all";
@@ -2990,6 +2990,7 @@
   const openSmartphoneFooterBtn = document.getElementById("openSmartphoneFooterBtn");
   const smartphoneModal = document.getElementById("smartphoneModal");
   const closeSmartphoneModalBtn = document.getElementById("closeSmartphoneModalBtn");
+  const directOpenLinkBtn = document.getElementById("directOpenLinkBtn");
   const serverStatusText = document.getElementById("serverStatusText");
   const qrCodeContainer = document.getElementById("qrCodeContainer");
   const publicTunnelUrlInput = document.getElementById("publicTunnelUrlInput");
@@ -2997,11 +2998,13 @@
   const copyPublicLinkBtn = document.getElementById("copyPublicLinkBtn");
   const copyWifiLinkBtn = document.getElementById("copyWifiLinkBtn");
 
+  const GITHUB_PAGES_URL = "https://gabrielhuga64.github.io/dibee-gabriel-smart-quiz/";
+
   async function openSmartphoneModal() {
     sfx.click();
     smartphoneModal.classList.remove("hidden");
     serverStatusText.textContent = "Connecting to server network...";
-    publicTunnelUrlInput.value = "Fetching online link...";
+    publicTunnelUrlInput.value = GITHUB_PAGES_URL;
     localWifiUrlInput.value = "Detecting Wi-Fi IP...";
     qrCodeContainer.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#64748B;font-size:0.9rem;">⏳ Generating QR Code...</div>`;
 
@@ -3009,14 +3012,14 @@
       const res = await fetch('/api/network-status');
       const data = await res.json();
 
-      const tunnel = data.tunnelUrl || "";
+      const tunnel = data.tunnelUrl || GITHUB_PAGES_URL;
       const local = data.localUrl || `http://localhost:${data.port || 5500}`;
 
       serverStatusText.textContent = "Server Online & Listening";
-      publicTunnelUrlInput.value = tunnel || "Initializing online tunnel link... (check server console)";
+      publicTunnelUrlInput.value = tunnel;
       localWifiUrlInput.value = local;
 
-      // Target URL for smartphone scanning: prefer public HTTPS tunnel, fallback to local LAN IP
+      // Target URL for smartphone scanning: prefer public HTTPS tunnel or GitHub Pages, fallback to local LAN IP
       const qrTarget = tunnel || local;
       const primaryQr = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=6&data=${encodeURIComponent(qrTarget)}`;
       const fallbackQr = `https://quickchart.io/qr?text=${encodeURIComponent(qrTarget)}&size=220`;
@@ -3028,10 +3031,10 @@
         directOpenLinkBtn.href = qrTarget;
       }
     } catch (e) {
-      serverStatusText.textContent = "Running standalone mode";
-      publicTunnelUrlInput.value = window.location.href;
-      localWifiUrlInput.value = window.location.href;
-      const targetUrl = window.location.href;
+      serverStatusText.textContent = "Online via GitHub Pages";
+      const targetUrl = window.location.hostname.includes("github.io") ? window.location.href : GITHUB_PAGES_URL;
+      publicTunnelUrlInput.value = targetUrl;
+      localWifiUrlInput.value = targetUrl;
       const primaryQr = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=6&data=${encodeURIComponent(targetUrl)}`;
       const fallbackQr = `https://quickchart.io/qr?text=${encodeURIComponent(targetUrl)}&size=220`;
       qrCodeContainer.innerHTML = `
