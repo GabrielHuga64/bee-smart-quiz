@@ -392,6 +392,10 @@
       prompt: "regularly / Military personnel / and / train / carefully / maintain / their equipment.",
       scrambledChips: ["regularly", "maintain", "train", "and", "Military personnel", "carefully", "their equipment."],
       target: "Military personnel regularly train and carefully maintain their equipment.",
+      alternateTargets: [
+        "Military personnel train regularly and maintain their equipment carefully.",
+        "Military personnel train carefully and maintain their equipment regularly."
+      ],
       explanation: "Military personnel regularly train and carefully maintain their equipment."
     },
     {
@@ -400,7 +404,7 @@
       partName: "Part 4: Sentence Rearrangement",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "successfully / but / The training / completed / was / demanding / the personnel / it.",
+      prompt: "successfully. / but / The training / completed / was / demanding / the personnel / it",
       scrambledChips: ["successfully.", "completed", "demanding,", "The training", "was", "but", "the personnel", "it"],
       target: "The training was demanding, but the personnel completed it successfully.",
       explanation: "The training was demanding, but the personnel completed it successfully."
@@ -411,10 +415,14 @@
       partName: "Part 4: Sentence Rearrangement",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "Either / the soldiers / will / attend / the morning session / or / they will / participate / in / the afternoon session.",
-      scrambledChips: ["the afternoon session.", "the morning session", "or", "Either", "attend", "the soldiers", "will", "they will", "participate", "in"],
-      target: "Either the soldiers will attend the morning session or they will participate in the afternoon session.",
-      explanation: "Either the soldiers will attend the morning session or they will participate in the afternoon session."
+      prompt: "or / the morning session / The soldiers / participate / either / attend / in / the afternoon session. / will",
+      scrambledChips: ["the afternoon session.", "the morning session", "or", "The soldiers", "either", "attend", "participate", "in", "will"],
+      target: "The soldiers will either attend the morning session or participate in the afternoon session.",
+      alternateTargets: [
+        "Either the soldiers will attend the morning session or they will participate in the afternoon session.",
+        "Either the soldiers will attend the morning session or participate in the afternoon session."
+      ],
+      explanation: "The soldiers will either attend the morning session or participate in the afternoon session."
     },
     {
       id: 34,
@@ -433,9 +441,13 @@
       partName: "Part 4: Sentence Rearrangement",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "too / The officers / and / successfully / completed / did / the exercise / the personnel.",
+      prompt: "too. / The officers / and / successfully / completed / did / the exercise / the personnel",
       scrambledChips: ["the officers", "too.", "successfully", "The personnel", "completed", "did", "the exercise,", "and"],
       target: "The personnel successfully completed the exercise, and the officers did too.",
+      alternateTargets: [
+        "The officers completed the exercise successfully and the personnel did too.",
+        "The officers completed the exercise successfully, and the personnel did too."
+      ],
       explanation: "The personnel successfully completed the exercise, and the officers did too."
     },
     {
@@ -444,7 +456,7 @@
       partName: "Part 4: Sentence Rearrangement",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "their plans / so / The training schedule / had to / was changed / adjust / the personnel.",
+      prompt: "their plans. / so / The training schedule / had to / was changed / adjust / the personnel",
       scrambledChips: ["their plans.", "The training schedule", "was changed,", "adjust", "had to", "so", "the personnel"],
       target: "The training schedule was changed, so the personnel had to adjust their plans.",
       explanation: "The training schedule was changed, so the personnel had to adjust their plans."
@@ -455,10 +467,15 @@
       partName: "Part 4: Sentence Rearrangement",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "too / Military personnel / and / need / effective communication / discipline / they / need.",
+      prompt: "too. / Military personnel / and / need / effective communication / discipline / they / need",
       scrambledChips: ["they", "too.", "Military personnel", "need", "discipline,", "effective communication", "and", "need"],
-      target: "Military personnel need discipline, and they need effective communication too.",
-      explanation: "Military personnel need discipline, and they need effective communication too."
+      target: "Military personnel need discipline and they need effective communication too.",
+      alternateTargets: [
+        "Military personnel need discipline, and they need effective communication too.",
+        "Military personnel need effective communication and they need discipline too.",
+        "Military personnel need effective communication, and they need discipline too."
+      ],
+      explanation: "Military personnel need discipline and they need effective communication too."
     },
     {
       id: 38,
@@ -466,10 +483,13 @@
       partName: "Part 4: Sentence Rearrangement",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "tomorrow / Either / the team / will / conduct / the exercise / or / postpone / it / until / next week.",
-      scrambledChips: ["tomorrow", "postpone", "Either", "until", "the team", "next week.", "will", "it", "or", "the exercise", "conduct"],
-      target: "Either the team will conduct the exercise tomorrow or postpone it until next week.",
-      explanation: "Either the team will conduct the exercise tomorrow or postpone it until next week."
+      prompt: "tomorrow / either / The team / will / conduct / the exercise / or / postpone / it / until / next week.",
+      scrambledChips: ["tomorrow", "postpone", "either", "until", "The team", "next week.", "will", "it", "or", "the exercise", "conduct"],
+      target: "The team will either conduct the exercise tomorrow or postpone it until next week.",
+      alternateTargets: [
+        "Either the team will conduct the exercise tomorrow or postpone it until next week."
+      ],
+      explanation: "The team will either conduct the exercise tomorrow or postpone it until next week."
     },
     {
       id: 39,
@@ -477,7 +497,7 @@
       partName: "Part 4: Sentence Rearrangement",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "available / Neither / nor / the facilities / were / ready / the equipment / was.",
+      prompt: "available / Neither / nor / the facilities / were / ready. / the equipment / was",
       scrambledChips: ["the facilities", "Neither", "ready.", "the equipment", "were", "nor"],
       target: "Neither the equipment nor the facilities were ready.",
       explanation: "Neither the equipment nor the facilities were ready."
@@ -695,7 +715,10 @@
       const studentVal = answers ? answers[q.id] : null;
       let isCorrect = false;
       if (q.type === "rearrange") {
-        isCorrect = studentVal && normalizeSentence(studentVal) === normalizeSentence(q.target);
+        isCorrect = studentVal && (
+          normalizeSentence(studentVal) === normalizeSentence(q.target) ||
+          (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
+        );
       } else {
         isCorrect = studentVal === q.correct;
       }
@@ -751,15 +774,16 @@
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length === DEFAULT_QUESTIONS.length) {
           activeQuizQuestions = parsed;
-          const q32 = activeQuizQuestions.find(q => q.id === 32);
-          if (q32 && q32.scrambledChips && q32.scrambledChips.includes("it.")) {
-            const def32 = DEFAULT_QUESTIONS.find(q => q.id === 32);
-            if (def32) Object.assign(q32, def32);
-          }
-          const q33 = activeQuizQuestions.find(q => q.id === 33);
-          if (q33 && q33.target && !q33.target.includes("they will")) {
-            const def33 = DEFAULT_QUESTIONS.find(q => q.id === 33);
-            if (def33) Object.assign(q33, def33);
+          for (let i = 30; i < 40; i++) {
+            const def = DEFAULT_QUESTIONS[i];
+            const cur = activeQuizQuestions[i];
+            if (cur && def) {
+              cur.prompt = def.prompt;
+              cur.scrambledChips = def.scrambledChips;
+              cur.target = def.target;
+              cur.alternateTargets = def.alternateTargets;
+              cur.explanation = def.explanation;
+            }
           }
         }
       } catch (e) {}
@@ -2083,7 +2107,10 @@
       let isCorrect = false;
 
       if (q.type === "rearrange") {
-        isCorrect = selected && normalizeSentence(selected) === normalizeSentence(q.target);
+        isCorrect = selected && (
+          normalizeSentence(selected) === normalizeSentence(q.target) ||
+          (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(selected) === normalizeSentence(alt)))
+        );
       } else {
         isCorrect = selected === q.correct;
       }
