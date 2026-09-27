@@ -1960,7 +1960,12 @@
   if (confirmFinalSubmitBtn) {
     confirmFinalSubmitBtn.addEventListener("click", () => {
       sfx.click();
-      finishConfirmModal.cla  // =========================================================================
+      finishConfirmModal.classList.add("hidden");
+      finishQuiz();
+    });
+  }
+
+  // =========================================================================
   // 9. QUIZ COMPLETION & RESULTS
   // =========================================================================
   function finishQuiz() {
