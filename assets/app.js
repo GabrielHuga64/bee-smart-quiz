@@ -2717,6 +2717,15 @@
     });
   }
 
+  // Finish Exam from Navigator Palette Drawer
+  if (paletteFinishExamBtn) {
+    paletteFinishExamBtn.addEventListener("click", () => {
+      sfx.click();
+      paletteModal.classList.add("hidden");
+      openFinishConfirmModal();
+    });
+  }
+
   // =========================================================================
   // CONFIRMATION BEFORE FINISH MODAL
   // =========================================================================
