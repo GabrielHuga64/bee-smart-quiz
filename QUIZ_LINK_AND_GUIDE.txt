@@ -261,8 +261,9 @@ Q41: Target Sentence: "Military personnel regularly train and carefully maintain
 Q42: Target Sentence: "The training was demanding, but the personnel completed it successfully."
      Reason: Compound sentence with coordinating conjunction “but”: Joins two contrasting independent clauses separated by a comma (“The training was demanding,” + but + “the personnel completed it successfully.”).
 
-Q43: Target Sentence: "The soldiers will either attend the morning session or participate in the afternoon session."
-     Reason: Correlative conjunction “either ... or”: Balances two parallel verb phrases following modal “will” (“attend the morning session” or “participate in the afternoon session”).
+Q43: Target Sentence: "The soldiers will either attend the morning session or the afternoon session."
+     Alternative Acceptable: "The soldiers will either attend the afternoon session or the morning session."
+     Reason: Correlative conjunction “either ... or”: Balances two parallel noun phrases (“the morning session” or “the afternoon session”) following the transitive verb “attend”. Both sequential orders are grammatically correct.
 
 Q44: Target Sentence: "Neither the commander nor the personnel were informed about the change."
      Reason: Correlative conjunction “neither ... nor”: By the rule of proximity, when subjects differ in number, the verb agrees with the nearer subject (“the personnel” is plural, requiring plural passive verb “were informed”).
@@ -273,8 +274,9 @@ Q45: Target Sentence: "The personnel successfully completed the exercise, and th
 Q46: Target Sentence: "The training schedule was changed, so the personnel had to adjust their plans."
      Reason: Compound sentence with cause-and-result coordinating conjunction “so”: Preceded by a comma, “so” connects the cause (“The training schedule was changed”) with the resulting action (“the personnel had to adjust their plans”).
 
-Q47: Target Sentence: "Military personnel need discipline and they need effective communication too."
-     Reason: Coordinating addition with emphasis: Links two independent clauses (“Military personnel need discipline” and “they need effective communication”) with coordinating conjunction “and”, supplemented by “too”.
+Q47: Target Sentence: "Military personnel need both, discipline and effective communication."
+     Alternative Acceptable: "Military personnel need both, effective communication and discipline."
+     Reason: Correlative conjunction “both ... and”: Connects two parallel noun phrases (“discipline” and “effective communication”) as objects of the verb “need”. Both sequential orders (“discipline and effective communication” or “effective communication and discipline”) are grammatically valid.
 
 Q48: Target Sentence: "The team will either conduct the exercise tomorrow or postpone it until next week."
      Reason: Correlative conjunction “either ... or”: Balances two alternative verb phrases following modal “will” (“conduct the exercise tomorrow” or “postpone it until next week”).
