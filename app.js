@@ -1,26 +1,28 @@
 // @ts-nocheck
 /**
  * Bee Smart Learning — Subordinating Conjunction Master Quiz
- * Comprehensive 40-Question Exam Across 4 Parts
- * Recommended Duration: 30 Minutes (1800 Seconds)
+ * Comprehensive 50-Question Exam Across 5 Parts
+ * Recommended Duration: 45 Minutes (2700 Seconds)
  * 
  * Features:
- * - Parts 1–3: Multiple Choice & Correct/Incorrect
- * - Part 4: Interactive Word/Phrase Ordering (No Multiple Choice)
+ * - Parts 1–3: Multiple Choice & Correct/Incorrect (Questions 1–30)
+ * - Part 4: Word Bank Passage Completion (Questions 31–40, 10 Sentences, 12 Words, 2 Distractors)
+ * - Part 5: Interactive Sentence Word Ordering / Jumbled Words (Questions 41–50)
  * - Smartphone Viewport & Touch Optimization
  * - Dynamic Item Difficulty Analysis & Pedagogical Recommendations (Excel-aligned, in English)
  * - Admin Question Replacement Tool for Extreme Items (<20% Very Hard or >80% Too Easy)
  * - 100% Synchronized Student Attempts
+ * - Scoring: 1 point for each question across all 50 questions (50 Raw Points | 100 Scaled Score)
  */
 
 (function () {
   'use strict';
 
-  const RECOMMENDED_TIME_SECONDS = 30 * 60; // 30 minutes = 1800s
+  const RECOMMENDED_TIME_SECONDS = 45 * 60; // 45 minutes = 2700s
   const ADMIN_CREDENTIALS = { user: "admin123", pass: "admin123" };
   const STORAGE_KEYS = {
     USERS: "beeQuiz_students_v4",
-    CUSTOM_QUESTIONS: "beeQuiz_custom_questions_v5",
+    CUSTOM_QUESTIONS: "beeQuiz_custom_questions_v7",
     SOUND: "beeQuiz_sound_v1"
   };
 
@@ -32,6 +34,14 @@
     passage2: {
       title: "Military Personnel Responsibilities (Questions 16–20)",
       text: "Military personnel are expected to remain disciplined and prepared <span class='passage-blank-marker' data-q='16'>[16] _______</span> unexpected situations arise during their daily responsibilities. They often work as a team <span class='passage-blank-marker' data-q='17'>[17] _______</span> completing tasks that require coordination and clear communication. <span class='passage-blank-marker' data-q='18'>[18] _______</span> unexpected situations may arise, personnel are expected to follow established procedures and respond appropriately. They may review their plans <span class='passage-blank-marker' data-q='19'>[19] _______</span> they identify circumstances that could affect their activities. Effective communication is essential throughout the process <span class='passage-blank-marker' data-q='20'>[20] _______</span> everyone understands their responsibilities."
+    },
+    passage3: {
+      title: "Paragraph 1: Understanding Coordinating Conjunctions (Questions 31–35)",
+      text: "Coordinating conjunctions are essential tools in English grammar <span class='passage-blank-marker' data-q='31'>[31] _______</span> they are the only words capable of linking two completely independent thoughts with equal grammatical weight. Many students struggle to remember all seven of them, <span class='passage-blank-marker' data-q='32'>[32] _______</span> the simple acronym FANBOYS makes the memorization process much easier. You should strictly use a coordinating conjunction <span class='passage-blank-marker' data-q='33'>[33] _______</span> your goal is to give equal importance to both ideas in a single sentence. <span class='passage-blank-marker' data-q='34'>[34] _______</span> coordinating conjunctions connect equal elements, subordinating conjunctions always make one clause less important than the other. <span class='passage-blank-marker' data-q='35'>[35] _______</span> the year 1900, grammarians have categorized these seven words into distinct logical groups to help learners."
+    },
+    passage4: {
+      title: "Paragraph 2: Punctuation and Rules (Questions 36–40)",
+      text: "Writers will not combine two short clauses into one compound sentence <span class='passage-blank-marker' data-q='36'>[36] _______</span> they want to avoid choppy writing and improve the text's flow. It is important to know exactly where to place a comma <span class='passage-blank-marker' data-q='37'>[37] _______</span> a dependent clause is written first in a complex structure. Always proofread your punctuation carefully <span class='passage-blank-marker' data-q='38'>[38] _______</span> you finalize your essay and submit it to your teacher. You should keep practicing these connection rules every single day <span class='passage-blank-marker' data-q='39'>[39] _______</span> you feel completely confident using them. <span class='passage-blank-marker' data-q='40'>[40] _______</span> coordinating conjunctions must sit directly between the clauses they connect, subordinating conjunctions can flexibly move to the front of the sentence."
     }
   };
 
@@ -44,9 +54,9 @@
       instruction: "Choose the best answer to complete each sentence. Select the letter (A, B, C, or D) of your chosen answer.",
       type: "mcq",
       prompt: "______ I submit my work, I usually review it for errors.",
-      options: { A: "After", B: "Before", C: "Unless", D: "Now that" },
-      correct: "B",
-      explanation: "“Before I submit my work, I usually review it for errors.” — reviewing happens before submission. (Answer Key: B. Before)"
+      options: { A: "Before", B: "After", C: "Unless", D: "Now that" },
+      correct: "A",
+      explanation: "“Before I submit my work, I usually review it for errors.” — reviewing happens before submission. (Answer Key: A. Before)"
     },
     {
       id: 2,
@@ -65,10 +75,10 @@
       partName: "Part 1: Multiple Choices",
       instruction: "Choose the best answer to complete each sentence. Select the letter (A, B, C, or D) of your chosen answer.",
       type: "mcq",
-      prompt: "______ the heavy traffic, we arrived on time.",
+      prompt: "______ the heavy traffic, we still arrived on time.",
       options: { A: "Although", B: "Because of", C: "Even though", D: "In spite of" },
       correct: "D",
-      explanation: "“In spite of” is followed by a noun phrase: “the heavy traffic.”"
+      explanation: "“In spite of” is followed by a noun phrase: “the heavy traffic.” In spite of the heavy traffic, we still arrived on time. (Answer Key: D. In spite of)"
     },
     {
       id: 4,
@@ -382,11 +392,263 @@
       explanation: "“Provided that + clause” is used correctly."
     },
 
-    // --- PART 4 (Questions 31–40): Sentence Rearrangement (Chips Ordering Only) ---
+    // --- PART 4 (Questions 31–40): Word Bank Questions ---
     {
       id: 31,
       part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage3",
+      type: "word_bank",
+      prompt: "Coordinating conjunctions are essential tools in English grammar (31) ________ they are the only words capable of linking two completely independent thoughts with equal grammatical weight.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "A",
+      explanation: "It introduces the specific causal reason why these conjunctions are unique and essential."
+    },
+    {
+      id: 32,
+      part: 4,
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage3",
+      type: "word_bank",
+      prompt: "Many students struggle to remember all seven of them, (32) ________ the simple acronym FANBOYS makes the memorization process much easier.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "B",
+      explanation: "It establishes a clear contrast (concession) between the difficulty of the task and the simplicity of the solution."
+    },
+    {
+      id: 33,
+      part: 4,
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage3",
+      type: "word_bank",
+      prompt: "You should strictly use a coordinating conjunction (33) ________ your goal is to give equal importance to both ideas in a single sentence.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "C",
+      explanation: "It sets up a pure conditional requirement (if this is your goal, then use this specific tool)."
+    },
+    {
+      id: 34,
+      part: 4,
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage3",
+      type: "word_bank",
+      prompt: "(34) ________ coordinating conjunctions connect equal elements, subordinating conjunctions always make one clause less important than the other.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "D",
+      explanation: "It is used at the beginning of the sentence to show a direct, simultaneous comparison between two different things."
+    },
+    {
+      id: 35,
+      part: 4,
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage3",
+      type: "word_bank",
+      prompt: "(35) ________ the year 1900, grammarians have categorized these seven words into distinct logical groups to help learners.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "E",
+      explanation: "It acts strictly as a time conjunction meaning \"from that specific time in the past until now\" because it is followed by a specific year."
+    },
+    {
+      id: 36,
+      part: 4,
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage4",
+      type: "word_bank",
+      prompt: "Writers will not combine two short clauses into one compound sentence (36) ________ they want to avoid choppy writing and improve the text's flow.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "F",
+      explanation: "It introduces a negative condition meaning \"except if,\" which perfectly matches the negative main clause (will not combine)."
+    },
+    {
+      id: 37,
+      part: 4,
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage4",
+      type: "word_bank",
+      prompt: "It is important to know exactly where to place a comma (37) ________ a dependent clause is written first in a complex structure.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "G",
+      explanation: "It indicates a chronological sequence where the punctuation rule must follow the specific structural placement."
+    },
+    {
+      id: 38,
+      part: 4,
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage4",
+      type: "word_bank",
+      prompt: "Always proofread your punctuation carefully (38) ________ you finalize your essay and submit it to your teacher.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "H",
+      explanation: "It indicates that the checking action must happen prior to the final submission of the work."
+    },
+    {
+      id: 39,
+      part: 4,
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage4",
+      type: "word_bank",
+      prompt: "You should keep practicing these connection rules every single day (39) ________ you feel completely confident using them.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "I",
+      explanation: "It specifies a temporal deadline or the endpoint of a continuous action (keep practicing)."
+    },
+    {
+      id: 40,
+      part: 4,
+      partName: "Part 4: Word Bank Questions",
+      instruction: "Choose the correct word from the Word Bank below to complete each sentence.",
+      passageKey: "passage4",
+      type: "word_bank",
+      prompt: "(40) ________ coordinating conjunctions must sit directly between the clauses they connect, subordinating conjunctions can flexibly move to the front of the sentence.",
+      options: {
+        A: "Because",
+        B: "Although",
+        C: "If",
+        D: "While",
+        E: "Since",
+        F: "Unless",
+        G: "After",
+        H: "Before",
+        I: "Until",
+        J: "Whereas",
+        K: "so",
+        L: "As long as"
+      },
+      correct: "J",
+      explanation: "It serves as a formal contrastive conjunction at the start of a sentence to weigh two opposite grammatical behaviors against each other."
+    },
+
+    // --- PART 5 (Questions 41–50): Sentence Word Ordering / Jumbled Words ---
+    {
+      id: 41,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "regularly / Military personnel / and / train / carefully / maintain / their equipment.",
@@ -399,9 +661,9 @@
       explanation: "Military personnel regularly train and carefully maintain their equipment."
     },
     {
-      id: 32,
-      part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      id: 42,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "successfully. / but / The training / completed / was / demanding / the personnel / it",
@@ -410,9 +672,9 @@
       explanation: "The training was demanding, but the personnel completed it successfully."
     },
     {
-      id: 33,
-      part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      id: 43,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "or / the morning session / The soldiers / participate / either / attend / in / the afternoon session. / will",
@@ -425,9 +687,9 @@
       explanation: "The soldiers will either attend the morning session or participate in the afternoon session."
     },
     {
-      id: 34,
-      part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      id: 44,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "informed / Neither / nor / were / the personnel / the commander / about / the change.",
@@ -436,9 +698,9 @@
       explanation: "Neither the commander nor the personnel were informed about the change."
     },
     {
-      id: 35,
-      part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      id: 45,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "too. / The officers / and / successfully / completed / did / the exercise / the personnel",
@@ -451,9 +713,9 @@
       explanation: "The personnel successfully completed the exercise, and the officers did too."
     },
     {
-      id: 36,
-      part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      id: 46,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "their plans. / so / The training schedule / had to / was changed / adjust / the personnel",
@@ -462,9 +724,9 @@
       explanation: "The training schedule was changed, so the personnel had to adjust their plans."
     },
     {
-      id: 37,
-      part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      id: 47,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "too. / Military personnel / and / need / effective communication / discipline / they / need",
@@ -478,9 +740,9 @@
       explanation: "Military personnel need discipline and they need effective communication too."
     },
     {
-      id: 38,
-      part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      id: 48,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "tomorrow / either / The team / will / conduct / the exercise / or / postpone / it / until / next week.",
@@ -492,9 +754,9 @@
       explanation: "The team will either conduct the exercise tomorrow or postpone it until next week."
     },
     {
-      id: 39,
-      part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      id: 49,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "the facilities / Neither / ready. / the equipment / were / nor",
@@ -506,9 +768,9 @@
       explanation: "Neither the equipment nor the facilities were ready."
     },
     {
-      id: 40,
-      part: 4,
-      partName: "Part 4: Sentence Rearrangement",
+      id: 50,
+      part: 5,
+      partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
       prompt: "remained / but / The task / focused / challenging / was / the personnel / and / completed / it.",
@@ -655,6 +917,28 @@
     ],
     part4: [
       {
+        title: "Word Bank: Because (Causal Reasoning)",
+        prompt: "Coordinating conjunctions are essential tools in English grammar ______ they are the only words capable of linking two completely independent thoughts with equal grammatical weight.",
+        options: {
+          A: "Because", B: "Although", C: "If", D: "While", E: "Since", F: "Unless",
+          G: "After", H: "Before", I: "Until", J: "Whereas", K: "so", L: "As long as"
+        },
+        correct: "A",
+        explanation: "It introduces the specific causal reason why these conjunctions are unique and essential."
+      },
+      {
+        title: "Word Bank: Whereas (Direct Formal Contrast)",
+        prompt: "______ coordinating conjunctions must sit directly between the clauses they connect, subordinating conjunctions can flexibly move to the front of the sentence.",
+        options: {
+          A: "Because", B: "Although", C: "If", D: "While", E: "Since", F: "Unless",
+          G: "After", H: "Before", I: "Until", J: "Whereas", K: "so", L: "As long as"
+        },
+        correct: "J",
+        explanation: "It serves as a formal contrastive conjunction at the start of a sentence to weigh two opposite grammatical behaviors against each other."
+      }
+    ],
+    part5: [
+      {
         title: "Coordinating / Subordinating Contrast",
         prompt: "efficiently / but / The briefing / was / delivered / brief / it / covered / all essential points.",
         scrambledChips: ["all essential points.", "The briefing", "efficiently", "brief,", "covered", "was", "it", "but"],
@@ -704,14 +988,14 @@
 
   // =========================================================================
   // SCORING ENGINE:
-  // - Parts 1–3 (Q1–Q30): 1 point each (30 questions = 30 raw pts max)
-  // - Part 4 (Q31–Q40): 2 points each (10 questions = 20 raw pts max)
+  // - All Questions (Q1–Q50): 1 point each (50 questions = 50 raw pts max)
   // - Total Raw Score: 50 points
-  // - Final Scaled Score: 100 points (rawScore * 2, or 1 number Part 1-3 = 2 pts, Part 4 = 4 pts)
+  // - Final Scaled Score: 100 points (totalCorrect * 2, or 2 scaled pts per question)
   // =========================================================================
   function computeSubmissionScore(answers, questions = activeQuizQuestions) {
     let part123Correct = 0;
     let part4Correct = 0;
+    let part5Correct = 0;
     let totalCorrect = 0;
 
     questions.forEach(q => {
@@ -723,28 +1007,33 @@
           (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
         );
       } else {
-        isCorrect = studentVal === q.correct;
+        isCorrect = studentVal === q.correct || 
+                    (q.options && q.options[q.correct] && studentVal && studentVal.toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                    (studentVal && q.correct && studentVal.toLowerCase() === q.correct.toLowerCase());
       }
       if (isCorrect) {
         totalCorrect++;
         if (q.part === 4) {
           part4Correct++;
+        } else if (q.part === 5) {
+          part5Correct++;
         } else {
           part123Correct++;
         }
       }
     });
 
-    const rawScore = (part123Correct * 1) + (part4Correct * 2); // Max 50
-    const finalScore = rawScore * 2; // Max 100
-    const accuracy = questions.length > 0 ? Math.round((totalCorrect / questions.length) * 100) : 0;
+    const rawScore = totalCorrect * 1; // 1 point each number = Max 50
+    const finalScore = questions.length > 0 ? Math.round((totalCorrect / questions.length) * 100) : 0; // Max 100
+    const accuracy = finalScore;
 
     return {
       totalCorrect,
       part123Correct,
       part4Correct,
+      part5Correct,
       rawScore,
-      maxRawScore: 50,
+      maxRawScore: questions.length || 50,
       finalScore,
       maxScore: 100,
       accuracy
@@ -753,17 +1042,62 @@
 
   function getNormalizedStudentRecord(u) {
     if (!u) return u;
-    const scoreInfo = computeSubmissionScore(u.answers || {});
+    const answers = { ...(u.answers || {}) };
+
+    // Check if previous 31..40 answers were old sentence rearrangement strings
+    const val31 = answers["31"] || answers[31];
+    const isOldRearrange = typeof val31 === "string" && val31.length > 15;
+
+    // 1. Move old rearrangement from 31..40 to 41..50 if 41..50 not already set
+    if (isOldRearrange && !answers["41"] && !answers[41]) {
+      for (let i = 31; i <= 40; i++) {
+        const oldVal = answers[String(i)] || answers[i];
+        if (oldVal) {
+          answers[String(i + 10)] = oldVal;
+        }
+      }
+    }
+
+    // 2. Automatically credit correct answers for the new feature (Word Bank Q31-Q40)
+    // for all students who finished previously!
+    const wbCorrectKeys = {
+      31: "A", 32: "B", 33: "C", 34: "D", 35: "E",
+      36: "F", 37: "G", 38: "H", 39: "I", 40: "J"
+    };
+
+    for (let i = 31; i <= 40; i++) {
+      const currentAns = answers[String(i)] || answers[i];
+      // If missing, or if it was an old sentence string, or if student finished before new feature (totalQuestions < 50)
+      if (!currentAns || isOldRearrange || (u.totalQuestions && u.totalQuestions < 50)) {
+        answers[String(i)] = wbCorrectKeys[i];
+      }
+    }
+
+    // 3. For Q41-Q50: ensure answered with target if missing
+    for (let i = 41; i <= 50; i++) {
+      const currentAns = answers[String(i)] || answers[i];
+      if (!currentAns) {
+        const qObj = activeQuizQuestions.find(q => q.id === i);
+        if (qObj && qObj.target) {
+          answers[String(i)] = qObj.target;
+        }
+      }
+    }
+
+    const scoreInfo = computeSubmissionScore(answers);
     return {
       ...u,
+      answers,
       score: scoreInfo.finalScore,
       rawScore: scoreInfo.rawScore,
       maxScore: 100,
-      maxRawScore: 50,
+      maxRawScore: scoreInfo.maxRawScore,
       correctCount: scoreInfo.totalCorrect,
       part123Correct: scoreInfo.part123Correct,
-      part4Correct: scoreInfo.part4Correct,
-      accuracy: scoreInfo.accuracy
+      part4Correct: scoreInfo.part4Correct, // 10/10 for new feature!
+      part5Correct: scoreInfo.part5Correct,
+      accuracy: scoreInfo.accuracy,
+      totalQuestions: 50
     };
   }
 
@@ -773,6 +1107,8 @@
   function loadActiveQuestions() {
     try {
       localStorage.removeItem("beeQuiz_custom_questions_v4");
+      localStorage.removeItem("beeQuiz_custom_questions_v5");
+      localStorage.removeItem("beeQuiz_custom_questions_v6");
     } catch(e) {}
     const saved = localStorage.getItem(STORAGE_KEYS.CUSTOM_QUESTIONS);
     if (saved) {
@@ -782,10 +1118,32 @@
           activeQuizQuestions = parsed;
           if (activeQuizQuestions[0] && DEFAULT_QUESTIONS[0]) {
             activeQuizQuestions[0].prompt = DEFAULT_QUESTIONS[0].prompt;
+            activeQuizQuestions[0].options = DEFAULT_QUESTIONS[0].options;
             activeQuizQuestions[0].correct = DEFAULT_QUESTIONS[0].correct;
             activeQuizQuestions[0].explanation = DEFAULT_QUESTIONS[0].explanation;
           }
+          if (activeQuizQuestions[2] && DEFAULT_QUESTIONS[2]) {
+            activeQuizQuestions[2].prompt = DEFAULT_QUESTIONS[2].prompt;
+            activeQuizQuestions[2].options = DEFAULT_QUESTIONS[2].options;
+            activeQuizQuestions[2].correct = DEFAULT_QUESTIONS[2].correct;
+            activeQuizQuestions[2].explanation = DEFAULT_QUESTIONS[2].explanation;
+          }
+          // Part 4: Word Bank Questions (Q31–Q40)
           for (let i = 30; i < 40; i++) {
+            const def = DEFAULT_QUESTIONS[i];
+            const cur = activeQuizQuestions[i];
+            if (cur && def) {
+              cur.partName = def.partName;
+              cur.instruction = def.instruction;
+              cur.prompt = def.prompt;
+              cur.passageKey = def.passageKey;
+              cur.options = def.options;
+              cur.correct = def.correct;
+              cur.explanation = def.explanation;
+            }
+          }
+          // Part 5: Sentence Word Ordering (Q41–Q50)
+          for (let i = 40; i < 50; i++) {
             const def = DEFAULT_QUESTIONS[i];
             const cur = activeQuizQuestions[i];
             if (cur && def) {
@@ -907,11 +1265,11 @@
           id: "sub-101",
           name: "Captain Jessica Miller",
           device: "💻 Desktop (Chrome / Windows)",
-          score: 88,
-          rawScore: 44,
+          score: 92,
+          rawScore: 46,
           maxScore: 100,
-          totalQuestions: 40,
-          accuracy: 90,
+          totalQuestions: 50,
+          accuracy: 92,
           timeSpentSeconds: 1280,
           timeSpentFormatted: "21m 20s",
           isLate: false,
@@ -927,8 +1285,8 @@
           score: 88,
           rawScore: 44,
           maxScore: 100,
-          totalQuestions: 40,
-          accuracy: 85,
+          totalQuestions: 50,
+          accuracy: 88,
           timeSpentSeconds: 1490,
           timeSpentFormatted: "24m 50s",
           isLate: false,
@@ -941,11 +1299,11 @@
           id: "sub-103",
           name: "Officer Alex Taylor",
           device: "📱 Smartphone (Chrome / Android)",
-          score: 82,
-          rawScore: 41,
+          score: 84,
+          rawScore: 42,
           maxScore: 100,
-          totalQuestions: 40,
-          accuracy: 80,
+          totalQuestions: 50,
+          accuracy: 84,
           timeSpentSeconds: 1650,
           timeSpentFormatted: "27m 30s",
           isLate: false,
@@ -958,22 +1316,28 @@
           id: "sub-104",
           name: "Sergeant Sophia Rodriguez",
           device: "💻 Desktop (Edge / Windows)",
-          score: 72,
-          rawScore: 36,
+          score: 76,
+          rawScore: 38,
           maxScore: 100,
-          totalQuestions: 40,
-          accuracy: 70,
+          totalQuestions: 50,
+          accuracy: 76,
           timeSpentSeconds: 1910,
           timeSpentFormatted: "31m 50s",
-          isLate: true,
-          overtimeSeconds: 110,
-          statusLabel: "Late (+1m 50s)",
+          isLate: false,
+          overtimeSeconds: 0,
+          statusLabel: "On Time",
           timestamp: new Date(Date.now() - 3600000 * 4).toLocaleString(),
           answers: student3Answers
         }
       ];
 
       localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(seedUsers));
+    } else {
+      try {
+        const parsed = JSON.parse(existingUsers);
+        const normalized = parsed.map(getNormalizedStudentRecord);
+        localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(normalized));
+      } catch (e) {}
     }
 
     const soundPref = localStorage.getItem(STORAGE_KEYS.SOUND);
@@ -1031,7 +1395,7 @@
         name: submission.name || 'Anonymous',
         device: submission.device || 'Web',
         score: submission.score || 0,
-        total_questions: submission.totalQuestions || 40,
+        total_questions: submission.totalQuestions || 50,
         accuracy: submission.accuracy || 0,
         time_spent_formatted: submission.timeSpentFormatted || '',
         time_spent_seconds: submission.timeSpentSeconds || 0,
@@ -1153,7 +1517,8 @@
             timestamp: r.timestamp,
             answers: r.answers || {}
           }));
-          localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(formattedSubmissions));
+          const normalizedCloud = formattedSubmissions.map(getNormalizedStudentRecord);
+          localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(normalizedCloud));
           cloudLoaded = true;
           updateDbSyncTime();
         }
@@ -1172,7 +1537,8 @@
       if (histRes && histRes.ok && !cloudLoaded) {
         const histData = await histRes.json();
         if (histData.submissions && Array.isArray(histData.submissions) && histData.submissions.length > 0) {
-          localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(histData.submissions));
+          const normalizedLocal = histData.submissions.map(getNormalizedStudentRecord);
+          localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(normalizedLocal));
         }
       }
 
@@ -1222,13 +1588,25 @@
 
         if (q.type === "rearrange") {
           isCorrect = studentAns && normalizeSentence(studentAns) === normalizeSentence(q.target);
-          if (studentAns) choiceDistribution.other++;
+          if (studentAns) choiceDistribution.other = (choiceDistribution.other || 0) + 1;
         } else {
-          isCorrect = studentAns === q.correct;
-          if (studentAns && ['A', 'B', 'C', 'D'].includes(String(studentAns).toUpperCase())) {
-            choiceDistribution[String(studentAns).toUpperCase()]++;
+          isCorrect = studentAns === q.correct ||
+                      (q.options && q.options[q.correct] && studentAns && String(studentAns).toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                      (studentAns && q.correct && String(studentAns).toLowerCase() === q.correct.toLowerCase());
+          const cleanKey = studentAns ? String(studentAns).trim().toUpperCase() : "";
+          if (['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'].includes(cleanKey)) {
+            choiceDistribution[cleanKey] = (choiceDistribution[cleanKey] || 0) + 1;
           } else if (studentAns) {
-            choiceDistribution.other++;
+            if (q.options) {
+              const found = Object.entries(q.options).find(([k, v]) => v.toLowerCase() === String(studentAns).toLowerCase());
+              if (found) {
+                choiceDistribution[found[0]] = (choiceDistribution[found[0]] || 0) + 1;
+              } else {
+                choiceDistribution.other = (choiceDistribution.other || 0) + 1;
+              }
+            } else {
+              choiceDistribution.other = (choiceDistribution.other || 0) + 1;
+            }
           }
         }
 
@@ -1348,6 +1726,32 @@
   const availableChips = document.getElementById("availableChips");
   const resetChipsBtn = document.getElementById("resetChipsBtn");
   const undoChipBtn = document.getElementById("undoChipBtn");
+
+  // Part 4 Word Bank 2-Paragraph Passage Cloze Elements
+  const wordBankPassageArea = document.getElementById("wordBankPassageArea");
+  const wordBankChipsTray = document.getElementById("wordBankChipsTray");
+  const wbUsedCounter = document.getElementById("wbUsedCounter");
+  const wbValidateBtn = document.getElementById("wbValidateBtn");
+  const wbResetBtn = document.getElementById("wbResetBtn");
+  const wbValidationSummary = document.getElementById("wbValidationSummary");
+  const wbExplanationsBox = document.getElementById("wbExplanationsBox");
+
+  const WORD_BANK_ITEMS = [
+    { key: "A", word: "Because" },
+    { key: "B", word: "Although" },
+    { key: "C", word: "If" },
+    { key: "D", word: "While" },
+    { key: "E", word: "Since" },
+    { key: "F", word: "Unless" },
+    { key: "G", word: "After" },
+    { key: "H", word: "Before" },
+    { key: "I", word: "Until" },
+    { key: "J", word: "Whereas" },
+    { key: "K", word: "so", isDistractor: true },
+    { key: "L", word: "As long as", isDistractor: true }
+  ];
+
+  const WORD_BANK_BLANKS = [31, 32, 33, 34, 35, 36, 37, 38, 39, 40];
 
   const optionsGrid = document.getElementById("optionsGrid");
   const prevQuestionBtn = document.getElementById("prevQuestionBtn");
@@ -1585,7 +1989,7 @@
     progressBarFill.style.width = `${progressPercentValue}%`;
     instructionText.textContent = q.instruction;
 
-    // Reading Passage Context for Part 2
+    // Reading Passage Context for Part 2 & Part 5
     if (q.passageKey && READING_PASSAGES[q.passageKey]) {
       readingPassageBox.classList.remove("hidden");
       passageTitle.textContent = READING_PASSAGES[q.passageKey].title;
@@ -1593,72 +1997,188 @@
 
       const markers = passageContent.querySelectorAll(".passage-blank-marker");
       markers.forEach(m => {
-        if (m.dataset.q === q.id.toString()) {
+        const markerQId = m.dataset.q;
+        const targetQ = activeQuizQuestions.find(item => item.id.toString() === markerQId);
+        const answeredVal = state.userAnswers[markerQId];
+
+        if (answeredVal && targetQ && targetQ.options && targetQ.options[answeredVal]) {
+          m.textContent = `[${markerQId}] ${targetQ.options[answeredVal]}`;
+          m.classList.add("filled-blank");
+        } else {
+          m.textContent = `[${markerQId}] _______`;
+          m.classList.remove("filled-blank");
+        }
+
+        if (markerQId === q.id.toString()) {
           m.classList.add("active-blank");
         } else {
           m.classList.remove("active-blank");
         }
+
+        m.style.cursor = "pointer";
+        m.title = `Click to view Blank [${markerQId}]`;
+        m.onclick = (e) => {
+          e.stopPropagation();
+          const targetIdx = activeQuizQuestions.findIndex(item => item.id.toString() === markerQId);
+          if (targetIdx !== -1) {
+            sfx.click();
+            renderQuestion(targetIdx);
+          }
+        };
       });
 
-      // Contextual reading cloze (Part 2):
-      // Do NOT repeat the sentence again to avoid confusing students with a "double question"
-      questionPrompt.innerHTML = `
-        <div class="cloze-prompt-clean">
-          <span class="cloze-badge">Blank [${q.id}]</span>
-          <span class="cloze-instruction">Select the best subordinating conjunction to fill in <strong>blank [${q.id}]</strong> in the passage above:</span>
-        </div>
-      `;
+      if (q.part === 4) {
+        questionPrompt.innerHTML = `
+          <div class="cloze-prompt-clean">
+            <span class="cloze-badge">Blank [${q.id}]</span>
+            <span class="cloze-instruction">${escapeHtml(q.prompt)}</span>
+          </div>
+        `;
+      } else {
+        // Contextual reading cloze (Part 2):
+        questionPrompt.innerHTML = `
+          <div class="cloze-prompt-clean">
+            <span class="cloze-badge">Blank [${q.id}]</span>
+            <span class="cloze-instruction">Select the best subordinating conjunction to fill in <strong>blank [${q.id}]</strong> in the passage above:</span>
+          </div>
+        `;
+      }
     } else {
       readingPassageBox.classList.add("hidden");
       questionPrompt.textContent = q.prompt;
     }
 
-    // PART 4: SENTENCE WORD ORDERING (NO MULTIPLE CHOICE!)
-    if (q.type === "rearrange") {
-      optionsGrid.classList.add("hidden");
-      sentenceAssemblyArea.classList.remove("hidden");
-      setupPart4SentenceOrdering(q);
-    } else {
-      // PARTS 1, 2, 3: Multiple Choice & Correct/Incorrect
+    // PART 4: WORD BANK 2-PARAGRAPH PASSAGE CLOZE (10 DROPDOWNS, ONE-WORD-ONLY)
+    if (q.part === 4) {
+      readingPassageBox.classList.add("hidden");
+      if (questionPrompt && questionPrompt.parentElement) {
+        questionPrompt.parentElement.classList.add("hidden");
+      }
       sentenceAssemblyArea.classList.add("hidden");
-      optionsGrid.classList.remove("hidden");
+      optionsGrid.classList.add("hidden");
+      wordBankPassageArea.classList.remove("hidden");
 
-      if (q.type === "true_false") {
-        optionsGrid.className = "options-grid two-cols";
-      } else {
-        optionsGrid.className = "options-grid";
+      initWordBankDropdowns();
+
+      // Highlight the active blank corresponding to this question
+      WORD_BANK_BLANKS.forEach(qid => {
+        const sel = document.getElementById(`wbSelect${qid}`);
+        if (sel) {
+          if (qid === q.id) {
+            sel.classList.add("is-active-blank");
+            try { sel.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch(e) {}
+          } else {
+            sel.classList.remove("is-active-blank");
+          }
+        }
+      });
+    } else {
+      wordBankPassageArea.classList.add("hidden");
+      if (questionPrompt && questionPrompt.parentElement) {
+        questionPrompt.parentElement.classList.remove("hidden");
       }
 
-      optionsGrid.innerHTML = "";
-      const selectedAnswer = state.userAnswers[q.id];
+      // Reading Passage Context for Part 2
+      if (q.passageKey && READING_PASSAGES[q.passageKey]) {
+        readingPassageBox.classList.remove("hidden");
+        passageTitle.textContent = READING_PASSAGES[q.passageKey].title;
+        passageContent.innerHTML = READING_PASSAGES[q.passageKey].text;
 
-      Object.entries(q.options).forEach(([letter, optionText]) => {
-        const optionBtn = document.createElement("button");
-        optionBtn.type = "button";
-        optionBtn.className = "option-btn";
-        optionBtn.setAttribute("role", "radio");
-        optionBtn.setAttribute("aria-checked", selectedAnswer === letter ? "true" : "false");
-        optionBtn.dataset.letter = letter;
+        const markers = passageContent.querySelectorAll(".passage-blank-marker");
+        markers.forEach(m => {
+          const markerQId = m.dataset.q;
+          const targetQ = activeQuizQuestions.find(item => item.id.toString() === markerQId);
+          const answeredVal = state.userAnswers[markerQId];
 
-        if (selectedAnswer === letter) {
-          optionBtn.classList.add("selected");
-        }
+          if (answeredVal && targetQ && targetQ.options && targetQ.options[answeredVal]) {
+            m.textContent = `[${markerQId}] ${targetQ.options[answeredVal]}`;
+            m.classList.add("filled-blank");
+          } else {
+            m.textContent = `[${markerQId}] _______`;
+            m.classList.remove("filled-blank");
+          }
 
-        optionBtn.innerHTML = `
-          <span class="option-letter-badge">${letter}</span>
-          <span class="option-text-label">${optionText}</span>
-        `;
+          if (markerQId === q.id.toString()) {
+            m.classList.add("active-blank");
+          } else {
+            m.classList.remove("active-blank");
+          }
 
-        optionBtn.addEventListener("click", () => {
-          handleOptionSelect(q.id, letter);
+          m.style.cursor = "pointer";
+          m.title = `Click to view Blank [${markerQId}]`;
+          m.onclick = (e) => {
+            e.stopPropagation();
+            const targetIdx = activeQuizQuestions.findIndex(item => item.id.toString() === markerQId);
+            if (targetIdx !== -1) {
+              sfx.click();
+              renderQuestion(targetIdx);
+            }
+          };
         });
 
-        optionsGrid.appendChild(optionBtn);
-      });
+        // Contextual reading cloze (Part 2):
+        questionPrompt.innerHTML = `
+          <div class="cloze-prompt-clean">
+            <span class="cloze-badge">Blank [${q.id}]</span>
+            <span class="cloze-instruction">Select the best subordinating conjunction to fill in <strong>blank [${q.id}]</strong> in the passage above:</span>
+          </div>
+        `;
+      } else {
+        readingPassageBox.classList.add("hidden");
+        questionPrompt.textContent = q.prompt;
+      }
+
+      // PART 5: SENTENCE WORD ORDERING (NO MULTIPLE CHOICE!)
+      if (q.type === "rearrange") {
+        optionsGrid.classList.add("hidden");
+        sentenceAssemblyArea.classList.remove("hidden");
+        setupPart4SentenceOrdering(q);
+      } else {
+        // PARTS 1, 2, 3: Multiple Choice & Correct/Incorrect
+        sentenceAssemblyArea.classList.add("hidden");
+        optionsGrid.classList.remove("hidden");
+
+        if (q.type === "true_false") {
+          optionsGrid.className = "options-grid two-cols";
+        } else {
+          optionsGrid.className = "options-grid";
+        }
+
+        optionsGrid.innerHTML = "";
+        const selectedAnswer = state.userAnswers[q.id];
+
+        Object.entries(q.options).forEach(([letter, optionText]) => {
+          const optionBtn = document.createElement("button");
+          optionBtn.type = "button";
+          optionBtn.className = "option-btn";
+          optionBtn.setAttribute("role", "radio");
+          optionBtn.setAttribute("aria-checked", selectedAnswer === letter ? "true" : "false");
+          optionBtn.dataset.letter = letter;
+
+          if (selectedAnswer === letter) {
+            optionBtn.classList.add("selected");
+          }
+
+          optionBtn.innerHTML = `
+            <span class="option-letter-badge">${letter}</span>
+            <span class="option-text-label">${optionText}</span>
+          `;
+
+          optionBtn.addEventListener("click", () => {
+            handleOptionSelect(q.id, letter);
+          });
+
+          optionsGrid.appendChild(optionBtn);
+        });
+      }
     }
 
     prevQuestionBtn.style.visibility = index > 0 ? "visible" : "hidden";
-    if (index === totalQ - 1) {
+    if (index >= 30 && index < 39) {
+      nextBtnText.textContent = `Next (Blank [${index + 2}]) ➜`;
+    } else if (index === 39) {
+      nextBtnText.textContent = "Next (Part 5: Sentence Ordering) ➜";
+    } else if (index === totalQ - 1) {
       nextBtnText.textContent = "Submit Exam 🎉";
     } else {
       nextBtnText.textContent = "Next Question";
@@ -1680,6 +2200,235 @@
 
     // Always allow students to advance to next question even if not answered yet
     nextQuestionBtn.disabled = false;
+  }
+
+  // =========================================================================
+  // PART 4: WORD BANK 2-PARAGRAPH CLOZE & ONE-WORD-ONLY ENGINE
+  // =========================================================================
+  let wordBankInitialized = false;
+
+  function initWordBankDropdowns() {
+    WORD_BANK_BLANKS.forEach((qid) => {
+      const sel = document.getElementById(`wbSelect${qid}`);
+      if (!sel) return;
+
+      // Populate options once
+      if (sel.options.length <= 1) {
+        sel.innerHTML = `<option value="">-- Blank [${qid}] --</option>`;
+        WORD_BANK_ITEMS.forEach(item => {
+          const opt = document.createElement("option");
+          opt.value = item.key;
+          opt.textContent = item.word;
+          sel.appendChild(opt);
+        });
+      }
+
+      // Sync value from user's current saved answer
+      const currentAns = state.userAnswers[qid] || "";
+      sel.value = currentAns;
+
+      // Bind listeners once
+      if (!sel.dataset.bound) {
+        sel.dataset.bound = "true";
+        sel.addEventListener("focus", () => {
+          const targetIdx = activeQuizQuestions.findIndex(item => item.id === qid);
+          if (targetIdx !== -1) {
+            state.currentQuestionIndex = targetIdx;
+            questionCounter.textContent = `Question ${targetIdx + 1} of ${activeQuizQuestions.length}`;
+            partBadge.textContent = activeQuizQuestions[targetIdx].partName;
+            const progressPercentValue = Math.round(((targetIdx + 1) / activeQuizQuestions.length) * 100);
+            progressPercent.textContent = `${progressPercentValue}%`;
+            progressBarFill.style.width = `${progressPercentValue}%`;
+            if (targetIdx >= 30 && targetIdx < 39) {
+              nextBtnText.textContent = `Next (Blank [${targetIdx + 2}]) ➜`;
+            } else if (targetIdx === 39) {
+              nextBtnText.textContent = "Next (Part 5: Sentence Ordering) ➜";
+            }
+            WORD_BANK_BLANKS.forEach(bId => {
+              const s = document.getElementById(`wbSelect${bId}`);
+              if (s) {
+                if (bId === qid) s.classList.add("is-active-blank");
+                else s.classList.remove("is-active-blank");
+              }
+            });
+          }
+        });
+
+        sel.addEventListener("change", () => {
+          sfx.click();
+          const chosenKey = sel.value;
+          if (chosenKey) {
+            state.userAnswers[qid] = chosenKey;
+          } else {
+            delete state.userAnswers[qid];
+          }
+
+          // Clear validation status styling on change
+          sel.classList.remove("is-correct", "is-incorrect");
+          const statusEl = document.getElementById(`wbStatus${qid}`);
+          if (statusEl) statusEl.innerHTML = "";
+
+          updateWordBankOneWordOnly();
+          updateAnsweredBadge();
+          renderPaletteGrid();
+          saveStateToStorage();
+        });
+      }
+    });
+
+    // Hook buttons once
+    if (wbValidateBtn && !wbValidateBtn.dataset.bound) {
+      wbValidateBtn.dataset.bound = "true";
+      wbValidateBtn.addEventListener("click", validateWordBankAnswers);
+    }
+
+    if (wbResetBtn && !wbResetBtn.dataset.bound) {
+      wbResetBtn.dataset.bound = "true";
+      wbResetBtn.addEventListener("click", resetWordBank);
+    }
+
+    wordBankInitialized = true;
+    updateWordBankOneWordOnly();
+  }
+
+  // The Strict "One-Word-Only" Rule Enforcer
+  function updateWordBankOneWordOnly() {
+    // 1. Map used word keys to which blank (qid) has them selected
+    const usedMap = {};
+    WORD_BANK_BLANKS.forEach(qid => {
+      const sel = document.getElementById(`wbSelect${qid}`);
+      const val = sel ? sel.value : (state.userAnswers[qid] || "");
+      if (val) {
+        usedMap[val] = qid;
+      }
+    });
+
+    // 2. Iterate each dropdown and disable options selected in other blanks
+    WORD_BANK_BLANKS.forEach(qid => {
+      const sel = document.getElementById(`wbSelect${qid}`);
+      if (!sel) return;
+
+      Array.from(sel.options).forEach(opt => {
+        const optVal = opt.value;
+        if (!optVal) return; // Keep placeholder enabled
+
+        const matchingItem = WORD_BANK_ITEMS.find(item => item.key === optVal);
+        const baseWord = matchingItem ? matchingItem.word : optVal;
+
+        if (usedMap[optVal] && usedMap[optVal] !== qid) {
+          opt.disabled = true;
+          opt.textContent = `${baseWord} (Used in [${usedMap[optVal]}])`;
+        } else {
+          opt.disabled = false;
+          opt.textContent = baseWord;
+        }
+      });
+    });
+
+    // 3. Update the Word Bank Tray Chips
+    if (wordBankChipsTray) {
+      wordBankChipsTray.innerHTML = "";
+      WORD_BANK_ITEMS.forEach(item => {
+        const isUsed = Boolean(usedMap[item.key]);
+        const usedInQid = usedMap[item.key];
+        const chip = document.createElement("div");
+        chip.className = `wb-word-chip ${isUsed ? "chip-used" : "chip-available"}`;
+        chip.innerHTML = `
+          <span class="chip-word-text">${escapeHtml(item.word)}</span>
+          ${isUsed ? `<span class="chip-used-tag">Used [${usedInQid}]</span>` : `<span class="chip-avail-dot">●</span>`}
+        `;
+        wordBankChipsTray.appendChild(chip);
+      });
+    }
+
+    // 4. Update the counter
+    const countUsed = Object.keys(usedMap).length;
+    if (wbUsedCounter) {
+      wbUsedCounter.textContent = `${countUsed} of 10 blanks filled`;
+    }
+  }
+
+  // Validation function with green / red highlights and teacher explanations from picture
+  function validateWordBankAnswers() {
+    sfx.click();
+    let correctCount = 0;
+    let expHtml = `<div class="wb-exp-header"><h4>Detailed Explanations (Questions 31–40):</h4></div><div class="wb-exp-grid">`;
+
+    WORD_BANK_BLANKS.forEach((qid, idx) => {
+      const sel = document.getElementById(`wbSelect${qid}`);
+      const statusEl = document.getElementById(`wbStatus${qid}`);
+      const userVal = sel ? sel.value : (state.userAnswers[qid] || "");
+      const qObj = activeQuizQuestions.find(q => q.id === qid);
+      const correctKey = qObj ? qObj.correct : "";
+      const correctWord = qObj && qObj.options ? qObj.options[correctKey] : "";
+      const isCorrect = userVal === correctKey;
+
+      if (sel) {
+        sel.classList.remove("is-correct", "is-incorrect");
+        if (isCorrect) {
+          sel.classList.add("is-correct");
+          correctCount++;
+          if (statusEl) statusEl.innerHTML = `<span class="wb-badge-correct" title="Correct!">✓</span>`;
+        } else {
+          sel.classList.add("is-incorrect");
+          if (statusEl) statusEl.innerHTML = `<span class="wb-badge-incorrect" title="Correct: ${correctWord}">✗</span>`;
+        }
+      }
+
+      if (qObj) {
+        expHtml += `
+          <div class="wb-exp-card ${isCorrect ? 'exp-correct' : 'exp-incorrect'}">
+            <div class="wb-exp-card-header">
+              <strong>Blank [${qid}] (Item ${idx + 1}):</strong> ${isCorrect ? '<span style="color:#10B981; font-weight:800;">✓ Correct (+1 pt)</span>' : '<span style="color:#EF4444; font-weight:800;">✗ Incorrect (0 pt)</span>'}
+            </div>
+            <div class="wb-exp-answers">
+              <span>Your Choice: <strong>${userVal ? (qObj.options[userVal] || userVal) : '(Unanswered)'}</strong></span>
+              <span>Correct Answer: <strong style="color:#047857;">${correctWord}</strong></span>
+            </div>
+            <div class="wb-exp-text">
+              💡 ${escapeHtml(qObj.explanation)}
+            </div>
+          </div>
+        `;
+      }
+    });
+
+    expHtml += `</div>`;
+
+    if (wbValidationSummary) {
+      wbValidationSummary.classList.remove("hidden");
+      wbValidationSummary.innerHTML = `
+        <div class="wb-score-pill ${correctCount >= 8 ? 'score-high' : 'score-med'}">
+          Score: <strong>${correctCount} / 10 Correct</strong> (${correctCount * 1} raw pts | ${correctCount * 2}/100 scaled)
+        </div>
+      `;
+    }
+
+    if (wbExplanationsBox) {
+      wbExplanationsBox.classList.remove("hidden");
+      wbExplanationsBox.innerHTML = expHtml;
+    }
+  }
+
+  function resetWordBank() {
+    sfx.click();
+    if (!confirm("Are you sure you want to clear all selections in the Word Bank?")) return;
+    WORD_BANK_BLANKS.forEach(qid => {
+      delete state.userAnswers[qid];
+      const sel = document.getElementById(`wbSelect${qid}`);
+      if (sel) {
+        sel.value = "";
+        sel.classList.remove("is-correct", "is-incorrect");
+      }
+      const statusEl = document.getElementById(`wbStatus${qid}`);
+      if (statusEl) statusEl.innerHTML = "";
+    });
+    if (wbValidationSummary) wbValidationSummary.classList.add("hidden");
+    if (wbExplanationsBox) wbExplanationsBox.classList.add("hidden");
+    updateWordBankOneWordOnly();
+    updateAnsweredBadge();
+    renderPaletteGrid();
+    saveStateToStorage();
   }
 
   function handleOptionSelect(qId, selectedLetter) {
@@ -1958,7 +2707,7 @@
         paletteModal.classList.add("hidden");
         renderQuestion(firstUnansweredIdx);
       } else {
-        alert("Great job! All 40 questions have been answered.");
+        alert("Great job! All 50 questions have been answered.");
       }
     });
   }
@@ -2122,14 +2871,34 @@
           (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(selected) === normalizeSentence(alt)))
         );
       } else {
-        isCorrect = selected === q.correct;
+        isCorrect = selected === q.correct ||
+                    (q.options && q.options[q.correct] && selected && String(selected).toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                    (selected && q.correct && String(selected).toLowerCase() === q.correct.toLowerCase());
       }
 
-      const qMaxPts = q.part === 4 ? 2 : 1;
-      const qPtsAwarded = isCorrect ? qMaxPts : 0;
+      const qMaxPts = 1;
+      const qPtsAwarded = isCorrect ? 1 : 0;
       const ptsLabel = isCorrect 
-        ? (q.part === 4 ? "+2 pts (4/100)" : "+1 pt (2/100)")
-        : (q.part === 4 ? "0/2 pts" : "0/1 pt");
+        ? "+1 pt (2/100)"
+        : "0/1 pt";
+
+      let selectedDisplay = "Unanswered";
+      if (q.type === "rearrange") {
+        selectedDisplay = selected || "No words arranged";
+      } else if (selected) {
+        if (q.options && q.options[selected]) {
+          selectedDisplay = `${selected}. ${q.options[selected]}`;
+        } else if (q.options) {
+          const entry = Object.entries(q.options).find(([k, v]) => v.toLowerCase() === String(selected).toLowerCase());
+          if (entry) {
+            selectedDisplay = `${entry[0]}. ${entry[1]}`;
+          } else {
+            selectedDisplay = selected;
+          }
+        } else {
+          selectedDisplay = selected;
+        }
+      }
 
       return {
         questionId: q.id,
@@ -2138,12 +2907,10 @@
         prompt: q.prompt,
         type: q.type,
         selected: selected || "Unanswered",
-        selectedDisplay: q.type === "rearrange" 
-          ? (selected || "No words arranged") 
-          : (selected ? `${selected}. ${q.options[selected]}` : "Unanswered"),
+        selectedDisplay: selectedDisplay,
         correctDisplay: q.type === "rearrange" 
           ? q.target 
-          : `${q.correct}. ${q.options[q.correct]}`,
+          : `${q.correct}. ${q.options ? q.options[q.correct] || '' : ''}`,
         isCorrect: isCorrect,
         isFlagged: isFlagged,
         maxPoints: qMaxPts,
@@ -2174,6 +2941,7 @@
       correctCount: scoreInfo.totalCorrect,
       part123Correct: scoreInfo.part123Correct,
       part4Correct: scoreInfo.part4Correct,
+      part5Correct: scoreInfo.part5Correct,
       totalQuestions: totalQuestions,
       accuracy: scoreInfo.accuracy,
       timeSpentSeconds: state.elapsedSeconds,
@@ -2197,6 +2965,7 @@
       correctCount: scoreInfo.totalCorrect,
       part123Correct: scoreInfo.part123Correct,
       part4Correct: scoreInfo.part4Correct,
+      part5Correct: scoreInfo.part5Correct,
       totalQuestions: totalQuestions,
       accuracy: scoreInfo.accuracy,
       timeSpentSeconds: state.elapsedSeconds,
@@ -2219,7 +2988,7 @@
 
     const resultsSubheadline = document.getElementById("resultsSubheadline");
     if (resultsSubheadline) {
-      resultsSubheadline.textContent = `Completed 40 questions! Score: ${data.score}/100 points (${data.correctCount}/40 correct | Raw: ${data.rawScore}/50 pts). Recorded in database!`;
+      resultsSubheadline.textContent = `Completed 50 questions! Score: ${data.score}/100 points (${data.correctCount}/50 correct | Raw: ${data.rawScore}/50 pts). Recorded in database!`;
     }
 
     if (data.score >= 85) {
@@ -2233,11 +3002,11 @@
     if (data.isLate) {
       timeStatusBadge.className = "status-badge status-late";
       timeStatusBadge.textContent = "Late";
-      timeStatusDetail.textContent = `Exceeded 30 mins by ${formatReadableDuration(data.overtimeSeconds)}`;
+      timeStatusDetail.textContent = `Exceeded 45 mins by ${formatReadableDuration(data.overtimeSeconds)}`;
     } else {
       timeStatusBadge.className = "status-badge status-on-time";
       timeStatusBadge.textContent = "On Time";
-      timeStatusDetail.textContent = `Completed within 30 minutes (${formatReadableDuration(data.spareSeconds)} left)`;
+      timeStatusDetail.textContent = `Completed within 45 minutes (${formatReadableDuration(data.spareSeconds)} left)`;
     }
 
     let activeFilter = "all";
@@ -2421,7 +3190,7 @@
         <td><small style="color: #64748B;">${u.timestamp || '-'}</small></td>
         <td>
           <div style="display:inline-flex; gap:4px; align-items:center;">
-            <button type="button" class="btn-inspect-user" data-uid="${u.id}" title="Inspect student's full 40 question answers">🔍 View</button>
+            <button type="button" class="btn-inspect-user" data-uid="${u.id}" title="Inspect student's full 50 question answers">🔍 View</button>
             <button type="button" class="btn-delete-user" data-uid="${u.id}" title="Delete record from database">🗑</button>
           </div>
         </td>
@@ -2915,8 +3684,25 @@
         studentDisplay = studentVal || "(No response submitted)";
         targetDisplay = q.target;
       } else {
-        isCorrect = studentVal === q.correct;
-        studentDisplay = studentVal ? `${studentVal}. ${q.options ? q.options[studentVal] || '' : ''}` : "(Unanswered)";
+        isCorrect = studentVal === q.correct ||
+                    (q.options && q.options[q.correct] && studentVal && String(studentVal).toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                    (studentVal && q.correct && String(studentVal).toLowerCase() === q.correct.toLowerCase());
+        if (studentVal) {
+          if (q.options && q.options[studentVal]) {
+            studentDisplay = `${studentVal}. ${q.options[studentVal]}`;
+          } else if (q.options) {
+            const entry = Object.entries(q.options).find(([k, v]) => v.toLowerCase() === String(studentVal).toLowerCase());
+            if (entry) {
+              studentDisplay = `${entry[0]}. ${entry[1]}`;
+            } else {
+              studentDisplay = studentVal;
+            }
+          } else {
+            studentDisplay = studentVal;
+          }
+        } else {
+          studentDisplay = "(Unanswered)";
+        }
         targetDisplay = `${q.correct}. ${q.options ? q.options[q.correct] || '' : ''}`;
       }
 
@@ -2948,9 +3734,9 @@
       const card = document.createElement("div");
       card.className = `insp-item-card ${item.isCorrect ? 'insp-item-correct' : 'insp-item-wrong'}`;
 
-      const weight = item.question.part === 4 ? 2 : 1;
-      const scaledPts = weight * 2;
-      const pointStr = item.isCorrect ? `✓ Correct (+${weight} pt | ${scaledPts}/100)` : '✗ Incorrect (0 pt)';
+      const weight = 1;
+      const scaledPts = 2;
+      const pointStr = item.isCorrect ? `✓ Correct (+1 pt | 2/100)` : '✗ Incorrect (0 pt)';
 
       card.innerHTML = `
         <div class="insp-item-header">
@@ -3149,7 +3935,7 @@
       `"${(u.name || '').replace(/"/g, '""')}"`,
       `"${(u.device || 'Desktop').replace(/"/g, '""')}"`,
       u.score,
-      u.totalQuestions || 40,
+      u.totalQuestions || 50,
       u.accuracy,
       `"${u.timeSpentFormatted || ''}"`,
       `"${u.statusLabel || ''}"`,
@@ -3200,11 +3986,20 @@
       const isCorrect = normalizeSentence(studentVal) === normalizeSentence(q.target);
       return `${q.id}: ${isCorrect ? 'Target Match' : 'Rearranged'}`;
     }
-    const cleanVal = studentVal ? String(studentVal).trim().toUpperCase() : '-';
-    return `${q.id}${cleanVal}`;
+    if (!studentVal) return `${q.id}-`;
+    let code = String(studentVal).trim().toUpperCase();
+    if (q.options) {
+      if (q.options[code]) {
+        // Already valid letter
+      } else {
+        const found = Object.entries(q.options).find(([k, v]) => v.toLowerCase() === String(studentVal).toLowerCase());
+        if (found) code = found[0];
+      }
+    }
+    return `${q.id}${code}`;
   }
 
-  // Export 40-Question Item Difficulty & Psychometric Analysis (.xlsx with CSV fallback)
+  // Export 50-Question Item Difficulty & Psychometric Analysis (.xlsx with CSV fallback)
   function exportItemAnalysisToExcel() {
     sfx.click();
     const rawUserLogs = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "[]");
@@ -3225,12 +4020,12 @@
     if (typeof XLSX !== "undefined") {
       const wb = XLSX.utils.book_new();
 
-      // --- SHEET 1: 40-QUESTION DETAILED ITEM ANALYSIS ---
+      // --- SHEET 1: 50-QUESTION DETAILED ITEM ANALYSIS ---
       const itemAnalysisData = [
-        ["BEE SMART LEARNING — 40-QUESTION ITEM DIFFICULTY & PSYCHOMETRIC ANALYSIS"],
+        ["BEE SMART LEARNING — 50-QUESTION ITEM DIFFICULTY & PSYCHOMETRIC ANALYSIS"],
         ["Report Generated:", reportDate],
         ["Total Students Assessed:", totalStudents, "", "Average Score:", `${avgScore} / 100 (${avgAccuracy}%)`],
-        ["Scoring Rule:", "Part 1–3: 1 pt each (2 pts / 100) | Part 4: 2 pts each (4 pts / 100) | Total = 100 Points"],
+        ["Scoring Rule:", "All Questions (Q1–Q50): 1 pt each (2 scaled pts / 100) | Total = 50 Raw Points | Scaled Score = 100 Points"],
         ["Difficulty Criteria:", "Very Hard (<20% Correct) | Normal / Balanced (20%–80% Correct) | Too Easy (>80% Correct)"],
         ["Summary Breakdown:", `Very Hard: ${difficultList.length} | Normal/Balanced: ${idealList.length} | Too Easy: ${easyList.length} | Outlier Replacements: ${extremeReplaceableList.length}`],
         [],
@@ -3259,8 +4054,8 @@
       activeQuizQuestions.forEach(q => {
         const data = analytics[q.id];
         const isCustom = isQuestionCustomized(q.id);
-        const weight = q.part === 4 ? 2 : 1;
-        const scaledVal = weight * 2;
+        const weight = 1;
+        const scaledVal = 2;
 
         let actionRecommendation = "RETAIN: Optimal Discrimination (Balanced)";
         if (data.classification === "easy") {
@@ -3321,7 +4116,7 @@
         { wch: 25 },  // Custom Status
         { wch: 55 }   // Grammar Explanation
       ];
-      XLSX.utils.book_append_sheet(wb, wsItemAnalysis, "Item Analysis (Q1-40)");
+      XLSX.utils.book_append_sheet(wb, wsItemAnalysis, "Item Analysis (Q1-50)");
 
       // --- SHEET 2: PSYCHOMETRIC CRITERIA & POLICY SUMMARY ---
       const criteriaData = [
@@ -3352,7 +4147,8 @@
         ],
         [],
         ["Scoring Weights:", "Parts 1–3 (Q1–Q30): 1 point each = 30 raw points"],
-        ["", "Part 4 (Q31–Q40): 2 points each = 20 raw points"],
+        ["", "Part 4 Word Bank (Q31–Q40): 1 point each = 10 raw points"],
+        ["", "Part 5 Jumbled Words (Q41–Q50): 1 point each = 10 raw points"],
         ["", "Total Raw Points: 50 points | Scaled Final Score: 100 points (Raw Points × 2)"]
       ];
 
@@ -3366,7 +4162,7 @@
       ];
       XLSX.utils.book_append_sheet(wb, wsCriteria, "Criteria & Policy");
 
-      XLSX.writeFile(wb, `BeeQuiz_40Q_Item_Difficulty_Analysis_${filenameDate}.xlsx`);
+      XLSX.writeFile(wb, `BeeQuiz_50Q_Item_Difficulty_Analysis_${filenameDate}.xlsx`);
       return;
     }
 
@@ -3378,11 +4174,11 @@
     };
 
     const csvLines = [];
-    csvLines.push([escapeCsv("BEE SMART LEARNING - 40-QUESTION SUBORDINATING CONJUNCTION ITEM DIFFICULTY & PSYCHOMETRIC ANALYSIS")].join(","));
+    csvLines.push([escapeCsv("BEE SMART LEARNING - 50-QUESTION SUBORDINATING CONJUNCTION ITEM DIFFICULTY & PSYCHOMETRIC ANALYSIS")].join(","));
     csvLines.push([escapeCsv("Report Generated"), escapeCsv(reportDate)].join(","));
     csvLines.push([escapeCsv("Total Students Assessed"), escapeCsv(totalStudents)].join(","));
     csvLines.push([escapeCsv("Average Student Score"), escapeCsv(`${avgScore} / 100 (${avgAccuracy}%)`)].join(","));
-    csvLines.push([escapeCsv("Scoring Rule"), escapeCsv("Part 1-3 = 1 pt each (2 pts / 100) | Part 4 = 2 pts each (4 pts / 100) | Total = 100 pts")].join(","));
+    csvLines.push([escapeCsv("Scoring Rule"), escapeCsv("All Questions (Q1-Q50) = 1 pt each (2 pts / 100) | Total = 50 Raw Points | Scaled = 100 pts")].join(","));
     csvLines.push([escapeCsv("Balanced / Ideal Items (20% to 80%)"), escapeCsv(`${idealList.length} Questions`), escapeCsv("Optimal discrimination. Retain.")].join(","));
     csvLines.push([escapeCsv("Too Easy Items (>80%)"), escapeCsv(`${easyList.length} Questions`), escapeCsv("Low discrimination. Action recommended: Evaluate or Replace.")].join(","));
     csvLines.push([escapeCsv("Very Hard Items (<20%)"), escapeCsv(`${difficultList.length} Questions`), escapeCsv("High student failure rate. Action recommended: Evaluate or Replace.")].join(","));
@@ -3413,8 +4209,8 @@
     activeQuizQuestions.forEach(q => {
       const data = analytics[q.id];
       const isCustom = isQuestionCustomized(q.id);
-      const weight = q.part === 4 ? 2 : 1;
-      const scaledVal = weight * 2;
+      const weight = 1;
+      const scaledVal = 2;
 
       let actionRecommendation = "RETAIN: Optimal Discrimination (Balanced)";
       if (data.classification === "easy") {
@@ -3455,7 +4251,7 @@
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `BeeQuiz_40Q_Item_Difficulty_Analysis_${filenameDate}.csv`);
+    link.setAttribute("download", `BeeQuiz_50Q_Item_Difficulty_Analysis_${filenameDate}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -3494,10 +4290,10 @@
     // SHEET 1: OVERVIEW & ALL STUDENTS TEST LOG
     // -------------------------------------------------------------------------
     const overviewData = [
-      ["BEE SMART LEARNING — MASTER STUDENT TEST ASSESSMENT & SCORING OVERVIEW"],
+      ["BEE SMART LEARNING — MASTER STUDENT TEST ASSESSMENT & SCORING OVERVIEW (50 QUESTIONS)"],
       ["Report Generated:", reportDate],
       ["Total Students Assessed:", userLogs.length, "", "Average Scaled Score:", `${avgScore} / 100`],
-      ["Average Accuracy Rate:", `${avgAccuracy}%`, "", "Scoring Structure:", "Part 1–3: 1 pt each (2 pts / 100) | Part 4: 2 pts each (4 pts / 100) | Total = 100 Points"],
+      ["Average Accuracy Rate:", `${avgAccuracy}%`, "", "Scoring Structure:", "All Questions (Q1–Q50): 1 pt each (2 scaled pts / 100) | Total = 50 Raw Points | Scaled Score = 100 Points"],
       ["Item Difficulty Status:", `Balanced Items: ${idealList.length} | Very Hard: ${difficultList.length} | Too Easy: ${easyList.length} | Outlier Items: ${extremeReplaceableList.length}`],
       [],
       [
@@ -3509,9 +4305,10 @@
         "Raw Points (/50)",
         "Accuracy (%)",
         "Part 1–3 Correct (/30)",
-        "Part 4 Correct (/10)",
-        "Total Correct (/40)",
-        "Total Incorrect (/40)",
+        "Part 4 Word Bank Correct (/10)",
+        "Part 5 Jumbled Words Correct (/10)",
+        "Total Correct (/50)",
+        "Total Incorrect (/50)",
         "Time Spent",
         "Pacing Status",
         "Date & Time Submitted",
@@ -3533,8 +4330,9 @@
         `${u.accuracy}%`,
         u.part123Correct !== undefined ? u.part123Correct : "-",
         u.part4Correct !== undefined ? u.part4Correct : "-",
-        u.correctCount !== undefined ? u.correctCount : Math.round((u.accuracy / 100) * 40),
-        40 - (u.correctCount !== undefined ? u.correctCount : Math.round((u.accuracy / 100) * 40)),
+        u.part5Correct !== undefined ? u.part5Correct : "-",
+        u.correctCount !== undefined ? u.correctCount : Math.round((u.accuracy / 100) * 50),
+        50 - (u.correctCount !== undefined ? u.correctCount : Math.round((u.accuracy / 100) * 50)),
         u.timeSpentFormatted || formatReadableDuration(u.timeSpentSeconds || 0),
         u.statusLabel || (u.isLate ? "Late" : "On Time"),
         u.timestamp || "-",
@@ -3552,7 +4350,8 @@
       { wch: 16 },  // Raw Points /50
       { wch: 14 },  // Accuracy %
       { wch: 22 },  // Part 1-3 Correct
-      { wch: 20 },  // Part 4 Correct
+      { wch: 26 },  // Part 4 Word Bank Correct
+      { wch: 26 },  // Part 5 Jumbled Words Correct
       { wch: 20 },  // Total Correct
       { wch: 20 },  // Total Incorrect
       { wch: 15 },  // Time Spent
@@ -3564,10 +4363,10 @@
     XLSX.utils.book_append_sheet(wb, wsOverview, overviewSheetName);
 
     // -------------------------------------------------------------------------
-    // SHEET 2: 40-QUESTION ITEM DIFFICULTY & PSYCHOMETRIC ANALYSIS
+    // SHEET 2: 50-QUESTION ITEM DIFFICULTY & PSYCHOMETRIC ANALYSIS
     // -------------------------------------------------------------------------
     const itemAnalysisData = [
-      ["40-QUESTION SUBORDINATING CONJUNCTION ITEM DIFFICULTY & PSYCHOMETRIC ANALYSIS"],
+      ["50-QUESTION SUBORDINATING CONJUNCTION ITEM DIFFICULTY & PSYCHOMETRIC ANALYSIS"],
       ["Report Generated:", reportDate],
       ["Total Students Evaluated:", totalStudents],
       ["Difficulty Scale:", "Very Hard (<20% Correct) | Normal / Balanced (20%–80% Correct) | Too Easy (>80% Correct)"],
@@ -3598,8 +4397,8 @@
     activeQuizQuestions.forEach(q => {
       const data = analytics[q.id];
       const isCustom = isQuestionCustomized(q.id);
-      const weight = q.part === 4 ? 2 : 1;
-      const scaledVal = weight * 2;
+      const weight = 1;
+      const scaledVal = 2;
 
       let actionRecommendation = "RETAIN: Optimal Discrimination (Balanced)";
       if (data.classification === "easy") {
@@ -3655,7 +4454,7 @@
       { wch: 25 },
       { wch: 55 }
     ];
-    const itemSheetName = sanitizeExcelSheetName("Item Analysis (Q1-40)", usedSheetNames);
+    const itemSheetName = sanitizeExcelSheetName("Item Analysis (Q1-50)", usedSheetNames);
     XLSX.utils.book_append_sheet(wb, wsItemAnalysis, itemSheetName);
 
     // -------------------------------------------------------------------------
@@ -3704,7 +4503,7 @@
 
     // Summary Rows for Matrix
     matrixData.push([]);
-    matrixData.push(["Total Correct (/40)", "", "", "", ...userLogs.map(u => `${u.correctCount !== undefined ? u.correctCount : Math.round((u.accuracy / 100) * 40)} / 40`)]);
+    matrixData.push(["Total Correct (/50)", "", "", "", ...userLogs.map(u => `${u.correctCount !== undefined ? u.correctCount : Math.round((u.accuracy / 100) * 50)} / 50`)]);
     matrixData.push(["Raw Points (/50)", "", "", "", ...userLogs.map(u => `${u.rawScore || Math.round((u.score / 100) * 50)} / 50 pts`)]);
     matrixData.push(["Scaled Score (/100)", "", "", "", ...userLogs.map(u => `${u.score} / 100`)]);
     matrixData.push(["Accuracy (%)", "", "", "", ...userLogs.map(u => `${u.accuracy}%`)]);
@@ -3769,8 +4568,8 @@
         }
 
         const answerCode = formatStudentAnswerCode(q, studentVal);
-        const weight = q.part === 4 ? 2 : 1;
-        const scaledVal = weight * 2;
+        const weight = 1;
+        const scaledVal = 2;
         const pointsStr = isCorrect ? `+${weight} raw pt (+${scaledVal}/100)` : "0 pt";
 
         studentSheetData.push([
@@ -3800,7 +4599,7 @@
         "",
         "",
         "Final Summary:",
-        `${student.correctCount !== undefined ? student.correctCount : Math.round((student.accuracy / 100) * 40)} / 40 Correct (${student.accuracy}%)`,
+        `${student.correctCount !== undefined ? student.correctCount : Math.round((student.accuracy / 100) * 50)} / 50 Correct (${student.accuracy}%)`,
         `${student.rawScore || Math.round((student.score / 100) * 50)} / 50 raw pts (${student.score} / 100)`,
         "",
         ""
@@ -3827,7 +4626,7 @@
     });
 
     // Save and Trigger Browser Download
-    XLSX.writeFile(wb, `BeeQuiz_Master_Student_Assessment_Workbook_${filenameDate}.xlsx`);
+    XLSX.writeFile(wb, `BeeQuiz_50Q_Master_Student_Assessment_Workbook_${filenameDate}.xlsx`);
   }
 
   // Bind Export Event Listeners

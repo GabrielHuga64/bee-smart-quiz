@@ -1,0 +1,106 @@
+================================================================================
+BEE SMART LEARNING — SUBORDINATING CONJUNCTION MASTER QUIZ
+OFFICIAL ONLINE LINK & COMPLETE USER GUIDE
+================================================================================
+
+1. OFFICIAL QUIZ LINK
+--------------------------------------------------------------------------------
+Permanent Online URL (Accessible worldwide 24/7 on any device):
+👉 https://gabrielhuga64.github.io/dibee-gabriel-smart-quiz/
+
+- Platform: GitHub Pages (SSL HTTPS secured)
+- Compatibility: iPhone (Safari), Android (Chrome), Windows, Mac, iPad, Tablet
+- Requirements: Modern web browser (No installation or account required)
+
+
+================================================================================
+2. HOW TO USE — FOR STUDENTS & TEST TAKERS
+================================================================================
+
+STEP 1: Open the Link
+- Tap or click the link above, or scan the QR code from the welcome screen.
+
+STEP 2: Enter Your Full Name
+- Type your full name in the "Full Name" input box.
+- The bright orange "Start Quiz 🚀" button will unlock. Click it to begin!
+
+STEP 3: Taking the Quiz (50 Questions / 45 Minutes)
+- Timer: 45 minutes recommended (counted down in the top-right corner).
+  * Note: If 45 minutes expires, you will NOT be locked out. An overtime
+    banner appears, allowing you to finish all remaining questions peacefully.
+
+- Quiz Structure (5 Distinct Parts):
+  * PART 1 (Questions 1–10): Multiple Choices
+    Select the best subordinating conjunction (A, B, C, or D).
+  * PART 2 (Questions 11–20): Paragraph Cloze
+    Read the contextual passage (Civil Servants / Military Personnel)
+    and pick the conjunction that logically connects the clauses.
+  * PART 3 (Questions 21–30): Grammatical Correctness
+    Analyze the complex sentence and tap "CORRECT" or "INCORRECT".
+  * PART 4 (Questions 31–40): Word Bank Questions
+    Complete 2 paragraphs (10 blanks) using words from the 12-word Word Bank.
+    Enforces a strict "One-Word-Only" rule (selected words disable in other blanks).
+  * PART 5 (Questions 41–50): Sentence Word Ordering / Jumbled Words
+    Tap the colorful word chips in order to construct the grammatically
+    correct complex sentence. Tap chips in the target box to return them.
+
+STEP 4: Question Palette & Navigation
+- Tap "📋 Review Questions" at the top to open the slide-out Question Palette.
+- Quickly jump to any question (1 to 50).
+- Flag questions (🚩) to revisit before final submission.
+
+STEP 5: Submitting & Reviewing Results
+- On Question 50 (or from the confirmation modal), click "Submit Exam".
+- View your final score (out of 100 scaled points / 50 raw points), accuracy percentage, and time status.
+- Review detailed pedagogical explanations for all 50 questions to learn
+  the grammatical rules and correct usage.
+
+
+================================================================================
+3. HOW TO USE — FOR TEACHERS & ADMINISTRATORS
+================================================================================
+
+HOW TO LOG IN TO THE ADMIN PORTAL:
+1. Scroll to the very bottom of the page (footer).
+2. Click "Admin Portal 🔐".
+3. Enter the administrator credentials:
+   - Username : admin123
+   - Password : admin123
+4. Click "Unlock Dashboard".
+
+ADMIN DASHBOARD CAPABILITIES:
+1. Student Results Log Table:
+   - View all student submissions, scores, accuracy, and time spent.
+   - Search students by name or filter by score/device.
+   - Click "🔍 View" to inspect an individual student's full 50-question answer sheet.
+
+2. Comprehensive Item Difficulty & Psychometric Analysis:
+   - Real-time Difficulty Index (P-value) calculated across all student attempts:
+     * Very Hard (< 20% correct) -> Red badge
+     * Hard (20% – 39% correct)   -> Orange badge
+     * Moderate (40% – 70% correct) -> Green badge (Ideal)
+     * Easy (71% – 80% correct)   -> Blue badge
+     * Too Easy (> 80% correct)   -> Light blue badge
+   - Discrimination Index & distractor effectiveness.
+
+3. Question Replacement Tool (Admin Sandbox):
+   - Replace outlier questions (<20% or >80% difficulty) in one click with
+     pre-calibrated balanced items from the official question bank.
+
+4. Excel & CSV Data Export:
+   - "📥 Export Student Log (CSV)"
+   - "📊 Export Item Difficulty & Psychometrics (.xlsx / CSV)"
+   - Multi-sheet Excel workbook ready for reporting and academic evaluation.
+
+
+================================================================================
+4. WHY GITHUB PAGES IS THE BEST CHOICE
+================================================================================
+- Permanently Live 24/7: Works anytime without keeping your personal computer
+  or PowerShell terminal running.
+- Fast Worldwide Delivery: Hosted on GitHub's global content delivery network (CDN).
+- Zero Cost & Secure: Free hosting, automatic HTTPS SSL certificate.
+- Offline-Ready & Mobile-Optimized: Responsive touch gestures, audio sound effects,
+  and local persistent data storage.
+
+================================================================================

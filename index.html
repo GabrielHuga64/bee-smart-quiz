@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-  <title>Bee Smart Learning — English Quiz Time (40 Questions)</title>
-  <meta name="description" content="Subordinating Conjunctions and English Grammar Quiz with 40 questions across 4 comprehensive parts. Inspired by Bee Smart Learning.">
+  <title>Bee Smart Learning — English Quiz Time (50 Questions)</title>
+  <meta name="description" content="Subordinating Conjunctions and English Grammar Quiz with 50 questions across 5 comprehensive parts. Inspired by Bee Smart Learning.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -70,7 +70,7 @@
 
           <!-- Subtitle / Intro -->
           <p class="subtitle-text">
-            Forty subordinating conjunction and grammar questions across 4 parts. Thirty friendly minutes. Let's see how sweet your grammar is! ✨
+            Fifty subordinating conjunction and grammar questions across 5 parts. Forty-five friendly minutes. Let's see how sweet your grammar is! ✨
           </p>
 
           <!-- User Name Input Form -->
@@ -107,13 +107,13 @@
           <!-- Metadata Pill Badges -->
           <div class="meta-badges-row">
             <div class="meta-badge">
-              <span class="meta-icon">📝</span> 40 questions (Parts 1–4)
+              <span class="meta-icon">📝</span> 50 questions (Parts 1–5)
             </div>
             <div class="meta-badge">
-              <span class="meta-icon">🎯</span> 100 Points (Part 1–3: 1pt | Part 4: 2pts)
+              <span class="meta-icon">🎯</span> 50 Points (1 pt each question | 100 Max)
             </div>
             <div class="meta-badge">
-              <span class="meta-icon">⏱️</span> 30 minutes recommended
+              <span class="meta-icon">⏱️</span> 45 minutes recommended
             </div>
             <div class="meta-badge">
               <span class="meta-icon">💾</span> Live Database Sync
@@ -146,22 +146,22 @@
             <span class="greeting-icon">👋</span> Hi, <span id="displayUserName" class="user-name-highlight">Learner</span>!
           </div>
           <button id="togglePaletteBtn" class="palette-toggle-btn" title="Open Question Review & Navigator Palette">
-            📋 Review Questions (<span id="answeredCountBadge">0/40</span><span id="flaggedCountBadge" class="flag-mini-pill" style="display:none;">0 🚩</span>)
+            📋 Review Questions (<span id="answeredCountBadge">0/50</span><span id="flaggedCountBadge" class="flag-mini-pill" style="display:none;">0 🚩</span>)
           </button>
         </div>
 
         <div class="top-bar-right">
           <div id="timerPill" class="timer-pill" title="Time remaining">
             <span class="timer-icon">⏱️</span>
-            <span id="timerDisplay" class="timer-digits">30:00</span>
+            <span id="timerDisplay" class="timer-digits">45:00</span>
           </div>
         </div>
       </div>
 
-      <!-- Overtime Alert Banner (Revealed if timer exceeds 30 minutes) -->
+      <!-- Overtime Alert Banner (Revealed if timer exceeds 45 minutes) -->
       <div id="overtimeBanner" class="overtime-banner hidden" role="alert">
         <span class="banner-icon">⚠️</span>
-        <span>Recommended 30 minutes reached! Take your time to complete all remaining questions.</span>
+        <span>Recommended 45 minutes reached! Take your time to complete all remaining questions.</span>
       </div>
 
       <!-- Quiz Card -->
@@ -173,14 +173,14 @@
             Part 1: Multiple Choices
           </div>
           <div class="progress-info-row">
-            <span id="questionCounter" class="question-counter-text">Question 1 of 40</span>
+            <span id="questionCounter" class="question-counter-text">Question 1 of 50</span>
             <span id="progressPercent" class="progress-percent-text">2%</span>
           </div>
         </div>
 
         <!-- Progress Bar Track -->
         <div class="progress-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-          <div id="progressBarFill" class="progress-bar-fill" style="width: 2.5%;"></div>
+          <div id="progressBarFill" class="progress-bar-fill" style="width: 2%;"></div>
         </div>
 
         <!-- Instructions Box (Collapsible/Contextual for each Part) -->
@@ -211,7 +211,159 @@
           </h2>
         </div>
 
-        <!-- Part 4: Sentence Word Ordering Arena (Interactive Chips Ordering) -->
+        <!-- ============================================================== -->
+        <!-- Part 4: Word Bank 2-Paragraph Passage Cloze (10 Dropdowns)     -->
+        <!-- ============================================================== -->
+        <div id="wordBankPassageArea" class="word-bank-passage-area hidden">
+          <!-- Instructions Block -->
+          <div class="wordbank-instructions-box">
+            <div class="wb-instructions-header">
+              <span class="wb-instructions-icon">📋</span>
+              <h3 class="wb-instructions-title">Instructions: Word Bank Questions</h3>
+            </div>
+            <p class="wb-instructions-desc">
+              Choose the correct word from the Word Bank below to complete each sentence.
+            </p>
+            <div class="wb-rules-chips">
+              <span class="wb-rule-chip">🔒 <strong>One Word Only:</strong> Each word can only be used once. Selecting a word locks it from the other blanks.</span>
+              <span class="wb-rule-chip">↺ <strong>Release Word:</strong> Change back to <em>-- Select Word --</em> to unselect and make that word available again.</span>
+            </div>
+          </div>
+
+          <!-- Word Bank Tray -->
+          <div class="wordbank-tray-card">
+            <div class="wb-tray-header">
+              <span class="wb-tray-title">📦 Word Bank:</span>
+              <span class="wb-tray-counter" id="wbUsedCounter">0 of 10 blanks filled</span>
+            </div>
+            <div id="wordBankChipsTray" class="wordbank-chips-tray">
+              <!-- Dynamically populated chips -->
+            </div>
+          </div>
+
+          <!-- 2 Reading Paragraphs with 10 Dropdowns -->
+          <div class="wordbank-paragraphs-wrapper">
+            <!-- Paragraph 1 -->
+            <div class="wb-paragraph-card">
+              <div class="wb-paragraph-tag">
+                <span class="wb-tag-badge">Paragraph 1</span>
+                <span class="wb-tag-title">Understanding Coordinating Conjunctions (Blanks 1–5 / Q31–Q35)</span>
+              </div>
+              <p class="wb-paragraph-text">
+                Coordinating conjunctions are essential tools in English grammar 
+                <span class="wb-blank-inline" data-qid="31">
+                  <span class="wb-blank-num">[31]</span>
+                  <select class="wb-dropdown" id="wbSelect31" data-qid="31" data-blank="1" aria-label="Blank 1 (Question 31)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus31"></span>
+                </span>
+                they are the only words capable of linking two completely independent thoughts with equal grammatical weight. Many students struggle to remember all seven of them, 
+                <span class="wb-blank-inline" data-qid="32">
+                  <span class="wb-blank-num">[32]</span>
+                  <select class="wb-dropdown" id="wbSelect32" data-qid="32" data-blank="2" aria-label="Blank 2 (Question 32)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus32"></span>
+                </span>
+                the simple acronym FANBOYS makes the memorization process much easier. You should strictly use a coordinating conjunction 
+                <span class="wb-blank-inline" data-qid="33">
+                  <span class="wb-blank-num">[33]</span>
+                  <select class="wb-dropdown" id="wbSelect33" data-qid="33" data-blank="3" aria-label="Blank 3 (Question 33)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus33"></span>
+                </span>
+                your goal is to give equal importance to both ideas in a single sentence. 
+                <span class="wb-blank-inline" data-qid="34">
+                  <span class="wb-blank-num">[34]</span>
+                  <select class="wb-dropdown" id="wbSelect34" data-qid="34" data-blank="4" aria-label="Blank 4 (Question 34)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus34"></span>
+                </span>
+                coordinating conjunctions connect equal elements, subordinating conjunctions always make one clause less important than the other. 
+                <span class="wb-blank-inline" data-qid="35">
+                  <span class="wb-blank-num">[35]</span>
+                  <select class="wb-dropdown" id="wbSelect35" data-qid="35" data-blank="5" aria-label="Blank 5 (Question 35)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus35"></span>
+                </span>
+                the year 1900, grammarians have categorized these seven words into distinct logical groups to help learners.
+              </p>
+            </div>
+
+            <!-- Paragraph 2 -->
+            <div class="wb-paragraph-card">
+              <div class="wb-paragraph-tag">
+                <span class="wb-tag-badge">Paragraph 2</span>
+                <span class="wb-tag-title">Punctuation and Rules (Blanks 6–10 / Q36–Q40)</span>
+              </div>
+              <p class="wb-paragraph-text">
+                Writers will not combine two short clauses into one compound sentence 
+                <span class="wb-blank-inline" data-qid="36">
+                  <span class="wb-blank-num">[36]</span>
+                  <select class="wb-dropdown" id="wbSelect36" data-qid="36" data-blank="6" aria-label="Blank 6 (Question 36)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus36"></span>
+                </span>
+                they want to avoid choppy writing and improve the text's flow. It is important to know exactly where to place a comma 
+                <span class="wb-blank-inline" data-qid="37">
+                  <span class="wb-blank-num">[37]</span>
+                  <select class="wb-dropdown" id="wbSelect37" data-qid="37" data-blank="7" aria-label="Blank 7 (Question 37)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus37"></span>
+                </span>
+                a dependent clause is written first in a complex structure. Always proofread your punctuation carefully 
+                <span class="wb-blank-inline" data-qid="38">
+                  <span class="wb-blank-num">[38]</span>
+                  <select class="wb-dropdown" id="wbSelect38" data-qid="38" data-blank="8" aria-label="Blank 8 (Question 38)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus38"></span>
+                </span>
+                you finalize your essay and submit it to your teacher. You should keep practicing these connection rules every single day 
+                <span class="wb-blank-inline" data-qid="39">
+                  <span class="wb-blank-num">[39]</span>
+                  <select class="wb-dropdown" id="wbSelect39" data-qid="39" data-blank="9" aria-label="Blank 9 (Question 39)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus39"></span>
+                </span>
+                you feel completely confident using them. 
+                <span class="wb-blank-inline" data-qid="40">
+                  <span class="wb-blank-num">[40]</span>
+                  <select class="wb-dropdown" id="wbSelect40" data-qid="40" data-blank="10" aria-label="Blank 10 (Question 40)">
+                    <option value="">-- Select Word --</option>
+                  </select>
+                  <span class="wb-blank-status" id="wbStatus40"></span>
+                </span>
+                coordinating conjunctions must sit directly between the clauses they connect, subordinating conjunctions can flexibly move to the front of the sentence.
+              </p>
+            </div>
+          </div>
+
+          <!-- Word Bank Actions: Validate / Check & Reset -->
+          <div class="wb-action-row">
+            <div class="wb-action-left">
+              <button type="button" id="wbValidateBtn" class="btn btn-primary btn-sm">
+                <span>✓</span> Check Word Bank Answers
+              </button>
+              <button type="button" id="wbResetBtn" class="btn btn-outline btn-sm">
+                <span>↺</span> Reset Word Bank
+              </button>
+            </div>
+            <div id="wbValidationSummary" class="wb-validation-summary hidden"></div>
+          </div>
+
+          <!-- Explanations Box (Revealed on check/submit) -->
+          <div id="wbExplanationsBox" class="wb-explanations-box hidden"></div>
+        </div>
+
+        <!-- Part 5: Sentence Word Ordering Arena (Interactive Chips Ordering) -->
         <div id="sentenceAssemblyArea" class="sentence-assembly-area hidden">
           <div class="assembly-instruction-row">
             <span class="assembly-label">🧩 Tap word chips in correct order:</span>
@@ -275,7 +427,7 @@
               Sweet Success, <span id="resultUserName">Champion</span>! 🐝
             </h2>
             <p id="resultsSubheadline" class="results-subtitle">
-              You've completed all 40 questions across all 4 parts. Your score has been recorded in the database!
+              You've completed all 50 questions across all 5 parts. Your score has been recorded in the database!
             </p>
           </div>
         </div>
@@ -318,7 +470,7 @@
             <div class="metric-content">
               <span class="metric-label">Time Status</span>
               <span id="timeStatusBadge" class="status-badge status-on-time">On Time</span>
-              <span id="timeStatusDetail" class="status-detail-text">Finished within 30 minutes</span>
+              <span id="timeStatusDetail" class="status-detail-text">Finished within 45 minutes</span>
             </div>
           </div>
         </div>
@@ -333,17 +485,18 @@
         <div class="review-section">
           <div class="review-header-flex">
             <div>
-              <h3 class="review-title">📝 Comprehensive 40-Question Review</h3>
+              <h3 class="review-title">📝 Comprehensive 50-Question Review</h3>
               <span class="review-hint">Inspect your choices and grammar explanations</span>
             </div>
             
             <!-- Part Filter Tabs -->
             <div class="review-filter-tabs">
-              <button class="review-filter-btn active" data-filter="all">All (40)</button>
+              <button class="review-filter-btn active" data-filter="all">All (50)</button>
               <button class="review-filter-btn" data-filter="1">Part 1 (1–10)</button>
               <button class="review-filter-btn" data-filter="2">Part 2 (11–20)</button>
               <button class="review-filter-btn" data-filter="3">Part 3 (21–30)</button>
               <button class="review-filter-btn" data-filter="4">Part 4 (31–40)</button>
+              <button class="review-filter-btn" data-filter="5">Part 5 (41–50)</button>
             </div>
           </div>
 
@@ -431,7 +584,7 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- MODAL: QUICK QUESTION PALETTE (1–40)       -->
+  <!-- MODAL: QUICK QUESTION PALETTE (1–50)       -->
   <!-- ========================================== -->
   <div id="paletteModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="paletteTitle">
     <div class="modal-card palette-modal-card">
@@ -441,7 +594,7 @@
         <div class="fun-pill-badge" style="background:#EEF2FF; color:#4F46E5; margin-bottom:8px;">
           📋 Test Progress & Question Review
         </div>
-        <h3 id="paletteTitle" class="modal-title">Review All Questions (1–40)</h3>
+        <h3 id="paletteTitle" class="modal-title">Review All Questions (1–50)</h3>
         <p class="modal-subtitle">Filter questions by status and tap any number to jump directly to it.</p>
       </div>
 
@@ -449,11 +602,11 @@
       <div class="review-status-tabs">
         <button type="button" class="status-tab-btn active" data-palette-filter="all">
           <span class="tab-label">All Questions</span>
-          <span class="tab-badge badge-all">40</span>
+          <span class="tab-badge badge-all">50</span>
         </button>
         <button type="button" class="status-tab-btn" data-palette-filter="unanswered">
           <span class="tab-label">⚪ Not Answered Yet</span>
-          <span class="tab-badge badge-unanswered" id="paletteUnansweredCount">40</span>
+          <span class="tab-badge badge-unanswered" id="paletteUnansweredCount">50</span>
         </button>
         <button type="button" class="status-tab-btn" data-palette-filter="flagged">
           <span class="tab-label">🚩 Not Sure</span>
@@ -475,7 +628,7 @@
         </button>
       </div>
 
-      <!-- 40 Questions Grid -->
+      <!-- 50 Questions Grid -->
       <div id="paletteGrid" class="palette-grid">
         <!-- Rendered dynamically by JS -->
       </div>
@@ -517,7 +670,7 @@
       <div class="confirm-summary-grid">
         <div class="confirm-stat-card card-answered">
           <span class="stat-card-icon">✅</span>
-          <div class="stat-card-val" id="confirmAnsweredCount">0 / 40</div>
+          <div class="stat-card-val" id="confirmAnsweredCount">0 / 50</div>
           <div class="stat-card-label">Answered</div>
         </div>
         <div class="confirm-stat-card card-unanswered" id="cardUnansweredWrap">
@@ -559,7 +712,7 @@
         <!-- All Answered Success Notice (if unanswered === 0) -->
         <div id="confirmAllAnsweredBox" class="confirm-status-box status-box-success hidden">
           <div class="status-box-header">
-            <strong>🎉 All 40 Questions Answered!</strong>
+            <strong>🎉 All 50 Questions Answered!</strong>
           </div>
           <p class="status-box-text">
             Terrific job! You answered every single question. You can submit now or do a quick final review.
@@ -591,7 +744,7 @@
   <footer class="app-footer">
     <div class="footer-inner">
       <span class="footer-brand">
-        🐝 Bee Smart Learning — English Quiz (40 Questions)
+        🐝 Bee Smart Learning — English Quiz (50 Questions)
       </span>
       <span class="footer-divider">•</span>
       <button id="openSmartphoneFooterBtn" class="footer-link-btn" title="Open Smartphone Online Active Link">
@@ -678,7 +831,7 @@
           <button id="exportCsvBtn" class="btn btn-outline btn-sm" title="Export Student Test History Log to CSV">
             📋 Student Logs
           </button>
-          <button id="exportItemAnalysisBtn" class="btn btn-outline btn-sm btn-excel" title="Export 40-Question Item Difficulty & Psychometric Analysis to Excel">
+          <button id="exportItemAnalysisBtn" class="btn btn-outline btn-sm btn-excel" title="Export 50-Question Item Difficulty & Psychometric Analysis to Excel">
             📈 Item Analysis (Excel)
           </button>
           <button id="exportMasterExcelBtn" class="btn btn-primary btn-sm btn-excel" title="Download Master Multi-Sheet Excel Workbook (Overview, Item Analysis, Answers Matrix & Dedicated Sheet for Each Student)">
@@ -759,7 +912,7 @@
               <p class="analysis-card-subtitle">Based on live evaluation of all <strong id="analysisTotalStudentsText">4</strong> student test history submissions.</p>
             </div>
             <div class="analysis-card-header-right">
-              <button id="exportItemAnalysisBtnTab" class="btn btn-sm btn-excel" title="Download 40-Question Item Difficulty Analysis as Excel">
+              <button id="exportItemAnalysisBtnTab" class="btn btn-sm btn-excel" title="Download 50-Question Item Difficulty Analysis as Excel">
                 📊 Download Item Analysis (Excel)
               </button>
               <button id="exportMasterExcelBtnTab" class="btn btn-sm btn-primary" title="Download Master Multi-Sheet Excel Workbook with All Student Sheets">
@@ -818,7 +971,7 @@
         <div class="qa-filter-bar">
           <div class="qa-filter-label">Quick Filter:</div>
           <div class="qa-filter-group">
-            <button type="button" class="qa-filter-btn active" data-qfilter="all">All (40)</button>
+            <button type="button" class="qa-filter-btn active" data-qfilter="all">All (50)</button>
             <button type="button" class="qa-filter-btn qa-filter-extreme" data-qfilter="extreme">🚨 Needs Replacement (&lt;20% or &gt;80%)</button>
             <button type="button" class="qa-filter-btn" data-qfilter="difficult">🔴 Very Hard (&lt;20%)</button>
             <button type="button" class="qa-filter-btn" data-qfilter="easy">🟢 Too Easy (&gt;80%)</button>
@@ -827,10 +980,11 @@
             <button type="button" class="qa-filter-btn" data-qfilter="2">Part 2</button>
             <button type="button" class="qa-filter-btn" data-qfilter="3">Part 3</button>
             <button type="button" class="qa-filter-btn" data-qfilter="4">Part 4</button>
+            <button type="button" class="qa-filter-btn" data-qfilter="5">Part 5</button>
           </div>
         </div>
 
-        <!-- List of 40 Question Analytics Cards -->
+        <!-- List of 50 Question Analytics Cards -->
         <div id="questionAnalyticsContainer" class="question-analytics-list">
           <!-- Injected dynamically by JS -->
         </div>
@@ -919,9 +1073,9 @@
         </div>
       </div>
 
-      <!-- Target Sentence (for Part 4) -->
+      <!-- Target Sentence (for Part 5) -->
       <div id="replacePart4Group" class="form-group hidden">
-        <label for="replacePart4Target" class="form-label-sm">Target Sentence Order (for Part 4):</label>
+        <label for="replacePart4Target" class="form-label-sm">Target Sentence Order (for Part 5 - Jumbled Words):</label>
         <input type="text" id="replacePart4Target" class="form-input form-input-sm" placeholder="e.g. Unless the supervisor arrives early, the team cannot commence the briefing.">
         <label for="replacePart4Chips" class="form-label-sm" style="margin-top: 8px;">Scrambled Word Chunks (comma separated):</label>
         <input type="text" id="replacePart4Chips" class="form-input form-input-sm" placeholder="e.g. Unless, arrives, early,, the supervisor, the team, cannot commence, the briefing.">
@@ -962,7 +1116,7 @@
       <div class="modal-header">
         <div class="fun-pill-badge">🔍 Test History Inspection</div>
         <h3 id="studentModalTitle" class="modal-title">Student Answer Sheet</h3>
-        <p class="modal-subtitle" id="studentModalSubtitle">Review student's detailed responses for all 40 questions.</p>
+        <p class="modal-subtitle" id="studentModalSubtitle">Review student's detailed responses for all 50 questions.</p>
       </div>
 
       <div class="student-meta-summary" id="studentModalMetaSummary">
@@ -970,7 +1124,7 @@
       </div>
 
       <div class="inspection-filter-tabs">
-        <button type="button" class="insp-filter-btn active" data-inspfilter="all">All 40 Questions</button>
+        <button type="button" class="insp-filter-btn active" data-inspfilter="all">All 50 Questions</button>
         <button type="button" class="insp-filter-btn" data-inspfilter="wrong">❌ Incorrect Only</button>
         <button type="button" class="insp-filter-btn" data-inspfilter="correct">✓ Correct Only</button>
       </div>
@@ -992,7 +1146,7 @@
 
   <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
   <script src="assets/xlsx.full.min.js"></script>
-  <!-- App Script (Final Verified Audit Build) -->
-  <script src="assets/app.js?v=final_audit"></script>
+  <!-- App Script (50 Questions, 45 Minutes, 1 pt each, Part 4 Word Bank, Part 5 Rearrange) -->
+  <script src="assets/app.js?v=v10_q36_sync"></script>
 </body>
 </html>
