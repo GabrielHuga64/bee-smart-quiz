@@ -353,21 +353,22 @@
             </div>
           </div>
 
-          <!-- Word Bank Actions: Validate / Check & Reset -->
+          <!-- Word Bank Actions: Reset Only (Check Answers button hidden during exam to preserve test integrity) -->
           <div class="wb-action-row">
             <div class="wb-action-left">
-              <button type="button" id="wbValidateBtn" class="btn btn-primary btn-sm">
-                <span>✓</span> Check Word Bank Answers
-              </button>
               <button type="button" id="wbResetBtn" class="btn btn-outline btn-sm">
-                <span>↺</span> Reset Word Bank
+                <span>↺</span> Reset Word Bank Choices
               </button>
             </div>
-            <div id="wbValidationSummary" class="wb-validation-summary hidden"></div>
+            <!-- Live check and inline feedback hidden during test; full review is available after submitting -->
+            <button type="button" id="wbValidateBtn" class="btn btn-primary btn-sm" style="display: none !important;">
+              <span>✓</span> Check Word Bank Answers
+            </button>
+            <div id="wbValidationSummary" class="wb-validation-summary hidden" style="display: none !important;"></div>
           </div>
 
-          <!-- Explanations Box (Revealed on check/submit) -->
-          <div id="wbExplanationsBox" class="wb-explanations-box hidden"></div>
+          <!-- Explanations Box (Hidden during test; displayed after submission in the comprehensive review) -->
+          <div id="wbExplanationsBox" class="wb-explanations-box hidden" style="display: none !important;"></div>
         </div>
 
         <!-- Part 5: Sentence Word Ordering Arena (Interactive Chips Ordering) -->
@@ -1182,6 +1183,6 @@
   <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
   <script src="assets/xlsx.full.min.js"></script>
   <!-- App Script (50 Questions, 45 Minutes, 1 pt each, Part 4 Word Bank, Part 5 Rearrange) -->
-  <script src="assets/app.js?v=v15_q45_update"></script>
+  <script src="assets/app.js?v=v16_hide_wb_validate"></script>
 </body>
 </html>

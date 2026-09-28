@@ -3739,6 +3739,13 @@ body {
 }
 
 /* Action Row & Buttons */
+#wbValidateBtn,
+.wb-blank-status,
+#wbValidationSummary,
+#wbExplanationsBox {
+  display: none !important;
+}
+
 .wb-action-row {
   display: flex;
   justify-content: space-between;

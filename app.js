@@ -2241,6 +2241,11 @@
       sel.classList.add("notranslate");
       sel.setAttribute("translate", "no");
 
+      // Ensure no live validation status or styling is displayed during exam
+      sel.classList.remove("is-correct", "is-incorrect");
+      const statusEl = document.getElementById(`wbStatus${qid}`);
+      if (statusEl) statusEl.innerHTML = "";
+
       // Populate options once
       if (sel.options.length <= 1) {
         sel.innerHTML = `<option value="" class="notranslate" translate="no">-- Blank [${qid}] --</option>`;
@@ -2380,66 +2385,10 @@
     }
   }
 
-  // Validation function with green / red highlights and teacher explanations from picture
+  // Validation function disabled during exam - students can only review their answers after submitting the exam
   function validateWordBankAnswers() {
-    sfx.click();
-    let correctCount = 0;
-    let expHtml = `<div class="wb-exp-header"><h4>Detailed Explanations (Questions 31–40):</h4></div><div class="wb-exp-grid">`;
-
-    WORD_BANK_BLANKS.forEach((qid, idx) => {
-      const sel = document.getElementById(`wbSelect${qid}`);
-      const statusEl = document.getElementById(`wbStatus${qid}`);
-      const userVal = sel ? sel.value : (state.userAnswers[qid] || "");
-      const qObj = activeQuizQuestions.find(q => q.id === qid);
-      const correctKey = qObj ? qObj.correct : "";
-      const correctWord = qObj && qObj.options ? qObj.options[correctKey] : "";
-      const isCorrect = userVal === correctKey;
-
-      if (sel) {
-        sel.classList.remove("is-correct", "is-incorrect");
-        if (isCorrect) {
-          sel.classList.add("is-correct");
-          correctCount++;
-          if (statusEl) statusEl.innerHTML = `<span class="wb-badge-correct" title="Correct!">✓</span>`;
-        } else {
-          sel.classList.add("is-incorrect");
-          if (statusEl) statusEl.innerHTML = `<span class="wb-badge-incorrect" title="Correct: ${correctWord}">✗</span>`;
-        }
-      }
-
-      if (qObj) {
-        expHtml += `
-          <div class="wb-exp-card ${isCorrect ? 'exp-correct' : 'exp-incorrect'}">
-            <div class="wb-exp-card-header">
-              <strong>Blank [${qid}] (Item ${idx + 1}):</strong> ${isCorrect ? '<span style="color:#10B981; font-weight:800;">✓ Correct (+1 pt)</span>' : '<span style="color:#EF4444; font-weight:800;">✗ Incorrect (0 pt)</span>'}
-            </div>
-            <div class="wb-exp-answers">
-              <span>Your Choice: <strong>${userVal ? (qObj.options[userVal] || userVal) : '(Unanswered)'}</strong></span>
-              <span>Correct Answer: <strong style="color:#047857;">${correctWord}</strong></span>
-            </div>
-            <div class="wb-exp-text">
-              💡 ${escapeHtml(qObj.explanation)}
-            </div>
-          </div>
-        `;
-      }
-    });
-
-    expHtml += `</div>`;
-
-    if (wbValidationSummary) {
-      wbValidationSummary.classList.remove("hidden");
-      wbValidationSummary.innerHTML = `
-        <div class="wb-score-pill ${correctCount >= 8 ? 'score-high' : 'score-med'}">
-          Score: <strong>${correctCount} / 10 Correct</strong> (${correctCount * 1} raw pts | ${correctCount * 2}/100 scaled)
-        </div>
-      `;
-    }
-
-    if (wbExplanationsBox) {
-      wbExplanationsBox.classList.remove("hidden");
-      wbExplanationsBox.innerHTML = expHtml;
-    }
+    // Intentionally disabled during exam taking to preserve test integrity
+    return;
   }
 
   function resetWordBank() {
