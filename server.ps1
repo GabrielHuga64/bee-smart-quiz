@@ -266,7 +266,7 @@ function Process-Request($context) {
                         "32"="The training was demanding, but the personnel completed it successfully.";
                         "33"="The soldiers will either attend the morning session or the afternoon session.";
                         "34"="The personnel were not informed about neither the commander nor the change.";
-                        "35"="The personnel successfully completed the exercise, and the officers did too.";
+                        "35"="Not only the personnel, but also the officers successfully completed the exercise.";
                         "36"="The training schedule was changed, so the personnel had to adjust their plans.";
                         "37"="Military personnel need both, discipline and effective communication.";
                         "38"="The team will either conduct the exercise tomorrow or postpone it until next week.";
@@ -295,7 +295,7 @@ function Process-Request($context) {
                         "32"="The training was demanding, but the personnel completed it successfully.";
                         "33"="The soldiers will either attend the morning session or the afternoon session.";
                         "34"="Neither the commander nor the personnel were informed about the change.";
-                        "35"="The personnel successfully completed the exercise, and the officers did too.";
+                        "35"="Not only the personnel, but also the officers successfully completed the exercise.";
                         "36"="The training schedule was changed, so the personnel had to adjust their plans.";
                         "37"="Military personnel need both, discipline and effective communication.";
                         "38"="The team will either conduct the exercise tomorrow or postpone it until next week.";
@@ -324,7 +324,7 @@ function Process-Request($context) {
                         "32"="The training was demanding, but the personnel completed it successfully.";
                         "33"="The soldiers will either attend the morning session or the afternoon session.";
                         "34"="Neither were the personnel informed nor the commander about the change.";
-                        "35"="The personnel successfully completed the exercise, and the officers did too.";
+                        "35"="Not only the personnel, but also the officers successfully completed the exercise.";
                         "36"="The training schedule was changed, so the personnel had to adjust their plans.";
                         "37"="Military personnel need both, discipline and effective communication.";
                         "38"="The team will either conduct the exercise tomorrow or postpone it until next week.";
@@ -353,7 +353,7 @@ function Process-Request($context) {
                         "32"="The training was demanding, but the personnel completed it successfully.";
                         "33"="The soldiers will either attend the morning session or the afternoon session.";
                         "34"="Neither the commander nor the personnel were informed about the change.";
-                        "35"="The personnel successfully completed the exercise, and the officers did too.";
+                        "35"="Not only the personnel, but also the officers successfully completed the exercise.";
                         "36"="The training schedule changed was so adjust had to their plans the personnel.";
                         "37"="Military personnel need both, discipline and effective communication.";
                         "38"="The team will either conduct the exercise tomorrow or postpone it until next week.";

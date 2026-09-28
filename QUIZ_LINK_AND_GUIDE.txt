@@ -268,8 +268,9 @@ Q43: Target Sentence: "The soldiers will either attend the morning session or th
 Q44: Target Sentence: "Neither the commander nor the personnel were informed about the change."
      Reason: Correlative conjunction “neither ... nor”: By the rule of proximity, when subjects differ in number, the verb agrees with the nearer subject (“the personnel” is plural, requiring plural passive verb “were informed”).
 
-Q45: Target Sentence: "The personnel successfully completed the exercise, and the officers did too."
-     Reason: Compound sentence with affirmative agreement: Coordinates the main clause with an elliptical clause using auxiliary “did” and adverb “too” (“and the officers did too”).
+Q45: Target Sentence: "Not only the personnel, but also the officers successfully completed the exercise."
+     Alternative Acceptable: "Not only the officers, but also the personnel successfully completed the exercise."
+     Reason: Correlative conjunction “not only ... but also”: Connects two parallel subjects (“the personnel” and “the officers”) performing the same action (“successfully completed the exercise”). Both sequential orders are grammatically correct.
 
 Q46: Target Sentence: "The training schedule was changed, so the personnel had to adjust their plans."
      Reason: Compound sentence with cause-and-result coordinating conjunction “so”: Preceded by a comma, “so” connects the cause (“The training schedule was changed”) with the resulting action (“the personnel had to adjust their plans”).

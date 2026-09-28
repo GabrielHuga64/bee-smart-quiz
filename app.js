@@ -708,14 +708,23 @@
       partName: "Part 5: Sentence Word Ordering",
       instruction: "Rearrange the words and phrases to form a grammatically correct sentence. Click the word chips below to place them in order.",
       type: "rearrange",
-      prompt: "the officers / too. / successfully / The personnel / completed / did / the exercise, / and",
-      scrambledChips: ["the officers", "too.", "successfully", "The personnel", "completed", "did", "the exercise,", "and"],
-      target: "The personnel successfully completed the exercise, and the officers did too.",
+      prompt: "the exercise. / the officers / Not only / completed / , but also / the personnel / successfully",
+      scrambledChips: ["the exercise.", "the officers", "Not only", "completed", ", but also", "the personnel", "successfully"],
+      target: "Not only the personnel, but also the officers successfully completed the exercise.",
       alternateTargets: [
-        "The officers completed the exercise successfully and the personnel did too.",
-        "The officers completed the exercise successfully, and the personnel did too."
+        "Not only the personnel, but also the officers successfully completed the exercise",
+        "Not only the personnel but also the officers successfully completed the exercise.",
+        "Not only the personnel but also the officers successfully completed the exercise",
+        "Not only the officers, but also the personnel successfully completed the exercise.",
+        "Not only the officers, but also the personnel successfully completed the exercise",
+        "Not only the officers but also the personnel successfully completed the exercise.",
+        "Not only the officers but also the personnel successfully completed the exercise",
+        "Not only the personnel, but also the officers completed the exercise successfully.",
+        "Not only the personnel but also the officers completed the exercise successfully.",
+        "Not only the officers, but also the personnel completed the exercise successfully.",
+        "Not only the officers but also the personnel completed the exercise successfully."
       ],
-      explanation: "Compound sentence with affirmative agreement: Coordinates the main clause with an elliptical clause using auxiliary “did” and adverb “too” (“and the officers did too”)."
+      explanation: "Correlative conjunction “not only ... but also”: Connects two parallel subjects (“the personnel” and “the officers”) performing the same action (“successfully completed the exercise”). Both sequential orders (“the personnel, but also the officers” or “the officers, but also the personnel”) are grammatically correct."
     },
     {
       id: 46,
@@ -1088,7 +1097,7 @@
       const currentAns = answers[String(i)] || answers[i];
       const qObj = activeQuizQuestions.find(q => q.id === i);
       if (qObj && qObj.target) {
-        if (!currentAns || i === 43 || i === 47 || (u.id === "sub-856287" || u.name === "hug")) {
+        if (!currentAns || i === 43 || i === 45 || i === 47 || (u.id === "sub-856287" || u.name === "hug")) {
           answers[String(i)] = qObj.target;
         }
       }
