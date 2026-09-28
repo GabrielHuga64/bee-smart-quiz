@@ -4629,6 +4629,270 @@
     XLSX.writeFile(wb, `BeeQuiz_50Q_Master_Student_Assessment_Workbook_${filenameDate}.xlsx`);
   }
 
+  // =========================================================================
+  // EXPORT: DOWNLOAD ALL 50 QUESTIONS (EXAM PAPER / QUESTION SHEET)
+  // =========================================================================
+  function exportQuestionsOnlyWorkbook() {
+    sfx.click();
+    const reportDate = new Date().toLocaleString();
+    const filenameDate = new Date().toISOString().slice(0, 10);
+
+    if (typeof XLSX === "undefined") {
+      // Fallback to CSV
+      const csvLines = [
+        ["BEE SMART LEARNING — OFFICIAL SUBORDINATING CONJUNCTION MASTER EXAM PAPER (50 QUESTIONS)"],
+        [`Date Generated: ${reportDate}`, "Total Questions: 50", "Duration: 45 Minutes", "Points: 1 pt each (50 Raw / 100 Scaled)"],
+        [],
+        ["Q#", "Part", "Part Name", "Question Type", "Passage / Context Reference", "Question Prompt / Sentence with Blank", "Choices / Word Bank / Word Chips", "Points"]
+      ];
+
+      activeQuizQuestions.forEach(q => {
+        let passageTitle = "-";
+        if (q.passageKey && READING_PASSAGES[q.passageKey]) {
+          passageTitle = READING_PASSAGES[q.passageKey].title || q.passageKey;
+        }
+
+        let choicesStr = "";
+        if (q.options) {
+          choicesStr = Object.entries(q.options).map(([k, v]) => `${k}. ${v}`).join(" | ");
+        } else if (Array.isArray(q.scrambledChips)) {
+          choicesStr = "Scrambled Chips: " + q.scrambledChips.join(" / ");
+        }
+
+        let typeLabel = "Multiple Choice";
+        if (q.type === "true_false") typeLabel = "Grammatical Correctness";
+        else if (q.type === "word_bank") typeLabel = "Word Bank Cloze";
+        else if (q.type === "rearrange") typeLabel = "Sentence Ordering (Jumbled Words)";
+
+        csvLines.push([
+          q.id,
+          q.part,
+          escapeCsv(q.partName),
+          escapeCsv(typeLabel),
+          escapeCsv(passageTitle),
+          escapeCsv(q.prompt),
+          escapeCsv(choicesStr),
+          "1 pt (2%)"
+        ]);
+      });
+
+      const csvContent = "\uFEFF" + csvLines.map(r => Array.isArray(r) ? r.join(",") : r).join("\r\n");
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `BeeQuiz_50_Questions_Exam_Paper_${filenameDate}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      return;
+    }
+
+    const wb = XLSX.utils.book_new();
+
+    const sheetData = [
+      ["BEE SMART LEARNING — OFFICIAL SUBORDINATING CONJUNCTION MASTER EXAM PAPER (50 QUESTIONS)"],
+      ["Report Generated:", reportDate, "", "Exam Duration:", "45 Minutes", "", "Total Questions:", "50 Questions"],
+      ["Scoring Rule:", "1 point per question | 50 Raw Points Max | 100 Scaled Score", "", "Subject:", "English Grammar — Subordinating Conjunctions"],
+      [],
+      [
+        "Q#",
+        "Part",
+        "Part Name",
+        "Question Type",
+        "Passage / Context Reference",
+        "Question Prompt / Sentence with Blank",
+        "Choices / Word Bank / Word Chips",
+        "Points Awarded"
+      ]
+    ];
+
+    activeQuizQuestions.forEach(q => {
+      let passageTitle = "-";
+      if (q.passageKey && READING_PASSAGES[q.passageKey]) {
+        passageTitle = READING_PASSAGES[q.passageKey].title || q.passageKey;
+      }
+
+      let choicesStr = "";
+      if (q.options) {
+        choicesStr = Object.entries(q.options).map(([k, v]) => `${k}. ${v}`).join(" | ");
+      } else if (Array.isArray(q.scrambledChips)) {
+        choicesStr = "Scrambled Chips: " + q.scrambledChips.join(" / ");
+      }
+
+      let typeLabel = "Multiple Choice";
+      if (q.type === "true_false") typeLabel = "Grammatical Correctness";
+      else if (q.type === "word_bank") typeLabel = "Word Bank Cloze";
+      else if (q.type === "rearrange") typeLabel = "Sentence Ordering (Jumbled Words)";
+
+      sheetData.push([
+        q.id,
+        q.part,
+        q.partName,
+        typeLabel,
+        passageTitle,
+        q.prompt,
+        choicesStr,
+        "1 raw pt (+2/100)"
+      ]);
+    });
+
+    const ws = XLSX.utils.aoa_to_sheet(sheetData);
+    ws['!cols'] = [
+      { wch: 6 },   // Q#
+      { wch: 6 },   // Part
+      { wch: 25 },  // Part Name
+      { wch: 22 },  // Question Type
+      { wch: 38 },  // Passage Reference
+      { wch: 65 },  // Prompt
+      { wch: 55 },  // Choices
+      { wch: 18 }   // Points
+    ];
+
+    XLSX.utils.book_append_sheet(wb, ws, "Exam Questions (Q1-50)");
+    XLSX.writeFile(wb, `BeeQuiz_50_Questions_Exam_Paper_${filenameDate}.xlsx`);
+  }
+
+  // =========================================================================
+  // EXPORT: DOWNLOAD MASTER ANSWER KEYS & PEDAGOGICAL REASONS / EXPLANATIONS
+  // =========================================================================
+  function exportAnswerKeysWorkbook() {
+    sfx.click();
+    const reportDate = new Date().toLocaleString();
+    const filenameDate = new Date().toISOString().slice(0, 10);
+
+    if (typeof XLSX === "undefined") {
+      // Fallback to CSV
+      const csvLines = [
+        ["BEE SMART LEARNING — MASTER TEACHER ANSWER KEY & PEDAGOGICAL EXPLANATIONS (50 QUESTIONS)"],
+        [`Date Generated: ${reportDate}`, "Total Questions: 50", "Duration: 45 Minutes", "Points: 1 pt each (50 Raw / 100 Scaled)"],
+        [],
+        ["Q#", "Part", "Part Name", "Question Type", "Question Prompt / Sentence Context", "Correct Key", "Target Correct Answer", "Full Completed Sentence", "Pedagogical Explanation & Grammar Reason"]
+      ];
+
+      activeQuizQuestions.forEach(q => {
+        let typeLabel = "Multiple Choice";
+        if (q.type === "true_false") typeLabel = "Grammatical Correctness";
+        else if (q.type === "word_bank") typeLabel = "Word Bank Cloze";
+        else if (q.type === "rearrange") typeLabel = "Sentence Ordering (Jumbled Words)";
+
+        let correctKey = q.correct || "Target";
+        let targetAnswer = "";
+        let fullSentence = "";
+
+        if (q.type === "rearrange") {
+          correctKey = "Ordered Sentence";
+          targetAnswer = q.target;
+          fullSentence = q.target;
+        } else if (q.options) {
+          targetAnswer = q.options[q.correct] ? `${q.correct}. ${q.options[q.correct]}` : q.correct;
+          const wordOnly = q.options[q.correct] || q.correct;
+          fullSentence = q.prompt.replace(/_{3,}|\[\d+\]\s*_{3,}|\(\d+\)\s*_{3,}/, `[${wordOnly}]`);
+        } else {
+          targetAnswer = q.correct || "";
+          fullSentence = q.prompt;
+        }
+
+        csvLines.push([
+          q.id,
+          q.part,
+          escapeCsv(q.partName),
+          escapeCsv(typeLabel),
+          escapeCsv(q.prompt),
+          escapeCsv(correctKey),
+          escapeCsv(targetAnswer),
+          escapeCsv(fullSentence),
+          escapeCsv(q.explanation || "")
+        ]);
+      });
+
+      const csvContent = "\uFEFF" + csvLines.map(r => Array.isArray(r) ? r.join(",") : r).join("\r\n");
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `BeeQuiz_50_Questions_Master_Answer_Key_and_Reasons_${filenameDate}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      return;
+    }
+
+    const wb = XLSX.utils.book_new();
+
+    const sheetData = [
+      ["BEE SMART LEARNING — MASTER TEACHER ANSWER KEY & PEDAGOGICAL EXPLANATIONS (50 QUESTIONS)"],
+      ["Report Generated:", reportDate, "", "Total Questions:", "50 Questions", "", "Exam Duration:", "45 Minutes"],
+      ["Subject / Topic:", "English Grammar — Subordinating Conjunctions Mastery", "", "Scoring Rule:", "1 point each (50 Raw Pts | 100 Scaled Pts)"],
+      [],
+      [
+        "Q#",
+        "Part",
+        "Part Name",
+        "Question Type",
+        "Question Prompt / Sentence Context",
+        "Correct Answer Key",
+        "Target Word / Correct Answer",
+        "Full Completed Sentence",
+        "Pedagogical Explanation & Grammar Reason"
+      ]
+    ];
+
+    activeQuizQuestions.forEach(q => {
+      let typeLabel = "Multiple Choice";
+      if (q.type === "true_false") typeLabel = "Grammatical Correctness";
+      else if (q.type === "word_bank") typeLabel = "Word Bank Cloze";
+      else if (q.type === "rearrange") typeLabel = "Sentence Ordering (Jumbled Words)";
+
+      let correctKey = q.correct || "Target";
+      let targetAnswer = "";
+      let fullSentence = "";
+
+      if (q.type === "rearrange") {
+        correctKey = "Ordered Sentence";
+        targetAnswer = q.target;
+        fullSentence = q.target;
+      } else if (q.options) {
+        targetAnswer = q.options[q.correct] ? `${q.correct}. ${q.options[q.correct]}` : q.correct;
+        const wordOnly = q.options[q.correct] || q.correct;
+        fullSentence = q.prompt.replace(/_{3,}|\[\d+\]\s*_{3,}|\(\d+\)\s*_{3,}/, `[${wordOnly}]`);
+      } else {
+        targetAnswer = q.correct || "";
+        fullSentence = q.prompt;
+      }
+
+      sheetData.push([
+        q.id,
+        q.part,
+        q.partName,
+        typeLabel,
+        q.prompt,
+        correctKey,
+        targetAnswer,
+        fullSentence,
+        q.explanation || ""
+      ]);
+    });
+
+    const ws = XLSX.utils.aoa_to_sheet(sheetData);
+    ws['!cols'] = [
+      { wch: 6 },   // Q#
+      { wch: 6 },   // Part
+      { wch: 25 },  // Part Name
+      { wch: 22 },  // Question Type
+      { wch: 55 },  // Question Prompt
+      { wch: 18 },  // Correct Key
+      { wch: 25 },  // Target Answer
+      { wch: 58 },  // Full Completed Sentence
+      { wch: 65 }   // Pedagogical Explanation
+    ];
+
+    XLSX.utils.book_append_sheet(wb, ws, "Master Keys & Reasons (Q1-50)");
+    XLSX.writeFile(wb, `BeeQuiz_50_Questions_Master_Answer_Key_and_Reasons_${filenameDate}.xlsx`);
+  }
+
   // Bind Export Event Listeners
   if (exportItemAnalysisBtn) {
     exportItemAnalysisBtn.addEventListener("click", exportItemAnalysisToExcel);
@@ -4642,6 +4906,22 @@
   if (exportMasterExcelBtnTab) {
     exportMasterExcelBtnTab.addEventListener("click", exportMasterExcelWorkbook);
   }
+
+  // Bind Question and Answer Key Export Event Listeners
+  const exportQuestionsOnlyBtn = document.getElementById("exportQuestionsOnlyBtn");
+  const exportQuestionsOnlyBtnTab = document.getElementById("exportQuestionsOnlyBtnTab");
+  const exportQuestionsOnlyBtnBanner = document.getElementById("exportQuestionsOnlyBtnBanner");
+  const exportAnswerKeysBtn = document.getElementById("exportAnswerKeysBtn");
+  const exportAnswerKeysBtnTab = document.getElementById("exportAnswerKeysBtnTab");
+  const exportAnswerKeysBtnBanner = document.getElementById("exportAnswerKeysBtnBanner");
+
+  [exportQuestionsOnlyBtn, exportQuestionsOnlyBtnTab, exportQuestionsOnlyBtnBanner].forEach(btn => {
+    if (btn) btn.addEventListener("click", exportQuestionsOnlyWorkbook);
+  });
+
+  [exportAnswerKeysBtn, exportAnswerKeysBtnTab, exportAnswerKeysBtnBanner].forEach(btn => {
+    if (btn) btn.addEventListener("click", exportAnswerKeysWorkbook);
+  });
 
   // Reset Data to Default Baseline
   resetDataBtn.addEventListener("click", async () => {

@@ -837,6 +837,12 @@
           <button id="exportMasterExcelBtn" class="btn btn-primary btn-sm btn-excel" title="Download Master Multi-Sheet Excel Workbook (Overview, Item Analysis, Answers Matrix & Dedicated Sheet for Each Student)">
             📊 Master Excel (All Sheets)
           </button>
+          <button id="exportQuestionsOnlyBtn" class="btn btn-outline btn-sm btn-questions" title="Download Complete 50-Question Exam Paper (Excel)">
+            📝 Questions (.xlsx)
+          </button>
+          <button id="exportAnswerKeysBtn" class="btn btn-outline btn-sm btn-keys" title="Download Master Answer Key & Pedagogical Reasons (Excel)">
+            🔑 Keys & Reasons (.xlsx)
+          </button>
           <button id="resetDataBtn" class="btn btn-outline-danger btn-sm" title="Reset Database to 4 Baseline Seeds">
             ⚠️ Reset DB
           </button>
@@ -879,6 +885,22 @@
           </div>
         </div>
 
+        <!-- Teacher Question Bank & Solution Downloads Bar -->
+        <div class="teacher-resource-actions-bar">
+          <div class="teacher-resource-info">
+            <span class="teacher-resource-icon">📚</span>
+            <span><strong>Teacher Question & Answer Key Downloads:</strong> Export clean exam paper or answer keys with complete grammar reasons.</span>
+          </div>
+          <div class="teacher-resource-buttons">
+            <button id="exportQuestionsOnlyBtnBanner" class="btn btn-sm btn-questions" title="Download All 50 Questions Sheet (Excel)">
+              📝 Download All Questions (.xlsx)
+            </button>
+            <button id="exportAnswerKeysBtnBanner" class="btn btn-sm btn-keys" title="Download Master Answer Key & Pedagogical Reasons (Excel)">
+              🔑 Download Answer Keys & Reasons (.xlsx)
+            </button>
+          </div>
+        </div>
+
         <div class="table-responsive">
           <table class="admin-table">
             <thead>
@@ -917,6 +939,12 @@
               </button>
               <button id="exportMasterExcelBtnTab" class="btn btn-sm btn-primary" title="Download Master Multi-Sheet Excel Workbook with All Student Sheets">
                 📑 Master Excel (All Sheets)
+              </button>
+              <button id="exportQuestionsOnlyBtnTab" class="btn btn-sm btn-questions" title="Download Complete 50-Question Exam Paper (Excel)">
+                📝 Questions (.xlsx)
+              </button>
+              <button id="exportAnswerKeysBtnTab" class="btn btn-sm btn-keys" title="Download Master Answer Key & Grammar Reasons (Excel)">
+                🔑 Keys & Reasons (.xlsx)
               </button>
               <div id="replacementNoticeBadge" class="replacement-notice-badge hidden">
                 🚨 <strong id="replacementEligibleCount">0</strong> questions eligible for replacement (<span class="rule-hint">&lt;20% Very Hard or &gt;80% Too Easy</span>)
@@ -1147,6 +1175,6 @@
   <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
   <script src="assets/xlsx.full.min.js"></script>
   <!-- App Script (50 Questions, 45 Minutes, 1 pt each, Part 4 Word Bank, Part 5 Rearrange) -->
-  <script src="assets/app.js?v=v10_q36_sync"></script>
+  <script src="assets/app.js?v=v11_export_q_and_keys"></script>
 </body>
 </html>
