@@ -2150,7 +2150,8 @@
         Object.entries(q.options).forEach(([letter, optionText]) => {
           const optionBtn = document.createElement("button");
           optionBtn.type = "button";
-          optionBtn.className = "option-btn";
+          optionBtn.className = "option-btn notranslate";
+          optionBtn.setAttribute("translate", "no");
           optionBtn.setAttribute("role", "radio");
           optionBtn.setAttribute("aria-checked", selectedAnswer === letter ? "true" : "false");
           optionBtn.dataset.letter = letter;
@@ -2211,14 +2212,18 @@
     WORD_BANK_BLANKS.forEach((qid) => {
       const sel = document.getElementById(`wbSelect${qid}`);
       if (!sel) return;
+      sel.classList.add("notranslate");
+      sel.setAttribute("translate", "no");
 
       // Populate options once
       if (sel.options.length <= 1) {
-        sel.innerHTML = `<option value="">-- Blank [${qid}] --</option>`;
+        sel.innerHTML = `<option value="" class="notranslate" translate="no">-- Blank [${qid}] --</option>`;
         WORD_BANK_ITEMS.forEach(item => {
           const opt = document.createElement("option");
           opt.value = item.key;
           opt.textContent = item.word;
+          opt.className = "notranslate";
+          opt.setAttribute("translate", "no");
           sel.appendChild(opt);
         });
       }
@@ -2332,7 +2337,8 @@
         const isUsed = Boolean(usedMap[item.key]);
         const usedInQid = usedMap[item.key];
         const chip = document.createElement("div");
-        chip.className = `wb-word-chip ${isUsed ? "chip-used" : "chip-available"}`;
+        chip.className = `wb-word-chip notranslate ${isUsed ? "chip-used" : "chip-available"}`;
+        chip.setAttribute("translate", "no");
         chip.innerHTML = `
           <span class="chip-word-text">${escapeHtml(item.word)}</span>
           ${isUsed ? `<span class="chip-used-tag">Used [${usedInQid}]</span>` : `<span class="chip-avail-dot">●</span>`}
@@ -2465,7 +2471,8 @@
     q.scrambledChips.forEach((wordText) => {
       const chipBtn = document.createElement("button");
       chipBtn.type = "button";
-      chipBtn.className = "chip-btn";
+      chipBtn.className = "chip-btn notranslate";
+      chipBtn.setAttribute("translate", "no");
       chipBtn.textContent = wordText;
 
       if (state.currentAssembledChips.includes(wordText)) {
@@ -3021,7 +3028,8 @@
 
       filtered.forEach((item) => {
         const reviewItem = document.createElement("div");
-        reviewItem.className = `review-item ${item.isCorrect ? 'correct' : 'incorrect'}`;
+        reviewItem.className = `review-item notranslate ${item.isCorrect ? 'correct' : 'incorrect'}`;
+        reviewItem.setAttribute("translate", "no");
 
         reviewItem.innerHTML = `
           <div class="review-top-row">

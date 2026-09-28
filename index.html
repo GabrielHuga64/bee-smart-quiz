@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="notranslate" translate="no">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
   <title>Bee Smart Learning — English Quiz Time (50 Questions)</title>
   <meta name="description" content="Subordinating Conjunctions and English Grammar Quiz with 50 questions across 5 comprehensive parts. Inspired by Bee Smart Learning.">
+  
+  <!-- Critical: Disable Auto-Translation in Google Chrome, Edge, Safari, and Google Translate -->
+  <meta name="google" content="notranslate">
+  <meta name="googlebot" content="notranslate">
+  <meta name="robots" content="notranslate">
+  <meta http-equiv="Content-Language" content="en">
+  
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -18,7 +25,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
 </head>
-<body>
+<body class="notranslate" translate="no">
   <!-- Ambient Floating Background Elements -->
   <div class="ambient-decorations" aria-hidden="true">
     <div class="floating-star star-top-left">⭐</div>
@@ -50,13 +57,13 @@
   </header>
 
   <!-- Main App Shell -->
-  <main class="quiz-app-container">
+  <main class="quiz-app-container notranslate" translate="no">
     
     <!-- ========================================== -->
     <!-- SCREEN 1: WELCOME SCREEN                   -->
     <!-- ========================================== -->
-    <section id="welcomeScreen" class="screen-view active">
-      <div class="quiz-card welcome-card">
+    <section id="welcomeScreen" class="screen-view active notranslate" translate="no">
+      <div class="quiz-card welcome-card notranslate" translate="no">
         <div class="welcome-content">
           <!-- Fun Badge -->
           <div class="fun-pill-badge">
@@ -138,20 +145,20 @@
     <!-- ========================================== -->
     <!-- SCREEN 2: QUIZ ARENA                       -->
     <!-- ========================================== -->
-    <section id="quizScreen" class="screen-view">
+    <section id="quizScreen" class="screen-view notranslate" translate="no">
       <!-- Quiz Top Navigation Bar -->
-      <div class="quiz-top-bar">
+      <div class="quiz-top-bar notranslate" translate="no">
         <div class="top-bar-left">
           <div class="user-greeting-pill">
             <span class="greeting-icon">👋</span> Hi, <span id="displayUserName" class="user-name-highlight">Learner</span>!
           </div>
-          <button id="togglePaletteBtn" class="palette-toggle-btn" title="Open Question Review & Navigator Palette">
+          <button id="togglePaletteBtn" class="palette-toggle-btn notranslate" translate="no" title="Open Question Review & Navigator Palette">
             📋 Review Questions (<span id="answeredCountBadge">0/50</span><span id="flaggedCountBadge" class="flag-mini-pill" style="display:none;">0 🚩</span>)
           </button>
         </div>
 
         <div class="top-bar-right">
-          <div id="timerPill" class="timer-pill" title="Time remaining">
+          <div id="timerPill" class="timer-pill notranslate" translate="no" title="Time remaining">
             <span class="timer-icon">⏱️</span>
             <span id="timerDisplay" class="timer-digits">45:00</span>
           </div>
@@ -159,16 +166,16 @@
       </div>
 
       <!-- Overtime Alert Banner (Revealed if timer exceeds 45 minutes) -->
-      <div id="overtimeBanner" class="overtime-banner hidden" role="alert">
+      <div id="overtimeBanner" class="overtime-banner hidden notranslate" translate="no" role="alert">
         <span class="banner-icon">⚠️</span>
         <span>Recommended 45 minutes reached! Take your time to complete all remaining questions.</span>
       </div>
 
       <!-- Quiz Card -->
-      <div class="quiz-card question-card">
+      <div class="quiz-card question-card notranslate" translate="no">
         
         <!-- Part Header Badge -->
-        <div class="part-header-row">
+        <div class="part-header-row notranslate" translate="no">
           <div id="partBadge" class="part-badge">
             Part 1: Multiple Choices
           </div>
@@ -184,7 +191,7 @@
         </div>
 
         <!-- Instructions Box (Collapsible/Contextual for each Part) -->
-        <div id="partInstructionsBox" class="part-instructions-box">
+        <div id="partInstructionsBox" class="part-instructions-box notranslate" translate="no">
           <div class="instructions-header">
             <span class="instructions-title">💡 Instructions:</span>
             <span id="instructionText">Choose the best answer to complete each sentence.</span>
@@ -192,7 +199,7 @@
         </div>
 
         <!-- Reading Passage Box (Displayed dynamically for Part 2) -->
-        <div id="readingPassageBox" class="reading-passage-box hidden">
+        <div id="readingPassageBox" class="reading-passage-box hidden notranslate" translate="no">
           <div class="passage-header">
             <div class="passage-header-title">
               <span class="passage-icon">📖</span> <strong id="passageTitle">Reading Context</strong>
@@ -201,12 +208,12 @@
               <span id="passageToggleText">Hide Context</span> ▾
             </button>
           </div>
-          <div id="passageContent" class="passage-text"></div>
+          <div id="passageContent" class="passage-text notranslate" translate="no"></div>
         </div>
 
         <!-- Question Prompt Area -->
-        <div class="question-prompt-area">
-          <h2 id="questionPrompt" class="question-text">
+        <div class="question-prompt-area notranslate" translate="no">
+          <h2 id="questionPrompt" class="question-text notranslate" translate="no">
             ______ I submit my work, I usually review it for errors.
           </h2>
         </div>
@@ -214,7 +221,7 @@
         <!-- ============================================================== -->
         <!-- Part 4: Word Bank 2-Paragraph Passage Cloze (10 Dropdowns)     -->
         <!-- ============================================================== -->
-        <div id="wordBankPassageArea" class="word-bank-passage-area hidden">
+        <div id="wordBankPassageArea" class="word-bank-passage-area hidden notranslate" translate="no">
           <!-- Instructions Block -->
           <div class="wordbank-instructions-box">
             <div class="wb-instructions-header">
@@ -364,41 +371,41 @@
         </div>
 
         <!-- Part 5: Sentence Word Ordering Arena (Interactive Chips Ordering) -->
-        <div id="sentenceAssemblyArea" class="sentence-assembly-area hidden">
+        <div id="sentenceAssemblyArea" class="sentence-assembly-area hidden notranslate" translate="no">
           <div class="assembly-instruction-row">
             <span class="assembly-label">🧩 Tap word chips in correct order:</span>
             <div class="assembly-action-btns">
-              <button id="undoChipBtn" type="button" class="btn-chip-action" title="Remove last placed word">⌫ Undo</button>
-              <button id="resetChipsBtn" type="button" class="btn-chip-action" title="Clear all and start over">↺ Reset</button>
+              <button id="undoChipBtn" type="button" class="btn-chip-action notranslate" translate="no" title="Remove last placed word">⌫ Undo</button>
+              <button id="resetChipsBtn" type="button" class="btn-chip-action notranslate" translate="no" title="Clear all and start over">↺ Reset</button>
             </div>
           </div>
 
           <!-- Assembled Sentence Target Slot -->
-          <div id="assembledSlots" class="assembled-slots" aria-live="polite">
+          <div id="assembledSlots" class="assembled-slots notranslate" translate="no" aria-live="polite">
             <span class="placeholder-tip">Click word chips below to build the sentence...</span>
           </div>
 
           <!-- Available Scrambled Word Chips Bank -->
-          <div class="available-chips-wrapper">
+          <div class="available-chips-wrapper notranslate" translate="no">
             <div class="chips-bank-title">Word & Phrase Bank:</div>
-            <div id="availableChips" class="available-chips"></div>
+            <div id="availableChips" class="available-chips notranslate" translate="no"></div>
           </div>
         </div>
 
         <!-- Options Container Grid (For Parts 1, 2, and 3 only) -->
-        <div id="optionsGrid" class="options-grid" role="radiogroup" aria-labelledby="questionPrompt">
+        <div id="optionsGrid" class="options-grid notranslate" translate="no" role="radiogroup" aria-labelledby="questionPrompt">
           <!-- Dynamic options rendered by JS -->
         </div>
 
         <!-- Navigation Action Buttons -->
-        <div class="quiz-action-bar">
-          <button id="prevQuestionBtn" class="btn btn-secondary" aria-label="Previous question">
+        <div class="quiz-action-bar notranslate" translate="no">
+          <button id="prevQuestionBtn" class="btn btn-secondary notranslate" translate="no" aria-label="Previous question">
             Previous
           </button>
-          <button id="flagQuestionBtn" type="button" class="btn btn-flag" title="Mark this question if you are not sure about your answer">
+          <button id="flagQuestionBtn" type="button" class="btn btn-flag notranslate" translate="no" title="Mark this question if you are not sure about your answer">
             <span id="flagIcon">⚐</span> <span id="flagBtnText">Mark as Not Sure</span>
           </button>
-          <button id="nextQuestionBtn" class="btn btn-primary btn-next">
+          <button id="nextQuestionBtn" class="btn btn-primary btn-next notranslate" translate="no">
             <span id="nextBtnText">Next Question</span> <span class="arrow-icon">➜</span>
           </button>
         </div>
@@ -408,8 +415,8 @@
     <!-- ========================================== -->
     <!-- SCREEN 3: RESULTS SCREEN                   -->
     <!-- ========================================== -->
-    <section id="resultsScreen" class="screen-view">
-      <div class="quiz-card results-card">
+    <section id="resultsScreen" class="screen-view notranslate" translate="no">
+      <div class="quiz-card results-card notranslate" translate="no">
         
         <div class="results-header">
           <div class="results-mascot-wrapper">
@@ -586,7 +593,7 @@
   <!-- ========================================== -->
   <!-- MODAL: QUICK QUESTION PALETTE (1–50)       -->
   <!-- ========================================== -->
-  <div id="paletteModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="paletteTitle">
+  <div id="paletteModal" class="modal-overlay hidden notranslate" translate="no" role="dialog" aria-modal="true" aria-labelledby="paletteTitle">
     <div class="modal-card palette-modal-card">
       <button id="closePaletteBtn" class="modal-close-btn" aria-label="Close question review">&times;</button>
       
@@ -656,7 +663,7 @@
   <!-- ========================================== -->
   <!-- MODAL: FINISH EXAM CONFIRMATION MODAL      -->
   <!-- ========================================== -->
-  <div id="finishConfirmModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="finishConfirmTitle">
+  <div id="finishConfirmModal" class="modal-overlay hidden notranslate" translate="no" role="dialog" aria-modal="true" aria-labelledby="finishConfirmTitle">
     <div class="modal-card finish-confirm-card">
       <button id="closeFinishConfirmBtn" class="modal-close-btn" aria-label="Close modal">&times;</button>
       
@@ -760,7 +767,7 @@
   <!-- ========================================== -->
   <!-- MODAL 1: ADMIN LOGIN MODAL                 -->
   <!-- ========================================== -->
-  <div id="adminLoginModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+  <div id="adminLoginModal" class="modal-overlay hidden notranslate" translate="no" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
     <div class="modal-card login-modal-card">
       <button id="closeLoginModalBtn" class="modal-close-btn" aria-label="Close modal">&times;</button>
       
@@ -811,7 +818,7 @@
   <!-- ========================================== -->
   <!-- MODAL 2: ADMIN ANALYTICS DASHBOARD MODAL   -->
   <!-- ========================================== -->
-  <div id="adminDashboardModal" class="modal-overlay modal-wide hidden" role="dialog" aria-modal="true" aria-labelledby="adminDashboardTitle">
+  <div id="adminDashboardModal" class="modal-overlay modal-wide hidden notranslate" translate="no" role="dialog" aria-modal="true" aria-labelledby="adminDashboardTitle">
     <div class="modal-card dashboard-modal-card">
       <div class="dashboard-header">
         <div class="dashboard-title-group">
@@ -1137,7 +1144,7 @@
   <!-- ========================================== -->
   <!-- MODAL 4: STUDENT ANSWERS INSPECTION MODAL   -->
   <!-- ========================================== -->
-  <div id="studentAnswersModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="studentModalTitle">
+  <div id="studentAnswersModal" class="modal-overlay hidden notranslate" translate="no" role="dialog" aria-modal="true" aria-labelledby="studentModalTitle">
     <div class="modal-card student-inspection-card">
       <button id="closeStudentModalBtn" class="modal-close-btn" aria-label="Close modal">&times;</button>
       
@@ -1175,6 +1182,6 @@
   <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
   <script src="assets/xlsx.full.min.js"></script>
   <!-- App Script (50 Questions, 45 Minutes, 1 pt each, Part 4 Word Bank, Part 5 Rearrange) -->
-  <script src="assets/app.js?v=v12_review_reasons"></script>
+  <script src="assets/app.js?v=v13_notranslate_enforce"></script>
 </body>
 </html>

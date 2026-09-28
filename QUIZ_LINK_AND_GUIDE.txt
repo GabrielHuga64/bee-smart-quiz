@@ -39,6 +39,8 @@ Silakan kerjakan Quiz Subordinating Conjunction melalui link resmi berikut:
 6. Pada Bagian 5 (Jumbled Words):
    - Klik chip kata secara berurutan untuk menyusun kalimat yang benar.
 7. Setelah nomor 50 selesai, klik "Submit Exam" untuk melihat skor dan pembahasan lengkap.
+8. ⚠️ PENTING (Catatan Bahasa di HP):
+   Website ini sudah dipasang sistem kunci bahasa Inggris (Anti Auto-Translate). Namun jika browser Google Chrome di HP memunculkan pop-up terjemahan "Terjemahkan ke Indonesia", PILIH "Inggris" atau klik menu titik tiga lalu pilih "Jangan pernah terjemahkan situs ini". Soal ujian bahasa Inggris harus dikerjakan dalam teks bahasa Inggris aslinya agar pilihan kata tidak berubah!
 
 Good luck and do your best! 🐝✨
 
@@ -331,7 +333,8 @@ ADMIN DASHBOARD CAPABILITIES:
 6. TECHNICAL & DEPLOYMENT CHECKLIST
 ================================================================================
 ✅ GitHub Pages Status : Active & Deployed (commit pushed)
-✅ Cache-Busting Tag   : v12_review_reasons (ensures browsers fetch latest code)
+✅ Cache-Busting Tag   : v13_notranslate_enforce (ensures browsers fetch latest code)
+✅ Auto-Translate Lock : Enforced (<meta name="google" content="notranslate">, translate="no", notranslate)
 ✅ Scoring Logic       : Standardized 1 pt per question (50 raw / 100 scaled)
 ✅ Dropdown Mechanism  : One-Word-Only rule verified and functional
 ✅ Mobile Responsive   : Optimized for iOS Safari, Android Chrome, and Desktop
