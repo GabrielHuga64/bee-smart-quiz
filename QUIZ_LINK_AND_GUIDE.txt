@@ -74,112 +74,214 @@ THE 5 QUIZ PARTS:
 
 
 ================================================================================
-4. MASTER TEACHER ANSWER KEY & EXPLANATIONS (Q1 – Q50)
+4. MASTER TEACHER ANSWER KEY & PEDAGOGICAL EXPLANATIONS (Q1 – Q50)
 ================================================================================
 
 --- PART 1: MULTIPLE CHOICES (Q1–Q10) ---
 Q1 : Before (A)
-     "Before I submit my work, I usually review it for errors."
-     Explanation: Reviewing happens prior to submission.
+     Sentence: "Before I submit my work, I usually review it for errors."
+     Reason: “Before” indicates a chronological time relationship where checking and reviewing occurs prior to the submission of the work. “After” reverses the logical routine order, while “Unless” and “Now that” do not fit the chronological context.
+
 Q2 : so that (D)
-     "She stayed in the classroom so that she could finish her homework."
-     Explanation: Expresses purpose.
+     Sentence: "She stayed in the classroom so that she could finish her homework."
+     Reason: “So that” expresses purpose or intended outcome, explaining why she stayed in the classroom, and naturally pairs with the modal auxiliary “could”. “Now that” indicates present cause, and “such that” expresses result rather than personal purpose.
+
 Q3 : In spite of (D)
-     "In spite of the heavy traffic, we still arrived on time."
-     Explanation: Followed by a noun phrase ("the heavy traffic").
+     Sentence: "In spite of the heavy traffic, we still arrived on time."
+     Reason: “In spite of” is a prepositional phrase expressing concession that is followed by the noun phrase “the heavy traffic”. “Although” and “Even though” require a finite clause (subject + verb), while “Because of” expresses cause rather than unexpected arrival despite delays.
+
 Q4 : Whenever (A)
-     "You can use my computer whenever you need it."
-     Explanation: Means "every time that" or "at any time that."
+     Sentence: "You can use my computer whenever you need it."
+     Reason: “Whenever” is a subordinating conjunction of time meaning “every time that” or “at any time that”, granting open permission based on need. “Whereas” denotes comparison/contrast, “Whether” introduces alternatives, and “Because” implies necessity rather than open timing.
+
 Q5 : despite (B)
-     "I managed to finish the report despite being very tired."
-     Explanation: "Despite + gerund (-ing)" is grammatically correct.
+     Sentence: "I managed to finish the report despite being very tired."
+     Reason: “Despite” functions as a preposition requiring a noun phrase or gerund phrase (“being very tired”) to express concession. In contrast, “though” and “because” are subordinating conjunctions requiring a finite clause with a conjugated verb.
+
 Q6 : even though (A)
-     "The training continued even though several participants had raised concerns..."
-     Explanation: Concessive conjunction introducing a finite clause.
+     Sentence: "The training continued even though several participants had raised concerns about the revised schedule."
+     Reason: “Even though” is a subordinating conjunction of concession introducing a complete dependent clause (subject “several participants” + verb “had raised”) showing perseverance despite objections. “Because of” cannot govern a finite clause, and “therefore” is a conjunctive adverb.
+
 Q7 : until (A)
-     "The personnel were instructed to remain at the designated location until further instructions were issued."
-     Explanation: Indicates time endpoint.
+     Sentence: "The personnel were instructed to remain at the designated location until further instructions were issued."
+     Reason: “Until” marks the temporal limit or endpoint of waiting, indicating that personnel should stay in place up to the moment new orders are issued. “Unless” indicates a condition, and “whereas” indicates comparison.
+
 Q8 : Regardless of (A)
-     "Regardless of the circumstances surrounding the operation, all personnel were expected to comply..."
-     Explanation: Followed by a noun phrase ("the circumstances...").
+     Sentence: "Regardless of the circumstances surrounding the operation, all personnel were expected to comply with the established procedures."
+     Reason: “Regardless of” is a complex preposition meaning “without considering” or “in spite of” that correctly introduces the noun phrase “the circumstances surrounding the operation”. “Even though” requires a finite clause.
+
 Q9 : owing to (A)
-     "The exercise was postponed owing to the deterioration in weather conditions."
-     Explanation: Prepositional phrase followed by a noun phrase.
+     Sentence: "The exercise was postponed owing to the deterioration in weather conditions."
+     Reason: “Owing to” is a prepositional phrase meaning “because of” that correctly precedes the noun phrase “the deterioration in weather conditions” to explain the causal reason for postponement. “Even if” and “provided that” introduce conditional clauses.
+
 Q10: so that (B)
-     "The commander revised the training schedule so that all personnel would have sufficient time..."
-     Explanation: Expresses purpose with modal "would have".
+     Sentence: "The commander revised the training schedule so that all personnel would have sufficient time to prepare for the assessment."
+     Reason: “So that” expresses purpose, explaining the goal of revising the schedule, and is followed by the modal auxiliary “would have”. “Whereas” marks contrast, and “in case of” is a preposition requiring a noun.
 
---- PART 2: PARAGRAPH CLOZE (Q11–Q20) ---
-Passage 1: Civil Servants in Indonesia
-Q11: even though (A) — Concession despite multiple concurrent tasks.
-Q12: while (A)       — Simultaneous ongoing activities.
-Q13: Even though (A) — Contrast between extra time needed and deadline expectations.
-Q14: when (A)        — Specific condition/time for asking clarification.
-Q15: Whenever (A)    — Recurring event ("every time unexpected changes occur").
 
-Passage 2: Military Personnel Responsibilities
-Q16: whenever (C)    — Recurring operational readiness condition.
-Q17: while (A)       — Simultaneous collaborative action.
-Q18: Although (A)    — Concessive clause at start of sentence.
-Q19: when (D)        — Temporal circumstance for plan review.
-Q20: So that (D)     — Purpose of effective communication.
+--- PART 2: PARAGRAPH READING CLOZE (Q11–Q20) ---
+Passage 1: Civil Servants in Indonesia (Q11–Q15)
+Q11: even though (A)
+     Sentence: "Civil servants in Indonesia are expected to complete their responsibilities efficiently even though they may have to deal with several tasks at the same time."
+     Reason: “Even though” introduces a concessive clause, highlighting the contrast between the professional requirement of efficiency and the burden of multitasking.
+
+Q12: while (A)
+     Sentence: "They often need to attend meetings, prepare documents, and coordinate with other employees while completing their daily assignments."
+     Reason: “While” indicates simultaneous ongoing activities (“while completing their daily assignments”), demonstrating that collaborative duties happen concurrently with daily assignments.
+
+Q13: Even though (A)
+     Sentence: "Even though some tasks require additional time, employees are generally expected to meet the established deadlines."
+     Reason: “Even though” opens the sentence with concession, contrasting the reality that complex tasks require extra time with the strict expectation to meet deadlines.
+
+Q14: when (A)
+     Sentence: "They may ask for clarification when they are uncertain about an instruction or procedure."
+     Reason: “When” specifies the temporal condition or circumstance (“at the time that they are uncertain”) prompting civil servants to seek procedural clarification.
+
+Q15: Whenever (A)
+     Sentence: "Whenever unexpected changes occur, they are usually required to adjust their plans accordingly."
+     Reason: “Whenever” conveys recurring time or repeated contingency (“every time that unexpected changes occur”), introducing the ongoing obligation to adapt operational plans.
+
+Passage 2: Military Personnel Responsibilities (Q16–Q20)
+Q16: whenever (C)
+     Sentence: "Military personnel are expected to remain disciplined and prepared whenever unexpected situations arise during their daily responsibilities."
+     Reason: “Whenever” indicates recurring situations or contingencies (“at any time that unexpected situations arise”), emphasizing continuous operational readiness.
+
+Q17: while (A)
+     Sentence: "They often work as a team while completing tasks that require coordination and clear communication."
+     Reason: “While” followed by a participial phrase (“while completing tasks”) illustrates simultaneous collaborative teamwork during operational execution.
+
+Q18: Although (A)
+     Sentence: "Although unexpected situations may arise, personnel are expected to follow established procedures and respond appropriately."
+     Reason: “Although” opens the sentence with concession, balancing the possibility of volatile situations against the strict duty to follow established standard operating procedures.
+
+Q19: when (D)
+     Sentence: "They may review their plans when they identify circumstances that could affect their activities."
+     Reason: “When” specifies the precise operational condition and timing that triggers a review of tactical or strategic plans.
+
+Q20: So that (D)
+     Sentence: "Effective communication is essential throughout the process so that everyone understands their responsibilities."
+     Reason: “So that” expresses purpose, explaining that rigorous communication protocols exist specifically to ensure that all personnel comprehend their duties.
+
 
 --- PART 3: GRAMMATICAL CORRECTNESS (Q21–Q30) ---
-Q21: CORRECT (A)   — "Although + clause" used accurately.
-Q22: INCORRECT (B) — "Despite" cannot directly precede a finite clause.
-Q23: CORRECT (A)   — "Unless + clause" represents a valid negative condition.
-Q24: CORRECT (A)   — "Until + clause" with consistent past tense.
-Q25: CORRECT (A)   — "Even though + clause" expressing concession correctly.
-Q26: CORRECT (A)   — "So that + clause" expressing purpose accurately.
-Q27: CORRECT (A)   — "Regardless of how challenging..." is valid.
-Q28: INCORRECT (B) — "Because of" requires a noun phrase, not a clause.
-Q29: INCORRECT (B) — "Despite" cannot directly precede a finite clause.
-Q30: CORRECT (A)   — "Provided that + clause" used properly.
+Q21: CORRECT (A)
+     Sentence: "Although the training was demanding, the personnel managed to complete all the required activities within the allocated time."
+     Reason: CORRECT. “Although” is properly used as a subordinating conjunction introducing a complete dependent clause (“the training was demanding”) separated from the independent clause by a comma.
+
+Q22: INCORRECT (B)
+     Sentence: "Despite the personnel were given clear instructions, several procedures were not followed correctly."
+     Reason: INCORRECT. “Despite” is a preposition and cannot directly introduce a finite clause with a subject and conjugated verb (“the personnel were given”). Grammatical correction: “Although the personnel were given...” or “Despite being given clear instructions...”.
+
+Q23: CORRECT (A)
+     Sentence: "The exercise will continue unless the weather conditions become sufficiently severe to pose a safety risk."
+     Reason: CORRECT. “Unless” correctly introduces a negative conditional clause (“except if weather conditions become severe”), employing the present tense (“become”) for future real conditions.
+
+Q24: CORRECT (A)
+     Sentence: "The personnel remained at the designated location until further instructions were provided."
+     Reason: CORRECT. “Until” correctly marks the temporal boundary of waiting, maintaining past tense consistency throughout both clauses (“remained” ... “were provided”).
+
+Q25: CORRECT (A)
+     Sentence: "Even though the schedule had been revised several times, the personnel were able to adapt to the changes without significant difficulties."
+     Reason: CORRECT. “Even though” appropriately introduces a concessive clause with past perfect aspect (“had been revised”), followed by a comma before the main clause.
+
+Q26: CORRECT (A)
+     Sentence: "The commander adjusted the training schedule so that all personnel would have adequate time to prepare for the assessment."
+     Reason: CORRECT. “So that” correctly introduces a subordinate purpose clause followed by the modal auxiliary “would have”, aligning cause with intended outcome.
+
+Q27: CORRECT (A)
+     Sentence: "Regardless of how challenging the circumstances may be, personnel are expected to comply with the established procedures."
+     Reason: CORRECT. “Regardless of” is a complex preposition that correctly takes a wh-nominal clause (“how challenging the circumstances may be”) functioning as a concessive modifier.
+
+Q28: INCORRECT (B)
+     Sentence: "Because of several participants had failed to complete the required preparation, the assessment was postponed."
+     Reason: INCORRECT. “Because of” is a prepositional phrase requiring a noun phrase object. It cannot be followed by a full subject-verb clause (“several participants had failed”). Grammatical correction: “Because several participants had failed...” or “Because of the failure of several participants...”.
+
+Q29: INCORRECT (B)
+     Sentence: "The personnel continued with the exercise, despite the weather conditions had become increasingly unfavorable."
+     Reason: INCORRECT. “Despite” is a preposition and cannot directly govern a finite clause with a verb phrase (“the weather conditions had become”). Grammatical correction: “despite the weather conditions becoming unfavorable” or “although the weather conditions had become unfavorable”.
+
+Q30: CORRECT (A)
+     Sentence: "Provided that all safety requirements are met, the personnel may proceed with the scheduled activity."
+     Reason: CORRECT. “Provided that” functions as a formal conditional subordinating conjunction meaning “on condition that” or “if”, followed by a present passive clause.
+
 
 --- PART 4: WORD BANK PASSAGE COMPLETION (Q31–Q40) ---
 Word Bank Choices: Because, Although, If, While, Since, Unless, After, Before, Until, Whereas
 Distractors: so, As long as
 
-Paragraph 1: Understanding Coordinating Conjunctions
+Paragraph 1: Understanding Coordinating Conjunctions (Q31–Q35)
 Q31: Because (A)
-     Explanation: Introduces the causal reason why these conjunctions are unique.
-Q32: Although (B)
-     Explanation: Establishes a concession between difficulty and the FANBOYS solution.
-Q33: If (C)
-     Explanation: Sets up a pure conditional requirement.
-Q34: While (D)
-     Explanation: Direct, simultaneous comparison between two differing elements.
-Q35: Since (E)
-     Explanation: Time conjunction meaning "from that specific time until now" with year 1900.
+     Sentence: "Coordinating conjunctions are essential tools in English grammar because they are the only words capable of linking two completely independent thoughts with equal grammatical weight."
+     Reason: “Because” introduces the specific causal reason explaining why coordinating conjunctions are unique and indispensable tools in English grammar.
 
-Paragraph 2: Punctuation and Rules
+Q32: Although (B)
+     Sentence: "Many students struggle to remember all seven of them, although the simple acronym FANBOYS makes the memorization process much easier."
+     Reason: “Although” establishes a clear contrast/concession between the difficulty students face in memorizing all seven conjunctions and the simplicity of the FANBOYS acronym.
+
+Q33: If (C)
+     Sentence: "You should strictly use a coordinating conjunction if your goal is to give equal importance to both ideas in a single sentence."
+     Reason: “If” sets up a pure conditional requirement, stating that whenever your objective is to balance ideas with equal importance, a coordinating conjunction is required.
+
+Q34: While (D)
+     Sentence: "While coordinating conjunctions connect equal elements, subordinating conjunctions always make one clause less important than the other."
+     Reason: “While” is placed at the start of the sentence to show a direct, simultaneous comparison contrasting coordinating conjunctions with subordinating conjunctions.
+
+Q35: Since (E)
+     Sentence: "Since the year 1900, grammarians have categorized these seven words into distinct logical groups to help learners."
+     Reason: “Since” functions as a temporal conjunction meaning “from that specific starting time in the past until now,” as required by the specific year (1900) and present perfect verb (“have categorized”).
+
+Paragraph 2: Punctuation and Rules (Q36–Q40)
 Q36: Unless (F)
      Sentence: "Writers will not combine two short clauses into one compound sentence unless they want to avoid choppy writing and improve the text's flow."
-     Explanation: Introduces a negative condition meaning "except if," perfectly matching the negative main clause ("will not combine").
+     Reason: “Unless” introduces a negative condition meaning “except if,” which perfectly matches the negative main clause (“will not combine”) to explain that writers only combine clauses when seeking to prevent choppy phrasing.
+
 Q37: After (G)
      Sentence: "It is important to know exactly where to place a comma after a dependent clause is written first in a complex structure."
-     Explanation: Chronological sequence for placing punctuation after introductory clauses.
+     Reason: “After” indicates a chronological sequence where the punctuation rule dictates placing a comma immediately following an introductory dependent clause.
+
 Q38: Before (H)
      Sentence: "Always proofread your punctuation carefully before you finalize your essay and submit it to your teacher."
-     Explanation: Checking must take place prior to final submission.
+     Reason: “Before” indicates that proofreading and checking punctuation must chronologically precede the final submission of the essay.
+
 Q39: Until (I)
      Sentence: "You should keep practicing these connection rules every single day until you feel completely confident using them."
-     Explanation: Specifies the temporal endpoint of continuous practice.
+     Reason: “Until” specifies the temporal deadline or endpoint of continuous effort, indicating that daily practice should continue up to the moment confidence is attained.
+
 Q40: Whereas (J)
      Sentence: "Whereas coordinating conjunctions must sit directly between the clauses they connect, subordinating conjunctions can flexibly move to the front of the sentence."
-     Explanation: Formal contrastive conjunction weighing two opposite grammatical behaviors.
+     Reason: “Whereas” serves as a formal contrastive conjunction opening the sentence to weigh two opposite grammatical positions against each other (fixed middle vs. flexible front).
+
 
 --- PART 5: SENTENCE WORD ORDERING / JUMBLED WORDS (Q41–Q50) ---
-Q41: "Military personnel regularly train and carefully maintain their equipment."
-Q42: "The training was demanding, but the personnel completed it successfully."
-Q43: "The soldiers will either attend the morning session or participate in the afternoon session."
-Q44: "Neither the commander nor the personnel were informed about the change."
-Q45: "The personnel successfully completed the exercise, and the officers did too."
-Q46: "The training schedule was changed, so the personnel had to adjust their plans."
-Q47: "Military personnel need discipline and they need effective communication too."
-Q48: "The team will either conduct the exercise tomorrow or postpone it until next week."
-Q49: "Neither the equipment nor the facilities were ready."
-Q50: "The task was challenging, but the personnel remained focused and completed it."
+Q41: Target Sentence: "Military personnel regularly train and carefully maintain their equipment."
+     Reason: Parallel compound predicate: The subject “Military personnel” governs two parallel verb phrases joined by coordinating conjunction “and” (“regularly train” and “carefully maintain their equipment”), with adverbs correctly placed.
+
+Q42: Target Sentence: "The training was demanding, but the personnel completed it successfully."
+     Reason: Compound sentence with coordinating conjunction “but”: Joins two contrasting independent clauses separated by a comma (“The training was demanding,” + but + “the personnel completed it successfully.”).
+
+Q43: Target Sentence: "The soldiers will either attend the morning session or participate in the afternoon session."
+     Reason: Correlative conjunction “either ... or”: Balances two parallel verb phrases following modal “will” (“attend the morning session” or “participate in the afternoon session”).
+
+Q44: Target Sentence: "Neither the commander nor the personnel were informed about the change."
+     Reason: Correlative conjunction “neither ... nor”: By the rule of proximity, when subjects differ in number, the verb agrees with the nearer subject (“the personnel” is plural, requiring plural passive verb “were informed”).
+
+Q45: Target Sentence: "The personnel successfully completed the exercise, and the officers did too."
+     Reason: Compound sentence with affirmative agreement: Coordinates the main clause with an elliptical clause using auxiliary “did” and adverb “too” (“and the officers did too”).
+
+Q46: Target Sentence: "The training schedule was changed, so the personnel had to adjust their plans."
+     Reason: Compound sentence with cause-and-result coordinating conjunction “so”: Preceded by a comma, “so” connects the cause (“The training schedule was changed”) with the resulting action (“the personnel had to adjust their plans”).
+
+Q47: Target Sentence: "Military personnel need discipline and they need effective communication too."
+     Reason: Coordinating addition with emphasis: Links two independent clauses (“Military personnel need discipline” and “they need effective communication”) with coordinating conjunction “and”, supplemented by “too”.
+
+Q48: Target Sentence: "The team will either conduct the exercise tomorrow or postpone it until next week."
+     Reason: Correlative conjunction “either ... or”: Balances two alternative verb phrases following modal “will” (“conduct the exercise tomorrow” or “postpone it until next week”).
+
+Q49: Target Sentence: "Neither the equipment nor the facilities were ready."
+     Reason: Correlative conjunction “Neither ... nor”: The plural noun phrase “the facilities” is positioned closer to the verb, correctly determining the plural past form “were ready”.
+
+Q50: Target Sentence: "The task was challenging, but the personnel remained focused and completed it."
+     Reason: Compound sentence with contrast and parallel predicate: Uses coordinating conjunction “but” to contrast difficulty with success, followed by parallel verbs joined by “and” (“remained focused and completed it”).
 
 
 ================================================================================
@@ -229,7 +331,7 @@ ADMIN DASHBOARD CAPABILITIES:
 6. TECHNICAL & DEPLOYMENT CHECKLIST
 ================================================================================
 ✅ GitHub Pages Status : Active & Deployed (commit pushed)
-✅ Cache-Busting Tag   : v11_export_q_and_keys (ensures browsers fetch latest code)
+✅ Cache-Busting Tag   : v12_review_reasons (ensures browsers fetch latest code)
 ✅ Scoring Logic       : Standardized 1 pt per question (50 raw / 100 scaled)
 ✅ Dropdown Mechanism  : One-Word-Only rule verified and functional
 ✅ Mobile Responsive   : Optimized for iOS Safari, Android Chrome, and Desktop

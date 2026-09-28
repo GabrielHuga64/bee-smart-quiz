@@ -56,7 +56,7 @@
       prompt: "______ I submit my work, I usually review it for errors.",
       options: { A: "Before", B: "After", C: "Unless", D: "Now that" },
       correct: "A",
-      explanation: "“Before I submit my work, I usually review it for errors.” — reviewing happens before submission. (Answer Key: A. Before)"
+      explanation: "“Before” indicates a chronological time relationship where checking and reviewing occurs prior to the submission of the work. “After” reverses the logical routine order, while “Unless” and “Now that” do not fit the chronological context. (Answer Key: A. Before)"
     },
     {
       id: 2,
@@ -67,7 +67,7 @@
       prompt: "She stayed in the classroom ______ she could finish her homework.",
       options: { A: "now that", B: "as", C: "such that", D: "so that" },
       correct: "D",
-      explanation: "Expresses purpose: she stayed so that she could finish her homework."
+      explanation: "“So that” expresses purpose or intended outcome, explaining why she stayed in the classroom, and naturally pairs with the modal auxiliary “could”. “Now that” indicates present cause, and “such that” expresses result rather than personal purpose. (Answer Key: D. so that)"
     },
     {
       id: 3,
@@ -78,7 +78,7 @@
       prompt: "______ the heavy traffic, we still arrived on time.",
       options: { A: "Although", B: "Because of", C: "Even though", D: "In spite of" },
       correct: "D",
-      explanation: "“In spite of” is followed by a noun phrase: “the heavy traffic.” In spite of the heavy traffic, we still arrived on time. (Answer Key: D. In spite of)"
+      explanation: "“In spite of” is a prepositional phrase expressing concession that is followed by the noun phrase “the heavy traffic”. “Although” and “Even though” require a finite clause (subject + verb), while “Because of” expresses cause rather than unexpected arrival despite delays. (Answer Key: D. In spite of)"
     },
     {
       id: 4,
@@ -89,7 +89,7 @@
       prompt: "You can use my computer ______ you need it.",
       options: { A: "Whenever", B: "Whether", C: "Whereas", D: "Because" },
       correct: "A",
-      explanation: "Means “every time that” or “at any time that.”"
+      explanation: "“Whenever” is a subordinating conjunction of time meaning “every time that” or “at any time that”, granting open permission based on need. “Whereas” denotes comparison/contrast, “Whether” introduces alternatives, and “Because” implies necessity rather than open timing. (Answer Key: A. Whenever)"
     },
     {
       id: 5,
@@ -100,7 +100,7 @@
       prompt: "I managed to finish the report ______ being very tired.",
       options: { A: "though", B: "despite", C: "even", D: "because" },
       correct: "B",
-      explanation: "“Despite being very tired” is grammatically correct."
+      explanation: "“Despite” functions as a preposition requiring a noun phrase or gerund phrase (“being very tired”) to express concession. In contrast, “though” and “because” are subordinating conjunctions requiring a finite clause with a conjugated verb. (Answer Key: B. despite)"
     },
     {
       id: 6,
@@ -111,7 +111,7 @@
       prompt: "The training continued ______ several participants had raised concerns about the revised schedule.",
       options: { A: "even though", B: "therefore", C: "now that", D: "because of" },
       correct: "A",
-      explanation: "Introduces a contrast/concession with a complete clause."
+      explanation: "“Even though” is a subordinating conjunction of concession introducing a complete dependent clause (subject “several participants” + verb “had raised”) showing perseverance despite objections. “Because of” cannot govern a finite clause, and “therefore” is a conjunctive adverb. (Answer Key: A. even though)"
     },
     {
       id: 7,
@@ -122,7 +122,7 @@
       prompt: "The personnel were instructed to remain at the designated location ______ further instructions were issued.",
       options: { A: "until", B: "whereas", C: "unless", D: "despite" },
       correct: "A",
-      explanation: "Shows the time up to which the personnel should remain there."
+      explanation: "“Until” marks the temporal limit or endpoint of waiting, indicating that personnel should stay in place up to the moment new orders are issued. “Unless” indicates a condition, and “whereas” indicates comparison. (Answer Key: A. until)"
     },
     {
       id: 8,
@@ -133,7 +133,7 @@
       prompt: "______ the circumstances surrounding the operation, all personnel were expected to comply with the established procedures.",
       options: { A: "Regardless of", B: "Even though", C: "In case", D: "Whereas" },
       correct: "A",
-      explanation: "“Regardless of” is followed by the noun phrase “the circumstances.”"
+      explanation: "“Regardless of” is a complex preposition meaning “without considering” or “in spite of” that correctly introduces the noun phrase “the circumstances surrounding the operation”. “Even though” requires a finite clause. (Answer Key: A. Regardless of)"
     },
     {
       id: 9,
@@ -144,7 +144,7 @@
       prompt: "The exercise was postponed ______ the deterioration in weather conditions.",
       options: { A: "owing to", B: "even if", C: "provided that", D: "in spite of" },
       correct: "A",
-      explanation: "“Owing to” is followed by the noun phrase “the deterioration in weather conditions.”"
+      explanation: "“Owing to” is a prepositional phrase meaning “because of” that correctly precedes the noun phrase “the deterioration in weather conditions” to explain the causal reason for postponement. “Even if” and “provided that” introduce conditional clauses. (Answer Key: A. owing to)"
     },
     {
       id: 10,
@@ -155,7 +155,7 @@
       prompt: "The commander revised the training schedule ______ all personnel would have sufficient time to prepare for the assessment.",
       options: { A: "whereas", B: "so that", C: "even though", D: "in case of" },
       correct: "B",
-      explanation: "Expresses purpose: the schedule was revised so that personnel would have time to prepare."
+      explanation: "“So that” expresses purpose, explaining the goal of revising the schedule, and is followed by the modal auxiliary “would have”. “Whereas” marks contrast, and “in case of” is a preposition requiring a noun. (Answer Key: B. so that)"
     },
 
     // --- PART 2 (Questions 11–20): Paragraph Cloze ---
@@ -169,7 +169,7 @@
       prompt: "Civil servants in Indonesia are expected to complete their responsibilities efficiently (11) ________ they may have to deal with several tasks at the same time.",
       options: { A: "even though", B: "because", C: "unless", D: "so that" },
       correct: "A",
-      explanation: "Shows contrast: they must work efficiently despite having several tasks."
+      explanation: "“Even though” introduces a concessive clause, highlighting the contrast between the professional requirement of efficiency and the burden of multitasking. (Answer Key: A. even though)"
     },
     {
       id: 12,
@@ -181,7 +181,7 @@
       prompt: "They often need to attend meetings, prepare documents, and coordinate with other employees (12) ________ completing their daily assignments.",
       options: { A: "while", B: "because of", C: "despite", D: "unless" },
       correct: "A",
-      explanation: "“While completing their daily assignments” shows simultaneous activities."
+      explanation: "“While” indicates simultaneous ongoing activities (“while completing their daily assignments”), demonstrating that collaborative duties happen concurrently with daily assignments. (Answer Key: A. while)"
     },
     {
       id: 13,
@@ -193,7 +193,7 @@
       prompt: "(13) ________ some tasks require additional time, employees are generally expected to meet the established deadlines.",
       options: { A: "Even though", B: "because", C: "unless", D: "so that" },
       correct: "A",
-      explanation: "Shows contrast between tasks requiring additional time and the expectation to meet deadlines."
+      explanation: "“Even though” opens the sentence with concession, contrasting the reality that complex tasks require extra time with the strict expectation to meet deadlines. (Answer Key: A. Even though)"
     },
     {
       id: 14,
@@ -205,7 +205,7 @@
       prompt: "They may ask for clarification (14) ________ they are uncertain about an instruction or procedure.",
       options: { A: "when", B: "although", C: "despite", D: "where" },
       correct: "A",
-      explanation: "“When they are uncertain...” indicates the situation in which they ask for clarification."
+      explanation: "“When” specifies the temporal condition or circumstance (“at the time that they are uncertain”) prompting civil servants to seek procedural clarification. (Answer Key: A. when)"
     },
     {
       id: 15,
@@ -217,7 +217,7 @@
       prompt: "(15) ________ unexpected changes occur, they are usually required to adjust their plans accordingly.",
       options: { A: "Whenever", B: "Whereas", C: "Although", D: "Even" },
       correct: "A",
-      explanation: "Means every time unexpected changes occur."
+      explanation: "“Whenever” conveys recurring time or repeated contingency (“every time that unexpected changes occur”), introducing the ongoing obligation to adapt operational plans. (Answer Key: A. Whenever)"
     },
     {
       id: 16,
@@ -229,7 +229,7 @@
       prompt: "Military personnel are expected to remain disciplined and prepared (16) _____ unexpected situations arise during their daily responsibilities.",
       options: { A: "although", B: "because of", C: "whenever", D: "unless" },
       correct: "C",
-      explanation: "Indicates that they must remain disciplined and prepared whenever they carry out their responsibilities."
+      explanation: "“Whenever” indicates recurring situations or contingencies (“at any time that unexpected situations arise”), emphasizing continuous operational readiness. (Answer Key: C. whenever)"
     },
     {
       id: 17,
@@ -241,7 +241,7 @@
       prompt: "They often work as a team (17) ________ completing tasks that require coordination and clear communication.",
       options: { A: "while", B: "because of", C: "despite", D: "unless" },
       correct: "A",
-      explanation: "“While completing tasks” indicates simultaneous actions."
+      explanation: "“While” followed by a participial phrase (“while completing tasks”) illustrates simultaneous collaborative teamwork during operational execution. (Answer Key: A. while)"
     },
     {
       id: 18,
@@ -253,7 +253,7 @@
       prompt: "(18) ________ unexpected situations may arise, personnel are expected to follow established procedures and respond appropriately.",
       options: { A: "Although", B: "because of", C: "whereas", D: "so that" },
       correct: "A",
-      explanation: "Introduces a contrast: unexpected situations may arise, but procedures must still be followed."
+      explanation: "“Although” opens the sentence with concession, balancing the possibility of volatile situations against the strict duty to follow established standard operating procedures. (Answer Key: A. Although)"
     },
     {
       id: 19,
@@ -265,7 +265,7 @@
       prompt: "They may review their plans (19) ________ they identify circumstances that could affect their activities.",
       options: { A: "whereas", B: "although", C: "despite", D: "when" },
       correct: "D",
-      explanation: "They may review their plans when they identify potentially relevant circumstances."
+      explanation: "“When” specifies the precise operational condition and timing that triggers a review of tactical or strategic plans. (Answer Key: D. when)"
     },
     {
       id: 20,
@@ -277,7 +277,7 @@
       prompt: "Effective communication is essential throughout the process (20) ________ everyone understands their responsibilities.",
       options: { A: "Whereas", B: "Unless", C: "Because", D: "So that" },
       correct: "D",
-      explanation: "Expresses purpose: communication is essential so that everyone understands their responsibilities."
+      explanation: "“So that” expresses purpose, explaining that rigorous communication protocols exist specifically to ensure that all personnel comprehend their duties. (Answer Key: D. So that)"
     },
 
     // --- PART 3 (Questions 21–30): Grammatical Correctness ---
@@ -290,7 +290,7 @@
       prompt: "Although the training was demanding, the personnel managed to complete all the required activities within the allocated time.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "A",
-      explanation: "“Although + clause” is used correctly."
+      explanation: "CORRECT. “Although” is properly used as a subordinating conjunction introducing a complete dependent clause (“the training was demanding”) separated from the independent clause by a comma. (Answer Key: A. CORRECT)"
     },
     {
       id: 22,
@@ -301,7 +301,7 @@
       prompt: "Despite the personnel were given clear instructions, several procedures were not followed correctly.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "B",
-      explanation: "“Despite” cannot normally be followed directly by a finite clause. Use “Although the personnel were...” or “Despite being given...”"
+      explanation: "INCORRECT. “Despite” is a preposition and cannot directly introduce a finite clause with a subject and conjugated verb (“the personnel were given”). Grammatical correction: “Although the personnel were given...” or “Despite being given clear instructions...”. (Answer Key: B. INCORRECT)"
     },
     {
       id: 23,
@@ -312,7 +312,7 @@
       prompt: "The exercise will continue unless the weather conditions become sufficiently severe to pose a safety risk.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "A",
-      explanation: "“Unless + clause” is used correctly."
+      explanation: "CORRECT. “Unless” correctly introduces a negative conditional clause (“except if weather conditions become severe”), employing the present tense (“become”) for future real conditions. (Answer Key: A. CORRECT)"
     },
     {
       id: 24,
@@ -323,7 +323,7 @@
       prompt: "The personnel remained at the designated location until further instructions were provided.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "A",
-      explanation: "“Until further instructions were provided” is grammatically correct, with consistent past tense throughout."
+      explanation: "CORRECT. “Until” correctly marks the temporal boundary of waiting, maintaining past tense consistency throughout both clauses (“remained” ... “were provided”). (Answer Key: A. CORRECT)"
     },
     {
       id: 25,
@@ -334,7 +334,7 @@
       prompt: "Even though the schedule had been revised several times, the personnel were able to adapt to the changes without significant difficulties.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "A",
-      explanation: "“Even though + clause” is used correctly."
+      explanation: "CORRECT. “Even though” appropriately introduces a concessive clause with past perfect aspect (“had been revised”), followed by a comma before the main clause. (Answer Key: A. CORRECT)"
     },
     {
       id: 26,
@@ -345,7 +345,7 @@
       prompt: "The commander adjusted the training schedule so that all personnel would have adequate time to prepare for the assessment.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "A",
-      explanation: "“So that + clause” correctly expresses purpose."
+      explanation: "CORRECT. “So that” correctly introduces a subordinate purpose clause followed by the modal auxiliary “would have”, aligning cause with intended outcome. (Answer Key: A. CORRECT)"
     },
     {
       id: 27,
@@ -356,7 +356,7 @@
       prompt: "Regardless of how challenging the circumstances may be, personnel are expected to comply with the established procedures.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "A",
-      explanation: "“Regardless of how challenging...” is grammatically correct."
+      explanation: "CORRECT. “Regardless of” is a complex preposition that correctly takes a wh-nominal clause (“how challenging the circumstances may be”) functioning as a concessive modifier. (Answer Key: A. CORRECT)"
     },
     {
       id: 28,
@@ -367,7 +367,7 @@
       prompt: "Because of several participants had failed to complete the required preparation, the assessment was postponed.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "B",
-      explanation: "“Because of” must be followed by a noun/noun phrase, not a finite clause."
+      explanation: "INCORRECT. “Because of” is a prepositional phrase requiring a noun phrase object. It cannot be followed by a full subject-verb clause (“several participants had failed”). Grammatical correction: “Because several participants had failed...” or “Because of the failure of several participants...”. (Answer Key: B. INCORRECT)"
     },
     {
       id: 29,
@@ -378,7 +378,7 @@
       prompt: "The personnel continued with the exercise, despite the weather conditions had become increasingly unfavorable.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "B",
-      explanation: "“Despite” cannot directly introduce the clause “the weather conditions had become...”"
+      explanation: "INCORRECT. “Despite” is a preposition and cannot directly govern a finite clause with a verb phrase (“the weather conditions had become”). Grammatical correction: “despite the weather conditions becoming unfavorable” or “although the weather conditions had become unfavorable”. (Answer Key: B. INCORRECT)"
     },
     {
       id: 30,
@@ -389,7 +389,7 @@
       prompt: "Provided that all safety requirements are met, the personnel may proceed with the scheduled activity.",
       options: { A: "CORRECT", B: "INCORRECT" },
       correct: "A",
-      explanation: "“Provided that + clause” is used correctly."
+      explanation: "CORRECT. “Provided that” functions as a formal conditional subordinating conjunction meaning “on condition that” or “if”, followed by a present passive clause. (Answer Key: A. CORRECT)"
     },
 
     // --- PART 4 (Questions 31–40): Word Bank Questions ---
@@ -416,7 +416,7 @@
         L: "As long as"
       },
       correct: "A",
-      explanation: "It introduces the specific causal reason why these conjunctions are unique and essential."
+      explanation: "“Because” introduces the specific causal reason explaining why coordinating conjunctions are unique and indispensable tools in English grammar. (Answer Key: A. Because)"
     },
     {
       id: 32,
@@ -441,7 +441,7 @@
         L: "As long as"
       },
       correct: "B",
-      explanation: "It establishes a clear contrast (concession) between the difficulty of the task and the simplicity of the solution."
+      explanation: "“Although” establishes a clear contrast/concession between the difficulty students face in memorizing all seven conjunctions and the simplicity of the FANBOYS acronym. (Answer Key: B. Although)"
     },
     {
       id: 33,
@@ -466,7 +466,7 @@
         L: "As long as"
       },
       correct: "C",
-      explanation: "It sets up a pure conditional requirement (if this is your goal, then use this specific tool)."
+      explanation: "“If” sets up a pure conditional requirement, stating that whenever your objective is to balance ideas with equal importance, a coordinating conjunction is required. (Answer Key: C. If)"
     },
     {
       id: 34,
@@ -491,7 +491,7 @@
         L: "As long as"
       },
       correct: "D",
-      explanation: "It is used at the beginning of the sentence to show a direct, simultaneous comparison between two different things."
+      explanation: "“While” is placed at the start of the sentence to show a direct, simultaneous comparison contrasting coordinating conjunctions with subordinating conjunctions. (Answer Key: D. While)"
     },
     {
       id: 35,
@@ -516,7 +516,7 @@
         L: "As long as"
       },
       correct: "E",
-      explanation: "It acts strictly as a time conjunction meaning \"from that specific time in the past until now\" because it is followed by a specific year."
+      explanation: "“Since” functions as a temporal conjunction meaning “from that specific starting time in the past until now,” as required by the specific year (1900) and present perfect verb (“have categorized”). (Answer Key: E. Since)"
     },
     {
       id: 36,
@@ -541,7 +541,7 @@
         L: "As long as"
       },
       correct: "F",
-      explanation: "It introduces a negative condition meaning \"except if,\" which perfectly matches the negative main clause (will not combine)."
+      explanation: "“Unless” introduces a negative condition meaning “except if,” which perfectly matches the negative main clause (“will not combine”) to explain that writers only combine clauses when seeking to prevent choppy phrasing. (Answer Key: F. Unless)"
     },
     {
       id: 37,
@@ -566,7 +566,7 @@
         L: "As long as"
       },
       correct: "G",
-      explanation: "It indicates a chronological sequence where the punctuation rule must follow the specific structural placement."
+      explanation: "“After” indicates a chronological sequence where the punctuation rule dictates placing a comma immediately following an introductory dependent clause. (Answer Key: G. After)"
     },
     {
       id: 38,
@@ -591,7 +591,7 @@
         L: "As long as"
       },
       correct: "H",
-      explanation: "It indicates that the checking action must happen prior to the final submission of the work."
+      explanation: "“Before” indicates that proofreading and checking punctuation must chronologically precede the final submission of the essay. (Answer Key: H. Before)"
     },
     {
       id: 39,
@@ -616,7 +616,7 @@
         L: "As long as"
       },
       correct: "I",
-      explanation: "It specifies a temporal deadline or the endpoint of a continuous action (keep practicing)."
+      explanation: "“Until” specifies the temporal deadline or endpoint of continuous effort, indicating that daily practice should continue up to the moment confidence is attained. (Answer Key: I. Until)"
     },
     {
       id: 40,
@@ -641,7 +641,7 @@
         L: "As long as"
       },
       correct: "J",
-      explanation: "It serves as a formal contrastive conjunction at the start of a sentence to weigh two opposite grammatical behaviors against each other."
+      explanation: "“Whereas” serves as a formal contrastive conjunction opening the sentence to weigh two opposite grammatical positions against each other (fixed middle vs. flexible front). (Answer Key: J. Whereas)"
     },
 
     // --- PART 5 (Questions 41–50): Sentence Word Ordering / Jumbled Words ---
@@ -658,7 +658,7 @@
         "Military personnel train regularly and maintain their equipment carefully.",
         "Military personnel train carefully and maintain their equipment regularly."
       ],
-      explanation: "Military personnel regularly train and carefully maintain their equipment."
+      explanation: "Parallel compound predicate: The subject “Military personnel” governs two parallel verb phrases joined by coordinating conjunction “and” (“regularly train” and “carefully maintain their equipment”), with adverbs correctly placed."
     },
     {
       id: 42,
@@ -669,7 +669,7 @@
       prompt: "successfully. / but / The training / completed / was / demanding / the personnel / it",
       scrambledChips: ["successfully.", "completed", "demanding,", "The training", "was", "but", "the personnel", "it"],
       target: "The training was demanding, but the personnel completed it successfully.",
-      explanation: "The training was demanding, but the personnel completed it successfully."
+      explanation: "Compound sentence with coordinating conjunction “but”: Joins two contrasting independent clauses separated by a comma (“The training was demanding,” + but + “the personnel completed it successfully.”)."
     },
     {
       id: 43,
@@ -684,7 +684,7 @@
         "Either the soldiers will attend the morning session or they will participate in the afternoon session.",
         "Either the soldiers will attend the morning session or participate in the afternoon session."
       ],
-      explanation: "The soldiers will either attend the morning session or participate in the afternoon session."
+      explanation: "Correlative conjunction “either ... or”: Balances two parallel verb phrases following modal “will” (“attend the morning session” or “participate in the afternoon session”)."
     },
     {
       id: 44,
@@ -695,7 +695,7 @@
       prompt: "informed / Neither / nor / were / the personnel / the commander / about / the change.",
       scrambledChips: ["informed", "the personnel", "the change.", "Neither", "about", "nor", "the commander", "were"],
       target: "Neither the commander nor the personnel were informed about the change.",
-      explanation: "Neither the commander nor the personnel were informed about the change."
+      explanation: "Correlative conjunction “neither ... nor”: By the rule of proximity, when subjects differ in number, the verb agrees with the nearer subject (“the personnel” is plural, requiring plural passive verb “were informed”)."
     },
     {
       id: 45,
@@ -710,7 +710,7 @@
         "The officers completed the exercise successfully and the personnel did too.",
         "The officers completed the exercise successfully, and the personnel did too."
       ],
-      explanation: "The personnel successfully completed the exercise, and the officers did too."
+      explanation: "Compound sentence with affirmative agreement: Coordinates the main clause with an elliptical clause using auxiliary “did” and adverb “too” (“and the officers did too”)."
     },
     {
       id: 46,
@@ -721,7 +721,7 @@
       prompt: "their plans. / so / The training schedule / had to / was changed / adjust / the personnel",
       scrambledChips: ["their plans.", "The training schedule", "was changed,", "adjust", "had to", "so", "the personnel"],
       target: "The training schedule was changed, so the personnel had to adjust their plans.",
-      explanation: "The training schedule was changed, so the personnel had to adjust their plans."
+      explanation: "Compound sentence with cause-and-result coordinating conjunction “so”: Preceded by a comma, “so” connects the cause (“The training schedule was changed”) with the resulting action (“the personnel had to adjust their plans”)."
     },
     {
       id: 47,
@@ -737,7 +737,7 @@
         "Military personnel need effective communication and they need discipline too.",
         "Military personnel need effective communication, and they need discipline too."
       ],
-      explanation: "Military personnel need discipline and they need effective communication too."
+      explanation: "Coordinating addition with emphasis: Links two independent clauses (“Military personnel need discipline” and “they need effective communication”) with coordinating conjunction “and”, supplemented by “too”."
     },
     {
       id: 48,
@@ -751,7 +751,7 @@
       alternateTargets: [
         "Either the team will conduct the exercise tomorrow or postpone it until next week."
       ],
-      explanation: "The team will either conduct the exercise tomorrow or postpone it until next week."
+      explanation: "Correlative conjunction “either ... or”: Balances two alternative verb phrases following modal “will” (“conduct the exercise tomorrow” or “postpone it until next week”)."
     },
     {
       id: 49,
@@ -765,7 +765,7 @@
       alternateTargets: [
         "Neither the facilities nor the equipment were ready."
       ],
-      explanation: "Neither the equipment nor the facilities were ready."
+      explanation: "Correlative conjunction “Neither ... nor”: The plural noun phrase “the facilities” is positioned closer to the verb, correctly determining the plural past form “were ready”."
     },
     {
       id: 50,
@@ -776,7 +776,7 @@
       prompt: "remained / but / The task / focused / challenging / was / the personnel / and / completed / it.",
       scrambledChips: ["The task", "remained", "completed", "focused", "was", "challenging,", "the personnel", "and", "but", "it."],
       target: "The task was challenging, but the personnel remained focused and completed it.",
-      explanation: "The task was challenging, but the personnel remained focused and completed it."
+      explanation: "Compound sentence with contrast and parallel predicate: Uses coordinating conjunction “but” to contrast difficulty with success, followed by parallel verbs joined by “and” (“remained focused and completed it”)."
     }
   ];
 
