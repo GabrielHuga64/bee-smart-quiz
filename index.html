@@ -21,8 +21,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- App Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <!-- App Stylesheet (v17 mobile submit modal) -->
+  <link rel="stylesheet" href="style.css?v=20260928_v17_mobile_submit">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
 </head>
 <body class="notranslate" translate="no">
@@ -668,78 +668,81 @@
     <div class="modal-card finish-confirm-card">
       <button id="closeFinishConfirmBtn" class="modal-close-btn" aria-label="Close modal">&times;</button>
       
-      <div class="confirm-header text-center">
-        <div class="confirm-mascot-icon">🏁</div>
-        <h3 id="finishConfirmTitle" class="modal-title">Ready to Submit Your Exam?</h3>
-        <p class="modal-subtitle">Please confirm your completion status before final grading</p>
-      </div>
+      <!-- Scrollable content area so action buttons are always pinned and visible -->
+      <div class="confirm-scroll-body">
+        <div class="confirm-header text-center">
+          <div class="confirm-mascot-icon">🏁</div>
+          <h3 id="finishConfirmTitle" class="modal-title">Ready to Submit Your Exam?</h3>
+          <p class="modal-subtitle">Please confirm your completion status before final grading</p>
+        </div>
 
-      <!-- Completion Summary Cards (3 Columns) -->
-      <div class="confirm-summary-grid">
-        <div class="confirm-stat-card card-answered">
-          <span class="stat-card-icon">✅</span>
-          <div class="stat-card-val" id="confirmAnsweredCount">0 / 50</div>
-          <div class="stat-card-label">Answered</div>
-        </div>
-        <div class="confirm-stat-card card-unanswered" id="cardUnansweredWrap">
-          <span class="stat-card-icon">⚪</span>
-          <div class="stat-card-val" id="confirmUnansweredCount">0</div>
-          <div class="stat-card-label">Not Answered</div>
-        </div>
-        <div class="confirm-stat-card card-flagged" id="cardFlaggedWrap">
-          <span class="stat-card-icon">🚩</span>
-          <div class="stat-card-val" id="confirmFlaggedCount">0</div>
-          <div class="stat-card-label">Marked Not Sure</div>
-        </div>
-      </div>
-
-      <!-- Dynamic Detailed Status Notices -->
-      <div id="confirmDetailsArea" class="confirm-details-area">
-        <!-- Unanswered Alert (if > 0) -->
-        <div id="confirmUnansweredBox" class="confirm-status-box status-box-warn hidden">
-          <div class="status-box-header">
-            <strong>⚠️ Unanswered Questions (<span id="confirmUnansweredListCount">0</span>):</strong>
+        <!-- Completion Summary Cards (Compact 3 Columns) -->
+        <div class="confirm-summary-grid">
+          <div class="confirm-stat-card card-answered">
+            <span class="stat-card-icon">✅</span>
+            <div class="stat-card-val" id="confirmAnsweredCount">0 / 50</div>
+            <div class="stat-card-label">Answered</div>
           </div>
-          <p class="status-box-text">
-            You haven't answered these questions yet. Unanswered questions will receive <strong>0 points</strong>:
-          </p>
-          <div id="confirmUnansweredTags" class="confirm-q-tags-container"></div>
+          <div class="confirm-stat-card card-unanswered" id="cardUnansweredWrap">
+            <span class="stat-card-icon">⚪</span>
+            <div class="stat-card-val" id="confirmUnansweredCount">0</div>
+            <div class="stat-card-label">Not Answered</div>
+          </div>
+          <div class="confirm-stat-card card-flagged" id="cardFlaggedWrap">
+            <span class="stat-card-icon">🚩</span>
+            <div class="stat-card-val" id="confirmFlaggedCount">0</div>
+            <div class="stat-card-label">Marked Not Sure</div>
+          </div>
         </div>
 
-        <!-- Not Sure Flagged Alert (if > 0) -->
-        <div id="confirmFlaggedBox" class="confirm-status-box status-box-info hidden">
-          <div class="status-box-header">
-            <strong>🚩 Marked as Not Sure (<span id="confirmFlaggedListCount">0</span>):</strong>
+        <!-- Dynamic Detailed Status Notices -->
+        <div id="confirmDetailsArea" class="confirm-details-area">
+          <!-- Unanswered Alert (if > 0) -->
+          <div id="confirmUnansweredBox" class="confirm-status-box status-box-warn hidden">
+            <div class="status-box-header">
+              <strong>⚠️ Unanswered Questions (<span id="confirmUnansweredListCount">0</span>):</strong>
+            </div>
+            <p class="status-box-text">
+              You haven't answered these questions yet. Unanswered questions will receive <strong>0 points</strong>:
+            </p>
+            <div id="confirmUnansweredTags" class="confirm-q-tags-container"></div>
           </div>
-          <p class="status-box-text">
-            Any choice you selected for these questions will be <strong>graded as your final answer</strong>.
-          </p>
-          <div id="confirmFlaggedTags" class="confirm-q-tags-container"></div>
+
+          <!-- Not Sure Flagged Alert (if > 0) -->
+          <div id="confirmFlaggedBox" class="confirm-status-box status-box-info hidden">
+            <div class="status-box-header">
+              <strong>🚩 Marked as Not Sure (<span id="confirmFlaggedListCount">0</span>):</strong>
+            </div>
+            <p class="status-box-text">
+              Any choice you selected for these questions will be <strong>graded as your final answer</strong>.
+            </p>
+            <div id="confirmFlaggedTags" class="confirm-q-tags-container"></div>
+          </div>
+
+          <!-- All Answered Success Notice (if unanswered === 0) -->
+          <div id="confirmAllAnsweredBox" class="confirm-status-box status-box-success hidden">
+            <div class="status-box-header">
+              <strong>🎉 All 50 Questions Answered!</strong>
+            </div>
+            <p class="status-box-text">
+              Terrific job! You answered every single question. You can submit now or do a quick final review.
+            </p>
+          </div>
         </div>
 
-        <!-- All Answered Success Notice (if unanswered === 0) -->
-        <div id="confirmAllAnsweredBox" class="confirm-status-box status-box-success hidden">
-          <div class="status-box-header">
-            <strong>🎉 All 50 Questions Answered!</strong>
-          </div>
-          <p class="status-box-text">
-            Terrific job! You answered every single question. You can submit now or do a quick final review.
-          </p>
+        <!-- Informative Policy Reminder -->
+        <div class="confirm-notice-banner">
+          💡 <em>Reminder:</em> Once submitted, your score will be recorded. Questions you marked "Not Sure" will submit your chosen option as your final answer.
         </div>
       </div>
 
-      <!-- Informative Policy Reminder -->
-      <div class="confirm-notice-banner">
-        💡 <em>Reminder:</em> Once submitted, your score will be recorded. Questions you marked "Not Sure" will submit your chosen option as your final answer.
-      </div>
-
-      <!-- Modal Action Buttons -->
+      <!-- Modal Action Buttons (Always pinned & directly accessible on phones!) -->
       <div class="confirm-actions-row">
-        <button type="button" id="cancelFinishBtn" class="btn btn-secondary btn-review">
-          🔍 Review My Questions
-        </button>
         <button type="button" id="confirmFinalSubmitBtn" class="btn btn-primary btn-submit-final">
           🚀 Yes, Submit Exam Now
+        </button>
+        <button type="button" id="cancelFinishBtn" class="btn btn-secondary btn-review">
+          🔍 Review My Questions
         </button>
       </div>
 
@@ -1183,6 +1186,6 @@
   <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
   <script src="assets/xlsx.full.min.js"></script>
   <!-- App Script (50 Questions, 45 Minutes, 1 pt each, Part 4 Word Bank, Part 5 Rearrange) -->
-  <script src="assets/app.js?v=v16_hide_wb_validate"></script>
+  <script src="assets/app.js?v=20260928_v17_mobile_submit"></script>
 </body>
 </html>
