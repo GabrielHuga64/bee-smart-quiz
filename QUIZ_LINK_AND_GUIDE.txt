@@ -1,106 +1,222 @@
 ================================================================================
 BEE SMART LEARNING — SUBORDINATING CONJUNCTION MASTER QUIZ
-OFFICIAL ONLINE LINK & COMPLETE USER GUIDE
+OFFICIAL ONLINE LINKS, STUDENT GUIDE & TEACHER HANDBOOK
 ================================================================================
 
-1. OFFICIAL QUIZ LINK
+1. OFFICIAL QUIZ ACCESS LINKS
 --------------------------------------------------------------------------------
-Permanent Online URL (Accessible worldwide 24/7 on any device):
+A. PERMANENT LIVE ONLINE LINK (Recommended for all students):
+   👉 https://gabrielhuga64.github.io/dibee-gabriel-smart-quiz/
+
+   - Platform: GitHub Pages (SSL HTTPS Secured)
+   - Availability: 24/7 Worldwide on any device
+   - Compatibility: Smartphone (iOS Safari / Android Chrome), Tablet, PC, Mac
+   - No installation or login required for students!
+
+B. LOCAL CLASSROOM / WIFI LAN SERVER (Optional for offline local testing):
+   👉 http://10.1.17.79:5500
+   👉 http://localhost:5500 (Teacher host machine)
+
+
+================================================================================
+2. MESSAGE TEMPLATE TO SEND TO STUDENTS (Copy & Paste Ready)
+================================================================================
+Halo semuanya / Dear Students,
+
+Silakan kerjakan Quiz Subordinating Conjunction melalui link resmi berikut:
 👉 https://gabrielhuga64.github.io/dibee-gabriel-smart-quiz/
 
-- Platform: GitHub Pages (SSL HTTPS secured)
-- Compatibility: iPhone (Safari), Android (Chrome), Windows, Mac, iPad, Tablet
-- Requirements: Modern web browser (No installation or account required)
+📌 PETUNJUK PENGERJAAN:
+1. Buka link di atas menggunakan browser di HP, tablet, atau laptop.
+2. Masukkan NAMA LENGKAP kamu pada kolom yang tersedia, lalu klik "Start Quiz 🚀".
+3. Jumlah Soal: 50 Soal (Terbagi dalam 5 Bagian).
+4. Waktu Pengerjaan: 45 Menit (Ada timer di pojok kanan atas).
+   *Catatan: Jika waktu 45 menit habis, kamu TIDAK akan terkunci. Tetap selesaikan semua soal sampai selesai.
+5. Pada Bagian 4 (Word Bank):
+   - Terdapat 10 titik-titik (dropdown) dalam 2 paragraf.
+   - Pilihlah kata yang tepat dari Bank Kata.
+   - Setiap kata HANYA BISA DIGUNAKAN 1 KALI (kata yang sudah dipilih akan otomatis hilang/nonaktif pada pilihan lainnya).
+6. Pada Bagian 5 (Jumbled Words):
+   - Klik chip kata secara berurutan untuk menyusun kalimat yang benar.
+7. Setelah nomor 50 selesai, klik "Submit Exam" untuk melihat skor dan pembahasan lengkap.
+
+Good luck and do your best! 🐝✨
 
 
 ================================================================================
-2. HOW TO USE — FOR STUDENTS & TEST TAKERS
+3. QUIZ BLUEPRINT & SCORING SYSTEM
 ================================================================================
+- Total Questions   : 50 Questions
+- Recommended Time  : 45 Minutes (2700 Seconds)
+- Overtime Policy   : Non-locking grace period with overtime indicator
+- Scoring Method    : 1 Raw Point per question (Total = 50 Raw Points)
+- Scaled Final Score: 100 Points Scale (Raw Score × 2)
 
-STEP 1: Open the Link
-- Tap or click the link above, or scan the QR code from the welcome screen.
+THE 5 QUIZ PARTS:
+-----------------
+* PART 1 (Questions 1–10): Multiple Choices
+  Select the correct subordinating conjunction (A, B, C, or D).
 
-STEP 2: Enter Your Full Name
-- Type your full name in the "Full Name" input box.
-- The bright orange "Start Quiz 🚀" button will unlock. Click it to begin!
+* PART 2 (Questions 11–20): Contextual Paragraph Cloze
+  Read authentic passages (Civil Servants & Military Personnel) and select
+  the appropriate conjunction (A, B, C, or D) for each blank.
 
-STEP 3: Taking the Quiz (50 Questions / 45 Minutes)
-- Timer: 45 minutes recommended (counted down in the top-right corner).
-  * Note: If 45 minutes expires, you will NOT be locked out. An overtime
-    banner appears, allowing you to finish all remaining questions peacefully.
+* PART 3 (Questions 21–30): Grammatical Correctness
+  Analyze complex sentence structures and choose CORRECT or INCORRECT.
 
-- Quiz Structure (5 Distinct Parts):
-  * PART 1 (Questions 1–10): Multiple Choices
-    Select the best subordinating conjunction (A, B, C, or D).
-  * PART 2 (Questions 11–20): Paragraph Cloze
-    Read the contextual passage (Civil Servants / Military Personnel)
-    and pick the conjunction that logically connects the clauses.
-  * PART 3 (Questions 21–30): Grammatical Correctness
-    Analyze the complex sentence and tap "CORRECT" or "INCORRECT".
-  * PART 4 (Questions 31–40): Word Bank Questions
-    Complete 2 paragraphs (10 blanks) using words from the 12-word Word Bank.
-    Enforces a strict "One-Word-Only" rule (selected words disable in other blanks).
-  * PART 5 (Questions 41–50): Sentence Word Ordering / Jumbled Words
-    Tap the colorful word chips in order to construct the grammatically
-    correct complex sentence. Tap chips in the target box to return them.
+* PART 4 (Questions 31–40): Word Bank Passage Completion
+  Complete 10 blanks across 2 paragraphs using a 12-word bank (10 correct + 2 distractors).
+  Enforces strict "One-Word-Only" selection logic.
 
-STEP 4: Question Palette & Navigation
-- Tap "📋 Review Questions" at the top to open the slide-out Question Palette.
-- Quickly jump to any question (1 to 50).
-- Flag questions (🚩) to revisit before final submission.
-
-STEP 5: Submitting & Reviewing Results
-- On Question 50 (or from the confirmation modal), click "Submit Exam".
-- View your final score (out of 100 scaled points / 50 raw points), accuracy percentage, and time status.
-- Review detailed pedagogical explanations for all 50 questions to learn
-  the grammatical rules and correct usage.
+* PART 5 (Questions 41–50): Sentence Word Ordering / Jumbled Words
+  Interactive draggable/clickable chip system to construct grammatically
+  sound complex sentences.
 
 
 ================================================================================
-3. HOW TO USE — FOR TEACHERS & ADMINISTRATORS
+4. MASTER TEACHER ANSWER KEY & EXPLANATIONS (Q1 – Q50)
 ================================================================================
 
-HOW TO LOG IN TO THE ADMIN PORTAL:
-1. Scroll to the very bottom of the page (footer).
-2. Click "Admin Portal 🔐".
-3. Enter the administrator credentials:
+--- PART 1: MULTIPLE CHOICES (Q1–Q10) ---
+Q1 : Before (A)
+     "Before I submit my work, I usually review it for errors."
+     Explanation: Reviewing happens prior to submission.
+Q2 : so that (D)
+     "She stayed in the classroom so that she could finish her homework."
+     Explanation: Expresses purpose.
+Q3 : In spite of (D)
+     "In spite of the heavy traffic, we still arrived on time."
+     Explanation: Followed by a noun phrase ("the heavy traffic").
+Q4 : Whenever (A)
+     "You can use my computer whenever you need it."
+     Explanation: Means "every time that" or "at any time that."
+Q5 : despite (B)
+     "I managed to finish the report despite being very tired."
+     Explanation: "Despite + gerund (-ing)" is grammatically correct.
+Q6 : even though (A)
+     "The training continued even though several participants had raised concerns..."
+     Explanation: Concessive conjunction introducing a finite clause.
+Q7 : until (A)
+     "The personnel were instructed to remain at the designated location until further instructions were issued."
+     Explanation: Indicates time endpoint.
+Q8 : Regardless of (A)
+     "Regardless of the circumstances surrounding the operation, all personnel were expected to comply..."
+     Explanation: Followed by a noun phrase ("the circumstances...").
+Q9 : owing to (A)
+     "The exercise was postponed owing to the deterioration in weather conditions."
+     Explanation: Prepositional phrase followed by a noun phrase.
+Q10: so that (B)
+     "The commander revised the training schedule so that all personnel would have sufficient time..."
+     Explanation: Expresses purpose with modal "would have".
+
+--- PART 2: PARAGRAPH CLOZE (Q11–Q20) ---
+Passage 1: Civil Servants in Indonesia
+Q11: even though (A) — Concession despite multiple concurrent tasks.
+Q12: while (A)       — Simultaneous ongoing activities.
+Q13: Even though (A) — Contrast between extra time needed and deadline expectations.
+Q14: when (A)        — Specific condition/time for asking clarification.
+Q15: Whenever (A)    — Recurring event ("every time unexpected changes occur").
+
+Passage 2: Military Personnel Responsibilities
+Q16: whenever (C)    — Recurring operational readiness condition.
+Q17: while (A)       — Simultaneous collaborative action.
+Q18: Although (A)    — Concessive clause at start of sentence.
+Q19: when (D)        — Temporal circumstance for plan review.
+Q20: So that (D)     — Purpose of effective communication.
+
+--- PART 3: GRAMMATICAL CORRECTNESS (Q21–Q30) ---
+Q21: CORRECT (A)   — "Although + clause" used accurately.
+Q22: INCORRECT (B) — "Despite" cannot directly precede a finite clause.
+Q23: CORRECT (A)   — "Unless + clause" represents a valid negative condition.
+Q24: CORRECT (A)   — "Until + clause" with consistent past tense.
+Q25: CORRECT (A)   — "Even though + clause" expressing concession correctly.
+Q26: CORRECT (A)   — "So that + clause" expressing purpose accurately.
+Q27: CORRECT (A)   — "Regardless of how challenging..." is valid.
+Q28: INCORRECT (B) — "Because of" requires a noun phrase, not a clause.
+Q29: INCORRECT (B) — "Despite" cannot directly precede a finite clause.
+Q30: CORRECT (A)   — "Provided that + clause" used properly.
+
+--- PART 4: WORD BANK PASSAGE COMPLETION (Q31–Q40) ---
+Word Bank Choices: Because, Although, If, While, Since, Unless, After, Before, Until, Whereas
+Distractors: so, As long as
+
+Paragraph 1: Understanding Coordinating Conjunctions
+Q31: Because (A)
+     Explanation: Introduces the causal reason why these conjunctions are unique.
+Q32: Although (B)
+     Explanation: Establishes a concession between difficulty and the FANBOYS solution.
+Q33: If (C)
+     Explanation: Sets up a pure conditional requirement.
+Q34: While (D)
+     Explanation: Direct, simultaneous comparison between two differing elements.
+Q35: Since (E)
+     Explanation: Time conjunction meaning "from that specific time until now" with year 1900.
+
+Paragraph 2: Punctuation and Rules
+Q36: Unless (F)
+     Sentence: "Writers will not combine two short clauses into one compound sentence unless they want to avoid choppy writing and improve the text's flow."
+     Explanation: Introduces a negative condition meaning "except if," perfectly matching the negative main clause ("will not combine").
+Q37: After (G)
+     Sentence: "It is important to know exactly where to place a comma after a dependent clause is written first in a complex structure."
+     Explanation: Chronological sequence for placing punctuation after introductory clauses.
+Q38: Before (H)
+     Sentence: "Always proofread your punctuation carefully before you finalize your essay and submit it to your teacher."
+     Explanation: Checking must take place prior to final submission.
+Q39: Until (I)
+     Sentence: "You should keep practicing these connection rules every single day until you feel completely confident using them."
+     Explanation: Specifies the temporal endpoint of continuous practice.
+Q40: Whereas (J)
+     Sentence: "Whereas coordinating conjunctions must sit directly between the clauses they connect, subordinating conjunctions can flexibly move to the front of the sentence."
+     Explanation: Formal contrastive conjunction weighing two opposite grammatical behaviors.
+
+--- PART 5: SENTENCE WORD ORDERING / JUMBLED WORDS (Q41–Q50) ---
+Q41: "Military personnel regularly train and carefully maintain their equipment."
+Q42: "The training was demanding, but the personnel completed it successfully."
+Q43: "The soldiers will either attend the morning session or participate in the afternoon session."
+Q44: "Neither the commander nor the personnel were informed about the change."
+Q45: "The personnel successfully completed the exercise, and the officers did too."
+Q46: "The training schedule was changed, so the personnel had to adjust their plans."
+Q47: "Military personnel need discipline and they need effective communication too."
+Q48: "The team will either conduct the exercise tomorrow or postpone it until next week."
+Q49: "Neither the equipment nor the facilities were ready."
+Q50: "The task was challenging, but the personnel remained focused and completed it."
+
+
+================================================================================
+5. TEACHER & ADMINISTRATOR PORTAL GUIDE
+================================================================================
+HOW TO ACCESS THE ADMIN DASHBOARD:
+1. Open the live quiz link.
+2. Scroll to the footer at the bottom of the page.
+3. Click "Admin Portal 🔐".
+4. Enter credentials:
    - Username : admin123
    - Password : admin123
-4. Click "Unlock Dashboard".
+5. Click "Unlock Dashboard".
 
 ADMIN DASHBOARD CAPABILITIES:
-1. Student Results Log Table:
-   - View all student submissions, scores, accuracy, and time spent.
-   - Search students by name or filter by score/device.
-   - Click "🔍 View" to inspect an individual student's full 50-question answer sheet.
-
-2. Comprehensive Item Difficulty & Psychometric Analysis:
-   - Real-time Difficulty Index (P-value) calculated across all student attempts:
-     * Very Hard (< 20% correct) -> Red badge
-     * Hard (20% – 39% correct)   -> Orange badge
-     * Moderate (40% – 70% correct) -> Green badge (Ideal)
-     * Easy (71% – 80% correct)   -> Blue badge
-     * Too Easy (> 80% correct)   -> Light blue badge
-   - Discrimination Index & distractor effectiveness.
-
-3. Question Replacement Tool (Admin Sandbox):
-   - Replace outlier questions (<20% or >80% difficulty) in one click with
-     pre-calibrated balanced items from the official question bank.
-
-4. Excel & CSV Data Export:
-   - "📥 Export Student Log (CSV)"
-   - "📊 Export Item Difficulty & Psychometrics (.xlsx / CSV)"
-   - Multi-sheet Excel workbook ready for reporting and academic evaluation.
+1. Live Student Log & Submissions:
+   - View real-time student scores (out of 100), raw scores (/50), accuracy, and time spent.
+   - Click "🔍 View" to inspect any student's complete 50-question answer sheet.
+2. Psychometric & Item Difficulty Analysis:
+   - Evaluates each question's difficulty (P-value) and discrimination index.
+   - Classifies items as Balanced (20%–80%), Too Easy (>80%), or Very Hard (<20%).
+3. Multi-Sheet Excel Export (.xlsx):
+   - Click "📊 Export Master Excel Workbook (.xlsx)" to download a full academic evaluation:
+     * Sheet 1: Overview & All Students Summary
+     * Sheet 2: 50-Question Item Difficulty & Psychometrics
+     * Sheet 3: Full Student-by-Question Response Matrix
+     * Individual Sheets: Complete individual student scorecards!
+4. Question Replacement Sandbox:
+   - Swap any difficult question in one click with pre-calibrated bank questions.
 
 
 ================================================================================
-4. WHY GITHUB PAGES IS THE BEST CHOICE
+6. TECHNICAL & DEPLOYMENT CHECKLIST
 ================================================================================
-- Permanently Live 24/7: Works anytime without keeping your personal computer
-  or PowerShell terminal running.
-- Fast Worldwide Delivery: Hosted on GitHub's global content delivery network (CDN).
-- Zero Cost & Secure: Free hosting, automatic HTTPS SSL certificate.
-- Offline-Ready & Mobile-Optimized: Responsive touch gestures, audio sound effects,
-  and local persistent data storage.
-
+✅ GitHub Pages Status : Active & Deployed (commit pushed)
+✅ Cache-Busting Tag   : v10_q36_sync (ensures browsers fetch latest code)
+✅ Scoring Logic       : Standardized 1 pt per question (50 raw / 100 scaled)
+✅ Dropdown Mechanism  : One-Word-Only rule verified and functional
+✅ Mobile Responsive   : Optimized for iOS Safari, Android Chrome, and Desktop
 ================================================================================
