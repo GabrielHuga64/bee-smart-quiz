@@ -3481,14 +3481,14 @@
       });
 
       const percent = totalStudents > 0 ? (correctCount / totalStudents) * 100 : 0;
-      // Exact criteria from user document:
-      // >= 85% = Too Easy
-      // 41% - 84.99% = Ideal / Balanced
-      // <= 40% = Too Difficult
+      // Exact criteria requested by user:
+      // > 80% = Too Easy
+      // 20% - 80% = Ideal / Balanced
+      // < 20% = Too Difficult
       let category = "ideal";
-      if (percent >= 85) {
+      if (percent > 80) {
         category = "easy";
-      } else if (percent <= 40) {
+      } else if (percent < 20) {
         category = "hard";
       }
       return {
@@ -3663,9 +3663,9 @@
 
       const percent = totalStudents > 0 ? (correctCount / totalStudents) * 100 : 0;
       let category = "ideal";
-      if (percent >= 85) {
+      if (percent > 80) {
         category = "easy";
-      } else if (percent <= 40) {
+      } else if (percent < 20) {
         category = "hard";
       }
       return {
@@ -3760,9 +3760,9 @@
       sheetData.push(["Total Test Takers:", `${totalStudents} students`]);
       sheetData.push([]);
       sheetData.push(["Analysis Criteria:"]);
-      sheetData.push(["• ≥ 85% correct = Too Easy"]);
-      sheetData.push(["• 41%–84% correct = Ideal / Balanced"]);
-      sheetData.push(["• ≤ 40% correct = Too Difficult"]);
+      sheetData.push(["• > 80% correct = Too Easy"]);
+      sheetData.push(["• 20%–80% correct = Ideal / Balanced"]);
+      sheetData.push(["• < 20% correct = Too Difficult"]);
       sheetData.push([]);
       sheetData.push(["Summary of Results"]);
       sheetData.push([`Too Easy Questions: [${tooEasyList.join(", ")}]`]);
@@ -3845,9 +3845,9 @@
     csvLines.push([escapeCsv("Total Questions: 50 questions")].join(","));
     csvLines.push([escapeCsv(`Total Test Takers: ${totalStudents} students`)].join(","));
     csvLines.push([escapeCsv("Analysis Criteria:")].join(","));
-    csvLines.push([escapeCsv("• ≥ 85% correct = Too Easy")].join(","));
-    csvLines.push([escapeCsv("• 41%–84% correct = Ideal / Balanced")].join(","));
-    csvLines.push([escapeCsv("• ≤ 40% correct = Too Difficult")].join(","));
+    csvLines.push([escapeCsv("• > 80% correct = Too Easy")].join(","));
+    csvLines.push([escapeCsv("• 20%–80% correct = Ideal / Balanced")].join(","));
+    csvLines.push([escapeCsv("• < 20% correct = Too Difficult")].join(","));
     csvLines.push([escapeCsv("Summary of Results")].join(","));
     csvLines.push([escapeCsv(`Too Easy Questions: [${tooEasyList.join(", ")}]`)].join(","));
     csvLines.push([escapeCsv(`Ideal Questions: [${idealList.join(", ")}]`)].join(","));
@@ -5416,8 +5416,8 @@
       });
       const pct = userLogs.length > 0 ? (correctCount / userLogs.length) * 100 : 0;
       let cat = "ideal";
-      if (pct >= 85) cat = "easy";
-      else if (pct <= 40) cat = "hard";
+      if (pct > 80) cat = "easy";
+      else if (pct < 20) cat = "hard";
       return { id: q.id, correctCount, pct, cat };
     });
 
@@ -5461,9 +5461,9 @@
     binarySheetData.push(["Total Test Takers:", `${userLogs.length} students`]);
     binarySheetData.push([]);
     binarySheetData.push(["Analysis Criteria:"]);
-    binarySheetData.push(["• ≥ 85% correct = Too Easy"]);
-    binarySheetData.push(["• 41%–84% correct = Ideal / Balanced"]);
-    binarySheetData.push(["• ≤ 40% correct = Too Difficult"]);
+    binarySheetData.push(["• > 80% correct = Too Easy"]);
+    binarySheetData.push(["• 20%–80% correct = Ideal / Balanced"]);
+    binarySheetData.push(["• < 20% correct = Too Difficult"]);
     binarySheetData.push([]);
     binarySheetData.push(["Summary of Results"]);
     binarySheetData.push([`Too Easy Questions: [${binaryQStats.filter(qs => qs.cat === "easy").map(qs => qs.id).join(", ")}]`]);
