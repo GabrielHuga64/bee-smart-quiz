@@ -3121,8 +3121,7 @@
     renderAdminUserLogs();
     renderQuestionAnalyticsDashboard();
     adminDashboardModal.classList.remove("hidden");
-    tabUserLogs.click();
-    updateTabSwitcherState("logs");
+    activateLogsTab();
   }
 
   function closeAdminDashboard() {
@@ -3138,48 +3137,105 @@
     if (currentTab === "analysis") {
       footerSwitchTabBtn.innerHTML = "⬅️ Back to Student Scores & Test Logs";
       footerSwitchTabBtn.className = "btn btn-primary btn-footer-nav";
+      footerSwitchTabBtn.style.setProperty("background", "#FF7A00", "important");
+      footerSwitchTabBtn.style.setProperty("color", "#FFFFFF", "important");
     } else {
       footerSwitchTabBtn.innerHTML = "📊 Go to Question Analysis & Difficulty ➡️";
       footerSwitchTabBtn.className = "btn btn-outline btn-footer-nav";
+      footerSwitchTabBtn.style.setProperty("background", "transparent", "important");
+      footerSwitchTabBtn.style.setProperty("color", "#475569", "important");
     }
   }
 
-  tabUserLogs.addEventListener("click", () => {
-    sfx.click();
-    tabUserLogs.classList.add("active");
-    tabUserLogs.setAttribute("aria-selected", "true");
-    tabQuestionAnalytics.classList.remove("active");
-    tabQuestionAnalytics.setAttribute("aria-selected", "false");
-    userLogsPanel.classList.add("active");
-    questionAnalyticsPanel.classList.remove("active");
+  function activateLogsTab() {
+    if (tabUserLogs) {
+      tabUserLogs.classList.add("active");
+      tabUserLogs.setAttribute("aria-selected", "true");
+      tabUserLogs.style.setProperty("background", "#FFFFFF", "important");
+      tabUserLogs.style.setProperty("color", "#EA580C", "important");
+      tabUserLogs.style.setProperty("box-shadow", "0 2px 8px rgba(0,0,0,0.14)", "important");
+    }
+    if (tabQuestionAnalytics) {
+      tabQuestionAnalytics.classList.remove("active");
+      tabQuestionAnalytics.setAttribute("aria-selected", "false");
+      tabQuestionAnalytics.style.setProperty("background", "transparent", "important");
+      tabQuestionAnalytics.style.setProperty("color", "#475569", "important");
+      tabQuestionAnalytics.style.setProperty("box-shadow", "none", "important");
+    }
+    if (userLogsPanel) {
+      userLogsPanel.classList.add("active");
+      userLogsPanel.style.setProperty("display", "block", "important");
+      userLogsPanel.scrollTop = 0;
+    }
+    if (questionAnalyticsPanel) {
+      questionAnalyticsPanel.classList.remove("active");
+      questionAnalyticsPanel.style.setProperty("display", "none", "important");
+    }
     updateTabSwitcherState("logs");
-  });
+  }
 
-  tabQuestionAnalytics.addEventListener("click", () => {
-    sfx.click();
-    tabQuestionAnalytics.classList.add("active");
-    tabQuestionAnalytics.setAttribute("aria-selected", "true");
-    tabUserLogs.classList.remove("active");
-    tabUserLogs.setAttribute("aria-selected", "false");
-    questionAnalyticsPanel.classList.add("active");
-    userLogsPanel.classList.remove("active");
+  function activateQuestionAnalyticsTab() {
+    if (tabQuestionAnalytics) {
+      tabQuestionAnalytics.classList.add("active");
+      tabQuestionAnalytics.setAttribute("aria-selected", "true");
+      tabQuestionAnalytics.style.setProperty("background", "#FFFFFF", "important");
+      tabQuestionAnalytics.style.setProperty("color", "#2563EB", "important");
+      tabQuestionAnalytics.style.setProperty("box-shadow", "0 2px 8px rgba(37,99,235,0.18)", "important");
+    }
+    if (tabUserLogs) {
+      tabUserLogs.classList.remove("active");
+      tabUserLogs.setAttribute("aria-selected", "false");
+      tabUserLogs.style.setProperty("background", "transparent", "important");
+      tabUserLogs.style.setProperty("color", "#475569", "important");
+      tabUserLogs.style.setProperty("box-shadow", "none", "important");
+    }
+    if (questionAnalyticsPanel) {
+      questionAnalyticsPanel.classList.add("active");
+      questionAnalyticsPanel.style.setProperty("display", "block", "important");
+      questionAnalyticsPanel.scrollTop = 0;
+    }
+    if (userLogsPanel) {
+      userLogsPanel.classList.remove("active");
+      userLogsPanel.style.setProperty("display", "none", "important");
+    }
     updateTabSwitcherState("analysis");
-  });
+  }
+
+  if (tabUserLogs) {
+    tabUserLogs.addEventListener("click", () => {
+      sfx.click();
+      activateLogsTab();
+    });
+  }
+
+  if (tabQuestionAnalytics) {
+    tabQuestionAnalytics.addEventListener("click", () => {
+      sfx.click();
+      activateQuestionAnalyticsTab();
+    });
+  }
 
   if (backToStudentLogsBtn) {
     backToStudentLogsBtn.addEventListener("click", () => {
       sfx.click();
-      tabUserLogs.click();
+      activateLogsTab();
+    });
+  }
+
+  if (viewQuestionAnalysisTabBtn) {
+    viewQuestionAnalysisTabBtn.addEventListener("click", () => {
+      sfx.click();
+      activateQuestionAnalyticsTab();
     });
   }
 
   if (footerSwitchTabBtn) {
     footerSwitchTabBtn.addEventListener("click", () => {
       sfx.click();
-      if (questionAnalyticsPanel.classList.contains("active")) {
-        tabUserLogs.click();
+      if (questionAnalyticsPanel && questionAnalyticsPanel.classList.contains("active")) {
+        activateLogsTab();
       } else {
-        tabQuestionAnalytics.click();
+        activateQuestionAnalyticsTab();
       }
     });
   }
