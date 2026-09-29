@@ -1879,6 +1879,10 @@
   const exportMasterExcelBtnTab = document.getElementById("exportMasterExcelBtnTab");
   const resetDataBtn = document.getElementById("resetDataBtn");
   const logoutAdminBtn = document.getElementById("logoutAdminBtn");
+  const headerNavStudentsBtn = document.getElementById("headerNavStudentsBtn");
+  const headerNavAnalysisBtn = document.getElementById("headerNavAnalysisBtn");
+  const headerUserCount = document.getElementById("headerUserCount");
+  const dashboardScrollableBody = document.getElementById("dashboardScrollableBody");
 
   // Replace Question Modal Elements
   const replaceQuestionModal = document.getElementById("replaceQuestionModal");
@@ -3162,14 +3166,28 @@
       tabQuestionAnalytics.style.setProperty("color", "#475569", "important");
       tabQuestionAnalytics.style.setProperty("box-shadow", "none", "important");
     }
+    if (headerNavStudentsBtn) {
+      headerNavStudentsBtn.className = "btn btn-primary btn-sm";
+      headerNavStudentsBtn.style.setProperty("background", "#EA580C", "important");
+      headerNavStudentsBtn.style.setProperty("color", "#FFFFFF", "important");
+      headerNavStudentsBtn.style.setProperty("box-shadow", "0 2px 8px rgba(234, 88, 12, 0.3)", "important");
+    }
+    if (headerNavAnalysisBtn) {
+      headerNavAnalysisBtn.className = "btn btn-outline btn-sm";
+      headerNavAnalysisBtn.style.setProperty("background", "transparent", "important");
+      headerNavAnalysisBtn.style.setProperty("color", "#475569", "important");
+      headerNavAnalysisBtn.style.setProperty("box-shadow", "none", "important");
+    }
     if (userLogsPanel) {
       userLogsPanel.classList.add("active");
       userLogsPanel.style.setProperty("display", "block", "important");
-      userLogsPanel.scrollTop = 0;
     }
     if (questionAnalyticsPanel) {
       questionAnalyticsPanel.classList.remove("active");
       questionAnalyticsPanel.style.setProperty("display", "none", "important");
+    }
+    if (dashboardScrollableBody) {
+      dashboardScrollableBody.scrollTop = 0;
     }
     updateTabSwitcherState("logs");
   }
@@ -3189,14 +3207,28 @@
       tabUserLogs.style.setProperty("color", "#475569", "important");
       tabUserLogs.style.setProperty("box-shadow", "none", "important");
     }
+    if (headerNavAnalysisBtn) {
+      headerNavAnalysisBtn.className = "btn btn-primary btn-sm";
+      headerNavAnalysisBtn.style.setProperty("background", "#2563EB", "important");
+      headerNavAnalysisBtn.style.setProperty("color", "#FFFFFF", "important");
+      headerNavAnalysisBtn.style.setProperty("box-shadow", "0 2px 8px rgba(37, 99, 235, 0.3)", "important");
+    }
+    if (headerNavStudentsBtn) {
+      headerNavStudentsBtn.className = "btn btn-outline btn-sm";
+      headerNavStudentsBtn.style.setProperty("background", "transparent", "important");
+      headerNavStudentsBtn.style.setProperty("color", "#475569", "important");
+      headerNavStudentsBtn.style.setProperty("box-shadow", "none", "important");
+    }
     if (questionAnalyticsPanel) {
       questionAnalyticsPanel.classList.add("active");
       questionAnalyticsPanel.style.setProperty("display", "block", "important");
-      questionAnalyticsPanel.scrollTop = 0;
     }
     if (userLogsPanel) {
       userLogsPanel.classList.remove("active");
       userLogsPanel.style.setProperty("display", "none", "important");
+    }
+    if (dashboardScrollableBody) {
+      dashboardScrollableBody.scrollTop = 0;
     }
     updateTabSwitcherState("analysis");
   }
@@ -3210,6 +3242,20 @@
 
   if (tabQuestionAnalytics) {
     tabQuestionAnalytics.addEventListener("click", () => {
+      sfx.click();
+      activateQuestionAnalyticsTab();
+    });
+  }
+
+  if (headerNavStudentsBtn) {
+    headerNavStudentsBtn.addEventListener("click", () => {
+      sfx.click();
+      activateLogsTab();
+    });
+  }
+
+  if (headerNavAnalysisBtn) {
+    headerNavAnalysisBtn.addEventListener("click", () => {
       sfx.click();
       activateQuestionAnalyticsTab();
     });
@@ -3250,6 +3296,7 @@
     );
 
     userLogCount.textContent = userLogs.length;
+    if (headerUserCount) headerUserCount.textContent = userLogs.length;
     totalStudentsStat.textContent = userLogs.length;
     totalAttemptsBadge.textContent = `${userLogs.length} attempts`;
 
@@ -3344,7 +3391,9 @@
   // Criteria Cards Filter Trigger Buttons
   const criteriaActionButtons = document.querySelectorAll(".btn-criteria-action");
   criteriaActionButtons.forEach(btn => {
-    btn.onclick = () => {
+    btn.onclick = (e) => {
+      if (e) e.preventDefault();
+      sfx.click();
       const filter = btn.dataset.triggerfilter;
       qaFilterButtons.forEach(b => {
         if (b.dataset.qfilter === filter) b.classList.add("active");
