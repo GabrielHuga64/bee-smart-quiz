@@ -308,25 +308,24 @@ ADMIN DASHBOARD CAPABILITIES:
 2. Psychometric & Item Difficulty Analysis:
    - Evaluates each question's difficulty (P-value) and discrimination index.
    - Classifies items as Balanced (20%–80%), Too Easy (>80%), or Very Hard (<20%).
-3. Multi-Sheet Student Results Excel (.xlsx):
+   - Includes interactive Spreadsheet Table View (Analisis Butir Soal) and Detailed Cards View.
+   - Real-time search filter by conjunction name, prompt, part, or key.
+
+3. NEW! Question Analysis 1-Click Button in Admin Menu:
+   - Click "📈 Question Analysis (.xlsx)" in the header action bar or teacher resource banner.
+   - Generates 17-column Psychometric & Item Difficulty analysis directly to Excel (.xlsx).
+   - Click "📊 View Question Analysis" in the teacher banner to jump directly to the tab.
+
+4. Multi-Sheet Student Results Excel (.xlsx):
    - Click "📊 Master Excel (All Sheets)" to download a full academic evaluation:
      * Sheet 1: Overview & All Students Summary
      * Sheet 2: 50-Question Item Difficulty & Psychometrics
      * Sheet 3: Full Student-by-Question Response Matrix
      * Individual Sheets: Complete individual student scorecards!
 
-4. NEW! Question Paper Download (1-Click Button):
+5. Teacher Question Paper & Answer Keys Download:
    - Click "📝 Questions (.xlsx)" / "📝 Download All Questions (.xlsx)"
-   - Downloads a clean, complete 50-question Exam Paper containing all questions,
-     parts, passage contexts, choices, word bank, and scrambled chips.
-   - Ideal for printing, physical distribution, or archiving!
-
-5. NEW! Master Answer Key & Reasons Download (1-Click Button):
    - Click "🔑 Keys & Reasons (.xlsx)" / "🔑 Download Answer Keys & Reasons (.xlsx)"
-   - Downloads the full 50-question Master Answer Key containing:
-     * Correct Answer Key & Target Word
-     * Full completed sentence
-     * Complete pedagogical explanations & grammar reasons for every question!
 
 6. Question Replacement Sandbox:
    - Swap any outlier question in one click with pre-calibrated bank questions.
@@ -335,11 +334,11 @@ ADMIN DASHBOARD CAPABILITIES:
 ================================================================================
 6. TECHNICAL & DEPLOYMENT CHECKLIST
 ================================================================================
-✅ GitHub Pages Status : Active & Deployed (commit pushed)
-✅ Cache-Busting Tag   : v13_notranslate_enforce (ensures browsers fetch latest code)
+✅ GitHub Pages Status : Active & Deployed
+✅ Cache-Busting Tag   : 20260929_v18_question_analysis
 ✅ Auto-Translate Lock : Enforced (<meta name="google" content="notranslate">, translate="no", notranslate)
 ✅ Scoring Logic       : Standardized 1 pt per question (50 raw / 100 scaled)
 ✅ Dropdown Mechanism  : One-Word-Only rule verified and functional
 ✅ Mobile Responsive   : Optimized for iOS Safari, Android Chrome, and Desktop
-✅ Teacher Downloads   : Questions Sheet (.xlsx) & Answer Keys & Reasons (.xlsx)
+✅ Teacher Downloads   : Question Analysis (.xlsx), Questions (.xlsx) & Answer Keys (.xlsx)
 ================================================================================

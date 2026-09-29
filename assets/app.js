@@ -1866,6 +1866,13 @@
   const exportCsvBtn = document.getElementById("exportCsvBtn");
   const exportItemAnalysisBtn = document.getElementById("exportItemAnalysisBtn");
   const exportItemAnalysisBtnTab = document.getElementById("exportItemAnalysisBtnTab");
+  const exportItemAnalysisBtnBanner = document.getElementById("exportItemAnalysisBtnBanner");
+  const viewQuestionAnalysisTabBtn = document.getElementById("viewQuestionAnalysisTabBtn");
+  const qaViewTableBtn = document.getElementById("qaViewTableBtn");
+  const qaViewCardsBtn = document.getElementById("qaViewCardsBtn");
+  const qaTableContainer = document.getElementById("qaTableContainer");
+  const qaTableBody = document.getElementById("qaTableBody");
+  const qaTableSearchInput = document.getElementById("qaTableSearchInput");
   const exportMasterExcelBtn = document.getElementById("exportMasterExcelBtn");
   const exportMasterExcelBtnTab = document.getElementById("exportMasterExcelBtnTab");
   const resetDataBtn = document.getElementById("resetDataBtn");
@@ -3257,6 +3264,34 @@
     };
   });
 
+  // View Toggle Mode for Question Analysis (Spreadsheet Table vs Detailed Cards)
+  let activeQaViewMode = "table";
+  if (qaViewTableBtn && qaViewCardsBtn) {
+    qaViewTableBtn.addEventListener("click", () => {
+      sfx.click();
+      activeQaViewMode = "table";
+      qaViewTableBtn.classList.add("active");
+      qaViewCardsBtn.classList.remove("active");
+      if (qaTableContainer) qaTableContainer.classList.remove("hidden");
+      if (questionAnalyticsContainer) questionAnalyticsContainer.classList.add("hidden");
+    });
+
+    qaViewCardsBtn.addEventListener("click", () => {
+      sfx.click();
+      activeQaViewMode = "cards";
+      qaViewCardsBtn.classList.add("active");
+      qaViewTableBtn.classList.remove("active");
+      if (qaTableContainer) qaTableContainer.classList.add("hidden");
+      if (questionAnalyticsContainer) questionAnalyticsContainer.classList.remove("hidden");
+    });
+  }
+
+  if (qaTableSearchInput) {
+    qaTableSearchInput.addEventListener("input", () => {
+      renderQuestionAnalyticsDashboard();
+    });
+  }
+
   function renderQuestionAnalyticsDashboard() {
     const userLogs = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "[]");
     const { totalStudents, analytics, easyList, idealList, difficultList, extremeReplaceableList } = computeLiveAnalytics(userLogs);
@@ -3279,16 +3314,85 @@
       replacementNoticeBadge.classList.add("hidden");
     }
 
-    questionAnalyticsContainer.innerHTML = "";
+    const searchQuery = qaTableSearchInput ? qaTableSearchInput.value.toLowerCase().trim() : "";
 
     const filtered = activeQuizQuestions.filter(q => {
-      if (activeQaFilter === "all") return true;
-      if (activeQaFilter === "extreme") return analytics[q.id].isReplaceable;
-      if (activeQaFilter === "easy") return analytics[q.id].classification === "easy";
-      if (activeQaFilter === "difficult") return analytics[q.id].classification === "difficult";
-      if (activeQaFilter === "ideal") return analytics[q.id].classification === "ideal";
-      return q.part.toString() === activeQaFilter;
+      let matchCategory = true;
+      if (activeQaFilter === "extreme") matchCategory = analytics[q.id].isReplaceable;
+      else if (activeQaFilter === "easy") matchCategory = analytics[q.id].classification === "easy";
+      else if (activeQaFilter === "difficult") matchCategory = analytics[q.id].classification === "difficult";
+      else if (activeQaFilter === "ideal") matchCategory = analytics[q.id].classification === "ideal";
+      else if (activeQaFilter !== "all") matchCategory = q.part.toString() === activeQaFilter;
+
+      if (!matchCategory) return false;
+      if (!searchQuery) return true;
+
+      const promptMatch = q.prompt && q.prompt.toLowerCase().includes(searchQuery);
+      const targetMatch = analytics[q.id].correctTarget && analytics[q.id].correctTarget.toLowerCase().includes(searchQuery);
+      const partMatch = q.partName && q.partName.toLowerCase().includes(searchQuery);
+      const idMatch = `q${q.id}`.includes(searchQuery) || `#${q.id}`.includes(searchQuery) || `question ${q.id}`.includes(searchQuery);
+
+      return promptMatch || targetMatch || partMatch || idMatch;
     });
+
+    // 1. Render Table View (Analisis Butir Soal Spreadsheet)
+    if (qaTableBody) {
+      qaTableBody.innerHTML = "";
+      if (filtered.length === 0) {
+        qaTableBody.innerHTML = `<tr><td colspan="10" style="text-align:center; padding:24px; color:#94A3B8;">No questions matched the current filter/search.</td></tr>`;
+      } else {
+        filtered.forEach(q => {
+          const data = analytics[q.id];
+          const customized = isQuestionCustomized(q.id);
+          let diffTagClass = "diff-tag-ideal";
+          if (data.classification === "easy") diffTagClass = "diff-tag-easy";
+          if (data.classification === "difficult") diffTagClass = "diff-tag-hard";
+
+          let actionRecommendation = "Retain (Balanced)";
+          let recClass = "rec-ideal";
+          if (data.classification === "easy") {
+            actionRecommendation = "Replace (Too Easy)";
+            recClass = "rec-replace";
+          } else if (data.classification === "difficult") {
+            actionRecommendation = "Replace (Very Hard)";
+            recClass = "rec-replace";
+          }
+
+          const customBadge = customized ? `<span class="badge-mini-custom">Edited</span>` : "";
+          const revertBtnHtml = customized ? `<button type="button" class="btn-table-revert" data-qid="${q.id}" title="Revert to original default">↩️</button>` : "";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><strong>#${q.id}</strong>${customBadge}</td>
+            <td><small class="device-cell-badge">P${q.part}</small></td>
+            <td><span class="qa-table-prompt" title="${escapeHtml(q.prompt)}">${escapeHtml(q.prompt)}</span></td>
+            <td><span class="qa-target-pill" title="${escapeHtml(data.correctTarget)}">${escapeHtml(data.correctTarget)}</span></td>
+            <td><strong>${data.totalAttempts}</strong></td>
+            <td>
+              <div class="facility-cell">
+                <span><strong>${data.correctPercent}%</strong> <small style="color:#64748B;">(${data.correctCount}/${data.totalAttempts})</small></span>
+                <div class="qa-mini-bar" title="${data.correctPercent}% Correct">
+                  <div class="qa-mini-fill-correct" style="width: ${data.correctPercent}%;"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="qa-diff-tag ${diffTagClass}">● ${data.classLabel}</span></td>
+            <td><small style="color:#64748B; font-size:0.78rem;">A:${data.choiceDistribution.A} B:${data.choiceDistribution.B}<br>C:${data.choiceDistribution.C} D:${data.choiceDistribution.D}</small></td>
+            <td><span class="${recClass}" style="font-size:0.8rem;">${actionRecommendation}</span></td>
+            <td>
+              <div class="qa-table-actions">
+                <button type="button" class="btn-table-replace" data-qid="${q.id}" title="Replace this question with a balanced item">🔄 Replace</button>
+                ${revertBtnHtml}
+              </div>
+            </td>
+          `;
+          qaTableBody.appendChild(tr);
+        });
+      }
+    }
+
+    // 2. Render Detailed Cards View
+    questionAnalyticsContainer.innerHTML = "";
 
     if (filtered.length === 0) {
       questionAnalyticsContainer.innerHTML = `
@@ -3385,6 +3489,33 @@
       }
 
       questionAnalyticsContainer.appendChild(card);
+    });
+  }
+
+  // Event Delegation for Table View Replace & Revert Buttons
+  if (qaTableBody) {
+    qaTableBody.addEventListener("click", (e) => {
+      const replaceBtn = e.target.closest(".btn-table-replace");
+      if (replaceBtn) {
+        const qid = parseInt(replaceBtn.dataset.qid, 10);
+        openReplaceQuestionModal(qid);
+        return;
+      }
+      const revertBtn = e.target.closest(".btn-table-revert");
+      if (revertBtn) {
+        const qid = parseInt(revertBtn.dataset.qid, 10);
+        if (confirm(`Revert Question #${qid} back to original default?`)) {
+          sfx.click();
+          const defIdx = DEFAULT_QUESTIONS.findIndex(item => item.id === qid);
+          if (defIdx !== -1) {
+            activeQuizQuestions[defIdx] = { ...DEFAULT_QUESTIONS[defIdx] };
+            saveActiveQuestions();
+            syncQuestionRevertToServer(qid);
+            renderQuestionAnalyticsDashboard();
+            alert(`Question #${qid} reverted back to original default!`);
+          }
+        }
+      }
     });
   }
 
@@ -4900,6 +5031,15 @@
   }
   if (exportItemAnalysisBtnTab) {
     exportItemAnalysisBtnTab.addEventListener("click", exportItemAnalysisToExcel);
+  }
+  if (exportItemAnalysisBtnBanner) {
+    exportItemAnalysisBtnBanner.addEventListener("click", exportItemAnalysisToExcel);
+  }
+  if (viewQuestionAnalysisTabBtn) {
+    viewQuestionAnalysisTabBtn.addEventListener("click", () => {
+      sfx.click();
+      tabQuestionAnalytics.click();
+    });
   }
   if (exportMasterExcelBtn) {
     exportMasterExcelBtn.addEventListener("click", exportMasterExcelWorkbook);

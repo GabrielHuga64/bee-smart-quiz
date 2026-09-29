@@ -843,7 +843,7 @@
             📋 Student Logs
           </button>
           <button id="exportItemAnalysisBtn" class="btn btn-outline btn-sm btn-excel" title="Export 50-Question Item Difficulty & Psychometric Analysis to Excel">
-            📈 Item Analysis (Excel)
+            📈 Question Analysis (.xlsx)
           </button>
           <button id="exportMasterExcelBtn" class="btn btn-primary btn-sm btn-excel" title="Download Master Multi-Sheet Excel Workbook (Overview, Item Analysis, Answers Matrix & Dedicated Sheet for Each Student)">
             📊 Master Excel (All Sheets)
@@ -867,7 +867,7 @@
           📋 Test Data History Database (<span id="userLogCount">4</span>)
         </button>
         <button id="tabQuestionAnalytics" class="tab-btn" role="tab" aria-selected="false" aria-controls="questionAnalyticsPanel">
-          📈 Item Difficulty & Question Replacement (<span id="totalAttemptsBadge">4 attempts</span>)
+          📊 Question Analysis (Analisis Soal) & Difficulty (<span id="totalAttemptsBadge">4 attempts</span>)
         </button>
       </div>
 
@@ -900,14 +900,20 @@
         <div class="teacher-resource-actions-bar">
           <div class="teacher-resource-info">
             <span class="teacher-resource-icon">📚</span>
-            <span><strong>Teacher Question & Answer Key Downloads:</strong> Export clean exam paper or answer keys with complete grammar reasons.</span>
+            <span><strong>Teacher Question, Keys & Analysis Downloads:</strong> Export clean exam paper, answer keys with reasons, or 50-question item analysis.</span>
           </div>
           <div class="teacher-resource-buttons">
+            <button id="exportItemAnalysisBtnBanner" class="btn btn-sm btn-excel" title="Download 50-Question Item Difficulty & Psychometric Analysis (.xlsx)">
+              📈 Question Analysis (.xlsx)
+            </button>
             <button id="exportQuestionsOnlyBtnBanner" class="btn btn-sm btn-questions" title="Download All 50 Questions Sheet (Excel)">
               📝 Download All Questions (.xlsx)
             </button>
             <button id="exportAnswerKeysBtnBanner" class="btn btn-sm btn-keys" title="Download Master Answer Key & Pedagogical Reasons (Excel)">
               🔑 Download Answer Keys & Reasons (.xlsx)
+            </button>
+            <button id="viewQuestionAnalysisTabBtn" class="btn btn-sm btn-outline" title="Open Question-by-Question Difficulty & Psychometric Analytics">
+              📊 View Question Analysis
             </button>
           </div>
         </div>
@@ -941,12 +947,12 @@
         <div class="item-analysis-summary-card">
           <div class="analysis-card-header">
             <div>
-              <h4 class="analysis-card-title">📈 Item Difficulty & Outlier Replacement Criteria</h4>
+              <h4 class="analysis-card-title">📈 50-Question Psychometric & Question Analysis (Analisis Butir Soal)</h4>
               <p class="analysis-card-subtitle">Based on live evaluation of all <strong id="analysisTotalStudentsText">4</strong> student test history submissions.</p>
             </div>
             <div class="analysis-card-header-right">
               <button id="exportItemAnalysisBtnTab" class="btn btn-sm btn-excel" title="Download 50-Question Item Difficulty Analysis as Excel">
-                📊 Download Item Analysis (Excel)
+                📊 Download Question Analysis (Excel)
               </button>
               <button id="exportMasterExcelBtnTab" class="btn btn-sm btn-primary" title="Download Master Multi-Sheet Excel Workbook with All Student Sheets">
                 📑 Master Excel (All Sheets)
@@ -1023,8 +1029,47 @@
           </div>
         </div>
 
+        <!-- View Toggle & Search Bar for Question Analysis -->
+        <div class="qa-view-controls-bar">
+          <div class="qa-view-toggle-group">
+            <button type="button" id="qaViewTableBtn" class="qa-view-toggle-btn active" title="Show summary spreadsheet table">
+              📊 Spreadsheet Table (Analisis Butir Soal)
+            </button>
+            <button type="button" id="qaViewCardsBtn" class="qa-view-toggle-btn" title="Show detailed question cards">
+              🗂️ Detailed Cards View
+            </button>
+          </div>
+          <div class="search-input-wrapper qa-table-search-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="qaTableSearchInput" class="search-input search-input-sm" placeholder="Search prompt, key, or conjunction...">
+          </div>
+        </div>
+
+        <!-- Spreadsheet Table View (Analisis Butir Soal) -->
+        <div id="qaTableContainer" class="table-responsive qa-table-container">
+          <table class="admin-table qa-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">#</th>
+                <th style="width: 75px;">Part</th>
+                <th>Question Prompt / Sentence Context</th>
+                <th style="width: 140px;">Target Key</th>
+                <th style="width: 80px;">Attempts</th>
+                <th style="width: 130px;">Facility (Correct)</th>
+                <th style="width: 130px;">Difficulty</th>
+                <th style="width: 140px;">Distractors</th>
+                <th style="width: 150px;">Recommendation</th>
+                <th style="width: 110px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="qaTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
         <!-- List of 50 Question Analytics Cards -->
-        <div id="questionAnalyticsContainer" class="question-analytics-list">
+        <div id="questionAnalyticsContainer" class="question-analytics-list hidden">
           <!-- Injected dynamically by JS -->
         </div>
 
@@ -1186,6 +1231,6 @@
   <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
   <script src="assets/xlsx.full.min.js"></script>
   <!-- App Script (50 Questions, 45 Minutes, 1 pt each, Part 4 Word Bank, Part 5 Rearrange) -->
-  <script src="assets/app.js?v=20260928_v17_mobile_submit"></script>
+  <script src="assets/app.js?v=20260929_v18_question_analysis"></script>
 </body>
 </html>
