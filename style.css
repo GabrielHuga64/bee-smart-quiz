@@ -3968,6 +3968,95 @@ body {
   align-items: center;
 }
 
+/* ===================================================================
+   BINARY ITEM MATRIX (RIGHT = 1, WRONG = 0) STYLING
+   =================================================================== */
+.binary-matrix-table th,
+.binary-matrix-table td {
+  padding: 6px 8px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  border: 1px solid #CBD5E1 !important;
+  font-size: 0.84rem !important;
+}
+
+.binary-matrix-table th {
+  background: #F1F5F9 !important;
+  color: #1E293B !important;
+  font-weight: 700 !important;
+}
+
+.binary-matrix-table .th-merged-title {
+  background: #E2E8F0 !important;
+  color: #0F172A !important;
+  font-size: 0.88rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px;
+}
+
+.binary-matrix-table .cell-one {
+  background: #F0FDF4 !important;
+  color: #15803D !important;
+  font-weight: 800 !important;
+}
+
+.binary-matrix-table .cell-zero {
+  background: #FEF2F2 !important;
+  color: #DC2626 !important;
+  font-weight: 700 !important;
+}
+
+.binary-matrix-table .cell-raw-score {
+  background: #FEF08A !important;
+  color: #854D0E !important;
+  font-weight: 800 !important;
+  font-size: 0.92rem !important;
+}
+
+.binary-matrix-table .cell-final-score {
+  background: #FDE047 !important;
+  color: #713F12 !important;
+  font-weight: 900 !important;
+  font-size: 0.95rem !important;
+}
+
+.binary-matrix-table .row-total td {
+  background: #FEF08A !important;
+  color: #713F12 !important;
+  font-weight: 800 !important;
+  border-top: 2px solid #EAB308 !important;
+  border-bottom: 2px solid #EAB308 !important;
+}
+
+.binary-matrix-table .sticky-col-no {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 5 !important;
+  background: #FFFFFF !important;
+}
+
+.binary-matrix-table .sticky-col-name {
+  position: sticky !important;
+  left: 45px !important;
+  z-index: 5 !important;
+  background: #FFFFFF !important;
+  text-align: left !important;
+  font-weight: 700 !important;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05) !important;
+}
+
+.binary-matrix-table thead th.sticky-col-no,
+.binary-matrix-table thead th.sticky-col-name {
+  z-index: 10 !important;
+  background: #F1F5F9 !important;
+}
+
+.tab-btn#tabBinaryMatrix.active {
+  background: #FFFFFF !important;
+  color: #059669 !important;
+  box-shadow: 0 2px 10px rgba(5, 150, 105, 0.18) !important;
+}
+
 .wb-badge-correct {
   display: inline-flex;
   align-items: center;

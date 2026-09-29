@@ -1883,6 +1883,25 @@
   const headerNavAnalysisBtn = document.getElementById("headerNavAnalysisBtn");
   const headerUserCount = document.getElementById("headerUserCount");
   const dashboardScrollableBody = document.getElementById("dashboardScrollableBody");
+  const tabBinaryMatrix = document.getElementById("tabBinaryMatrix");
+  const binaryMatrixPanel = document.getElementById("binaryMatrixPanel");
+  const headerNavBinaryMatrixBtn = document.getElementById("headerNavBinaryMatrixBtn");
+  const exportBinaryMatrixBtn = document.getElementById("exportBinaryMatrixBtn");
+  const downloadBinaryMatrixExcelBtn = document.getElementById("downloadBinaryMatrixExcelBtn");
+  const docDownloadExcelBtn = document.getElementById("docDownloadExcelBtn");
+  const backToLogsFromMatrixBtn = document.getElementById("backToLogsFromMatrixBtn");
+  const binaryMatrixCount = document.getElementById("binaryMatrixCount");
+  const binaryMatrixThead = document.getElementById("binaryMatrixThead");
+  const binaryMatrixTbody = document.getElementById("binaryMatrixTbody");
+  const binaryMatrixTfoot = document.getElementById("binaryMatrixTfoot");
+  const matrixEasyCount = document.getElementById("matrixEasyCount");
+  const matrixIdealCount = document.getElementById("matrixIdealCount");
+  const matrixHardCount = document.getElementById("matrixHardCount");
+  const matrixStudentCount = document.getElementById("matrixStudentCount");
+  const docTotalStudents = document.getElementById("docTotalStudents");
+  const docTooEasyList = document.getElementById("docTooEasyList");
+  const docIdealList = document.getElementById("docIdealList");
+  const docTooDifficultList = document.getElementById("docTooDifficultList");
 
   // Replace Question Modal Elements
   const replaceQuestionModal = document.getElementById("replaceQuestionModal");
@@ -3124,6 +3143,7 @@
     await loadDatabaseFromServer();
     renderAdminUserLogs();
     renderQuestionAnalyticsDashboard();
+    renderBinaryMatrixTable();
     adminDashboardModal.classList.remove("hidden");
     activateLogsTab();
   }
@@ -3139,6 +3159,11 @@
   function updateTabSwitcherState(currentTab) {
     if (!footerSwitchTabBtn) return;
     if (currentTab === "analysis") {
+      footerSwitchTabBtn.innerHTML = "📑 Go to Binary Matrix (1/0) ➡️";
+      footerSwitchTabBtn.className = "btn btn-primary btn-footer-nav";
+      footerSwitchTabBtn.style.setProperty("background", "#059669", "important");
+      footerSwitchTabBtn.style.setProperty("color", "#FFFFFF", "important");
+    } else if (currentTab === "matrix") {
       footerSwitchTabBtn.innerHTML = "⬅️ Back to Student Scores & Test Logs";
       footerSwitchTabBtn.className = "btn btn-primary btn-footer-nav";
       footerSwitchTabBtn.style.setProperty("background", "#FF7A00", "important");
@@ -3166,6 +3191,13 @@
       tabQuestionAnalytics.style.setProperty("color", "#475569", "important");
       tabQuestionAnalytics.style.setProperty("box-shadow", "none", "important");
     }
+    if (tabBinaryMatrix) {
+      tabBinaryMatrix.classList.remove("active");
+      tabBinaryMatrix.setAttribute("aria-selected", "false");
+      tabBinaryMatrix.style.setProperty("background", "transparent", "important");
+      tabBinaryMatrix.style.setProperty("color", "#475569", "important");
+      tabBinaryMatrix.style.setProperty("box-shadow", "none", "important");
+    }
     if (headerNavStudentsBtn) {
       headerNavStudentsBtn.className = "btn btn-primary btn-sm";
       headerNavStudentsBtn.style.setProperty("background", "#EA580C", "important");
@@ -3178,6 +3210,12 @@
       headerNavAnalysisBtn.style.setProperty("color", "#475569", "important");
       headerNavAnalysisBtn.style.setProperty("box-shadow", "none", "important");
     }
+    if (headerNavBinaryMatrixBtn) {
+      headerNavBinaryMatrixBtn.className = "btn btn-outline btn-sm";
+      headerNavBinaryMatrixBtn.style.setProperty("background", "transparent", "important");
+      headerNavBinaryMatrixBtn.style.setProperty("color", "#475569", "important");
+      headerNavBinaryMatrixBtn.style.setProperty("box-shadow", "none", "important");
+    }
     if (userLogsPanel) {
       userLogsPanel.classList.add("active");
       userLogsPanel.style.setProperty("display", "block", "important");
@@ -3185,6 +3223,10 @@
     if (questionAnalyticsPanel) {
       questionAnalyticsPanel.classList.remove("active");
       questionAnalyticsPanel.style.setProperty("display", "none", "important");
+    }
+    if (binaryMatrixPanel) {
+      binaryMatrixPanel.classList.remove("active");
+      binaryMatrixPanel.style.setProperty("display", "none", "important");
     }
     if (dashboardScrollableBody) {
       dashboardScrollableBody.scrollTop = 0;
@@ -3207,6 +3249,13 @@
       tabUserLogs.style.setProperty("color", "#475569", "important");
       tabUserLogs.style.setProperty("box-shadow", "none", "important");
     }
+    if (tabBinaryMatrix) {
+      tabBinaryMatrix.classList.remove("active");
+      tabBinaryMatrix.setAttribute("aria-selected", "false");
+      tabBinaryMatrix.style.setProperty("background", "transparent", "important");
+      tabBinaryMatrix.style.setProperty("color", "#475569", "important");
+      tabBinaryMatrix.style.setProperty("box-shadow", "none", "important");
+    }
     if (headerNavAnalysisBtn) {
       headerNavAnalysisBtn.className = "btn btn-primary btn-sm";
       headerNavAnalysisBtn.style.setProperty("background", "#2563EB", "important");
@@ -3219,6 +3268,12 @@
       headerNavStudentsBtn.style.setProperty("color", "#475569", "important");
       headerNavStudentsBtn.style.setProperty("box-shadow", "none", "important");
     }
+    if (headerNavBinaryMatrixBtn) {
+      headerNavBinaryMatrixBtn.className = "btn btn-outline btn-sm";
+      headerNavBinaryMatrixBtn.style.setProperty("background", "transparent", "important");
+      headerNavBinaryMatrixBtn.style.setProperty("color", "#475569", "important");
+      headerNavBinaryMatrixBtn.style.setProperty("box-shadow", "none", "important");
+    }
     if (questionAnalyticsPanel) {
       questionAnalyticsPanel.classList.add("active");
       questionAnalyticsPanel.style.setProperty("display", "block", "important");
@@ -3227,10 +3282,73 @@
       userLogsPanel.classList.remove("active");
       userLogsPanel.style.setProperty("display", "none", "important");
     }
+    if (binaryMatrixPanel) {
+      binaryMatrixPanel.classList.remove("active");
+      binaryMatrixPanel.style.setProperty("display", "none", "important");
+    }
     if (dashboardScrollableBody) {
       dashboardScrollableBody.scrollTop = 0;
     }
     updateTabSwitcherState("analysis");
+  }
+
+  function activateBinaryMatrixTab() {
+    if (tabBinaryMatrix) {
+      tabBinaryMatrix.classList.add("active");
+      tabBinaryMatrix.setAttribute("aria-selected", "true");
+      tabBinaryMatrix.style.setProperty("background", "#FFFFFF", "important");
+      tabBinaryMatrix.style.setProperty("color", "#059669", "important");
+      tabBinaryMatrix.style.setProperty("box-shadow", "0 2px 10px rgba(5,150,105,0.18)", "important");
+    }
+    if (tabUserLogs) {
+      tabUserLogs.classList.remove("active");
+      tabUserLogs.setAttribute("aria-selected", "false");
+      tabUserLogs.style.setProperty("background", "transparent", "important");
+      tabUserLogs.style.setProperty("color", "#475569", "important");
+      tabUserLogs.style.setProperty("box-shadow", "none", "important");
+    }
+    if (tabQuestionAnalytics) {
+      tabQuestionAnalytics.classList.remove("active");
+      tabQuestionAnalytics.setAttribute("aria-selected", "false");
+      tabQuestionAnalytics.style.setProperty("background", "transparent", "important");
+      tabQuestionAnalytics.style.setProperty("color", "#475569", "important");
+      tabQuestionAnalytics.style.setProperty("box-shadow", "none", "important");
+    }
+    if (headerNavBinaryMatrixBtn) {
+      headerNavBinaryMatrixBtn.className = "btn btn-primary btn-sm";
+      headerNavBinaryMatrixBtn.style.setProperty("background", "#059669", "important");
+      headerNavBinaryMatrixBtn.style.setProperty("color", "#FFFFFF", "important");
+      headerNavBinaryMatrixBtn.style.setProperty("box-shadow", "0 2px 8px rgba(5, 150, 105, 0.3)", "important");
+    }
+    if (headerNavStudentsBtn) {
+      headerNavStudentsBtn.className = "btn btn-outline btn-sm";
+      headerNavStudentsBtn.style.setProperty("background", "transparent", "important");
+      headerNavStudentsBtn.style.setProperty("color", "#475569", "important");
+      headerNavStudentsBtn.style.setProperty("box-shadow", "none", "important");
+    }
+    if (headerNavAnalysisBtn) {
+      headerNavAnalysisBtn.className = "btn btn-outline btn-sm";
+      headerNavAnalysisBtn.style.setProperty("background", "transparent", "important");
+      headerNavAnalysisBtn.style.setProperty("color", "#475569", "important");
+      headerNavAnalysisBtn.style.setProperty("box-shadow", "none", "important");
+    }
+    if (binaryMatrixPanel) {
+      binaryMatrixPanel.classList.add("active");
+      binaryMatrixPanel.style.setProperty("display", "block", "important");
+    }
+    if (userLogsPanel) {
+      userLogsPanel.classList.remove("active");
+      userLogsPanel.style.setProperty("display", "none", "important");
+    }
+    if (questionAnalyticsPanel) {
+      questionAnalyticsPanel.classList.remove("active");
+      questionAnalyticsPanel.style.setProperty("display", "none", "important");
+    }
+    renderBinaryMatrixTable();
+    if (dashboardScrollableBody) {
+      dashboardScrollableBody.scrollTop = 0;
+    }
+    updateTabSwitcherState("matrix");
   }
 
   if (tabUserLogs) {
@@ -3244,6 +3362,13 @@
     tabQuestionAnalytics.addEventListener("click", () => {
       sfx.click();
       activateQuestionAnalyticsTab();
+    });
+  }
+
+  if (tabBinaryMatrix) {
+    tabBinaryMatrix.addEventListener("click", () => {
+      sfx.click();
+      activateBinaryMatrixTab();
     });
   }
 
@@ -3261,8 +3386,22 @@
     });
   }
 
+  if (headerNavBinaryMatrixBtn) {
+    headerNavBinaryMatrixBtn.addEventListener("click", () => {
+      sfx.click();
+      activateBinaryMatrixTab();
+    });
+  }
+
   if (backToStudentLogsBtn) {
     backToStudentLogsBtn.addEventListener("click", () => {
+      sfx.click();
+      activateLogsTab();
+    });
+  }
+
+  if (backToLogsFromMatrixBtn) {
+    backToLogsFromMatrixBtn.addEventListener("click", () => {
       sfx.click();
       activateLogsTab();
     });
@@ -3278,12 +3417,456 @@
   if (footerSwitchTabBtn) {
     footerSwitchTabBtn.addEventListener("click", () => {
       sfx.click();
-      if (questionAnalyticsPanel && questionAnalyticsPanel.classList.contains("active")) {
-        activateLogsTab();
-      } else {
+      if (userLogsPanel && userLogsPanel.classList.contains("active")) {
         activateQuestionAnalyticsTab();
+      } else if (questionAnalyticsPanel && questionAnalyticsPanel.classList.contains("active")) {
+        activateBinaryMatrixTab();
+      } else {
+        activateLogsTab();
       }
     });
+  }
+
+  if (exportBinaryMatrixBtn) {
+    exportBinaryMatrixBtn.addEventListener("click", () => {
+      sfx.click();
+      exportBinaryMatrixExcel();
+    });
+  }
+
+  if (downloadBinaryMatrixExcelBtn) {
+    downloadBinaryMatrixExcelBtn.addEventListener("click", () => {
+      sfx.click();
+      exportBinaryMatrixExcel();
+    });
+  }
+
+  if (docDownloadExcelBtn) {
+    docDownloadExcelBtn.addEventListener("click", () => {
+      sfx.click();
+      exportBinaryMatrixExcel();
+    });
+  }
+
+  // =========================================================================
+  // LIVE 1/0 BINARY SCORING MATRIX & DOCUMENT TABLE RENDERER
+  // (Right Answer = 1, Wrong Answer = 0; Logic matching psychological document)
+  // =========================================================================
+  function renderBinaryMatrixTable() {
+    const rawUserLogs = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "[]");
+    const userLogs = rawUserLogs.map(getNormalizedStudentRecord);
+    const totalStudents = userLogs.length;
+
+    if (binaryMatrixCount) binaryMatrixCount.textContent = totalStudents;
+    if (matrixStudentCount) matrixStudentCount.textContent = totalStudents;
+    if (docTotalStudents) docTotalStudents.textContent = totalStudents;
+
+    // Compute live binary stats for each question (1 to 50)
+    const questionStats = activeQuizQuestions.map(q => {
+      let correctCount = 0;
+      userLogs.forEach(u => {
+        const studentVal = u.answers ? u.answers[q.id] : null;
+        let isCorrect = false;
+        if (q.type === "rearrange") {
+          isCorrect = studentVal && (
+            normalizeSentence(studentVal) === normalizeSentence(q.target) ||
+            (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
+          );
+        } else {
+          isCorrect = studentVal === q.correct || 
+                      (q.options && q.options[q.correct] && studentVal && studentVal.toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                      (studentVal && q.correct && studentVal.toLowerCase() === q.correct.toLowerCase());
+        }
+        if (isCorrect) correctCount++;
+      });
+
+      const percent = totalStudents > 0 ? (correctCount / totalStudents) * 100 : 0;
+      // Exact criteria from user document:
+      // >= 85% = Too Easy
+      // 41% - 84.99% = Ideal / Balanced
+      // <= 40% = Too Difficult
+      let category = "ideal";
+      if (percent >= 85) {
+        category = "easy";
+      } else if (percent <= 40) {
+        category = "hard";
+      }
+      return {
+        id: q.id,
+        correctCount,
+        percent,
+        category
+      };
+    });
+
+    const tooEasyQuestions = questionStats.filter(qs => qs.category === "easy").map(qs => qs.id);
+    const idealQuestions = questionStats.filter(qs => qs.category === "ideal").map(qs => qs.id);
+    const tooDifficultQuestions = questionStats.filter(qs => qs.category === "hard").map(qs => qs.id);
+
+    if (matrixEasyCount) matrixEasyCount.textContent = tooEasyQuestions.length;
+    if (matrixIdealCount) matrixIdealCount.textContent = idealQuestions.length;
+    if (matrixHardCount) matrixHardCount.textContent = tooDifficultQuestions.length;
+
+    if (docTooEasyList) {
+      docTooEasyList.textContent = tooEasyQuestions.length > 0 ? `[${tooEasyQuestions.join(", ")}]` : "None";
+    }
+    if (docIdealList) {
+      docIdealList.textContent = idealQuestions.length > 0 ? `[${idealQuestions.join(", ")}]` : "None";
+    }
+    if (docTooDifficultList) {
+      docTooDifficultList.textContent = tooDifficultQuestions.length > 0 ? `[${tooDifficultQuestions.join(", ")}]` : "None";
+    }
+
+    // Build the live Table Header
+    if (binaryMatrixThead) {
+      binaryMatrixThead.innerHTML = `
+        <tr>
+          <th rowspan="2" class="sticky-col-no" style="width: 45px;">No</th>
+          <th rowspan="2" class="sticky-col-name" style="min-width: 160px; max-width: 220px;">Participant Name</th>
+          <th colspan="${activeQuizQuestions.length}" class="th-merged-title" style="letter-spacing: 1px; font-size: 0.9rem;">QUESTION NUMBER</th>
+          <th rowspan="2" style="background: #FEF08A; color: #854D0E; font-weight: 800; min-width: 70px;">Raw Score</th>
+          <th rowspan="2" style="background: #FDE047; color: #713F12; font-weight: 900; min-width: 70px;">Score</th>
+        </tr>
+        <tr>
+          ${activeQuizQuestions.map(q => `<th style="width: 32px; min-width: 30px; font-weight: 700;">${q.id}</th>`).join("")}
+        </tr>
+      `;
+    }
+
+    // Build the live Table Body
+    if (binaryMatrixTbody) {
+      if (userLogs.length === 0) {
+        binaryMatrixTbody.innerHTML = `
+          <tr>
+            <td colspan="${activeQuizQuestions.length + 4}" style="text-align: center; color: #94A3B8; padding: 28px;">
+              No student test submissions available. Once students complete the quiz, their 1/0 binary scores will appear here.
+            </td>
+          </tr>
+        `;
+      } else {
+        binaryMatrixTbody.innerHTML = userLogs.map((u, idx) => {
+          let studentRaw = 0;
+          const cells = activeQuizQuestions.map(q => {
+            const studentVal = u.answers ? u.answers[q.id] : null;
+            let isCorrect = false;
+            if (q.type === "rearrange") {
+              isCorrect = studentVal && (
+                normalizeSentence(studentVal) === normalizeSentence(q.target) ||
+                (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
+              );
+            } else {
+              isCorrect = studentVal === q.correct || 
+                          (q.options && q.options[q.correct] && studentVal && studentVal.toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                          (studentVal && q.correct && studentVal.toLowerCase() === q.correct.toLowerCase());
+            }
+            if (isCorrect) studentRaw++;
+            const val = isCorrect ? 1 : 0;
+            const cls = isCorrect ? "cell-one" : "cell-zero";
+            return `<td class="${cls}">${val}</td>`;
+          }).join("");
+
+          const studentFinal = studentRaw * 2;
+
+          return `
+            <tr>
+              <td class="sticky-col-no">${idx + 1}</td>
+              <td class="sticky-col-name">${escapeHtml(u.name)}</td>
+              ${cells}
+              <td class="cell-raw-score">${studentRaw}</td>
+              <td class="cell-final-score">${studentFinal}</td>
+            </tr>
+          `;
+        }).join("");
+      }
+    }
+
+    // Build Table Foot (Totals)
+    if (binaryMatrixTfoot) {
+      if (userLogs.length > 0) {
+        let sumRaw = 0;
+        let sumFinal = 0;
+        userLogs.forEach(u => {
+          let sRaw = 0;
+          activeQuizQuestions.forEach(q => {
+            const studentVal = u.answers ? u.answers[q.id] : null;
+            let isCorrect = false;
+            if (q.type === "rearrange") {
+              isCorrect = studentVal && (
+                normalizeSentence(studentVal) === normalizeSentence(q.target) ||
+                (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
+              );
+            } else {
+              isCorrect = studentVal === q.correct || 
+                          (q.options && q.options[q.correct] && studentVal && studentVal.toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                          (studentVal && q.correct && studentVal.toLowerCase() === q.correct.toLowerCase());
+            }
+            if (isCorrect) sRaw++;
+          });
+          sumRaw += sRaw;
+          sumFinal += sRaw * 2;
+        });
+
+        const totalCorrectCells = questionStats.map(qs => {
+          return `<td>${qs.correctCount}</td>`;
+        }).join("");
+
+        binaryMatrixTfoot.innerHTML = `
+          <tr class="row-total">
+            <td class="sticky-col-no">Σ</td>
+            <td class="sticky-col-name">Total Correct</td>
+            ${totalCorrectCells}
+            <td class="cell-raw-score">${sumRaw}</td>
+            <td class="cell-final-score">${sumFinal}</td>
+          </tr>
+        `;
+      } else {
+        binaryMatrixTfoot.innerHTML = "";
+      }
+    }
+  }
+
+  // =========================================================================
+  // EXCEL DOCUMENT EXPORT: 1/0 BINARY SCORING MATRIX & CALIBRATION ANALYSIS
+  // (Exact document format matching the psychometric sheet in full English)
+  // =========================================================================
+  function exportBinaryMatrixExcel() {
+    sfx.click();
+    const rawUserLogs = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "[]");
+    const userLogs = rawUserLogs.map(getNormalizedStudentRecord);
+
+    if (userLogs.length === 0) {
+      alert("No student test records available to generate the Binary Matrix Document.");
+      return;
+    }
+
+    const totalStudents = userLogs.length;
+    const filenameDate = new Date().toISOString().slice(0, 10);
+
+    // Compute binary statistics per question
+    const questionStats = activeQuizQuestions.map(q => {
+      let correctCount = 0;
+      userLogs.forEach(u => {
+        const studentVal = u.answers ? u.answers[q.id] : null;
+        let isCorrect = false;
+        if (q.type === "rearrange") {
+          isCorrect = studentVal && (
+            normalizeSentence(studentVal) === normalizeSentence(q.target) ||
+            (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
+          );
+        } else {
+          isCorrect = studentVal === q.correct || 
+                      (q.options && q.options[q.correct] && studentVal && studentVal.toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                      (studentVal && q.correct && studentVal.toLowerCase() === q.correct.toLowerCase());
+        }
+        if (isCorrect) correctCount++;
+      });
+
+      const percent = totalStudents > 0 ? (correctCount / totalStudents) * 100 : 0;
+      let category = "ideal";
+      if (percent >= 85) {
+        category = "easy";
+      } else if (percent <= 40) {
+        category = "hard";
+      }
+      return {
+        id: q.id,
+        correctCount,
+        percent,
+        category
+      };
+    });
+
+    const tooEasyList = questionStats.filter(qs => qs.category === "easy").map(qs => qs.id);
+    const idealList = questionStats.filter(qs => qs.category === "ideal").map(qs => qs.id);
+    const tooDifficultList = questionStats.filter(qs => qs.category === "hard").map(qs => qs.id);
+
+    // SheetJS generation if available
+    if (typeof XLSX !== "undefined") {
+      const wb = XLSX.utils.book_new();
+
+      // Row 1 (Header 1)
+      const headerRow1 = [
+        "No",
+        "Participant Name",
+        "QUESTION NUMBER",
+        ...Array(activeQuizQuestions.length - 1).fill(""),
+        "Raw",
+        "Score"
+      ];
+
+      // Row 2 (Header 2)
+      const headerRow2 = [
+        "",
+        "",
+        ...activeQuizQuestions.map(q => q.id),
+        "Score",
+        ""
+      ];
+
+      const sheetData = [headerRow1, headerRow2];
+
+      let totalRawSum = 0;
+      let totalFinalSum = 0;
+
+      // Student rows (Row 3 to N+2)
+      userLogs.forEach((u, idx) => {
+        let rawScore = 0;
+        const studentBinary = activeQuizQuestions.map(q => {
+          const studentVal = u.answers ? u.answers[q.id] : null;
+          let isCorrect = false;
+          if (q.type === "rearrange") {
+            isCorrect = studentVal && (
+              normalizeSentence(studentVal) === normalizeSentence(q.target) ||
+              (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
+            );
+          } else {
+            isCorrect = studentVal === q.correct || 
+                        (q.options && q.options[q.correct] && studentVal && studentVal.toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                        (studentVal && q.correct && studentVal.toLowerCase() === q.correct.toLowerCase());
+          }
+          if (isCorrect) rawScore++;
+          return isCorrect ? 1 : 0;
+        });
+
+        const finalScore = rawScore * 2;
+        totalRawSum += rawScore;
+        totalFinalSum += finalScore;
+
+        sheetData.push([
+          idx + 1,
+          u.name,
+          ...studentBinary,
+          rawScore,
+          finalScore
+        ]);
+      });
+
+      // Total row (Row N+3)
+      const totalsRow = [
+        "",
+        "Total Correct",
+        ...questionStats.map(qs => qs.correctCount),
+        totalRawSum,
+        totalFinalSum
+      ];
+      sheetData.push(totalsRow);
+
+      // Blank spacing row (Row N+4)
+      sheetData.push([]);
+
+      // Analysis & Recommendations text block in Full English
+      sheetData.push(["Analysis:"]);
+      sheetData.push(["Total Questions:", `${activeQuizQuestions.length} questions`]);
+      sheetData.push(["Total Test Takers:", `${totalStudents} students`]);
+      sheetData.push([]);
+      sheetData.push(["Analysis Criteria:"]);
+      sheetData.push(["• ≥ 85% correct = Too Easy"]);
+      sheetData.push(["• 41%–84% correct = Ideal / Balanced"]);
+      sheetData.push(["• ≤ 40% correct = Too Difficult"]);
+      sheetData.push([]);
+      sheetData.push(["Summary of Results"]);
+      sheetData.push([`Too Easy Questions: [${tooEasyList.join(", ")}]`]);
+      sheetData.push([`Ideal Questions: [${idealList.join(", ")}]`]);
+      sheetData.push([`Too Difficult Questions: [${tooDifficultList.join(", ")}]`]);
+      sheetData.push([]);
+      sheetData.push(["Recommendations"]);
+      sheetData.push(["• Too easy questions should be replaced with more contextual sentences or stronger distractors."]);
+      sheetData.push(["• Too difficult questions need clearer instructions or adjusted vocabulary / difficulty."]);
+      sheetData.push(["• Ideal category questions should be retained as they optimally discriminate student mastery."]);
+
+      const ws = XLSX.utils.aoa_to_sheet(sheetData);
+
+      // Define Cell Merges
+      ws['!merges'] = [
+        // No column merge (Row 1-2)
+        { s: { r: 0, c: 0 }, e: { r: 1, c: 0 } },
+        // Participant Name merge (Row 1-2)
+        { s: { r: 0, c: 1 }, e: { r: 1, c: 1 } },
+        // QUESTION NUMBER merge across all 50 questions (Cols C to AZ, r: 0, c: 2 to 51)
+        { s: { r: 0, c: 2 }, e: { r: 0, c: 1 + activeQuizQuestions.length } },
+        // Raw Score header merge (Col BA)
+        { s: { r: 0, c: 2 + activeQuizQuestions.length }, e: { r: 1, c: 2 + activeQuizQuestions.length } },
+        // Final Score header merge (Col BB)
+        { s: { r: 0, c: 3 + activeQuizQuestions.length }, e: { r: 1, c: 3 + activeQuizQuestions.length } }
+      ];
+
+      // Define Column Widths
+      const colWidths = [
+        { wch: 6 },  // No
+        { wch: 24 }  // Participant Name
+      ];
+      for (let i = 0; i < activeQuizQuestions.length; i++) {
+        colWidths.push({ wch: 4 }); // Q1-Q50
+      }
+      colWidths.push({ wch: 11 }); // Raw Score
+      colWidths.push({ wch: 11 }); // Score
+
+      ws['!cols'] = colWidths;
+
+      XLSX.utils.book_append_sheet(wb, ws, "Binary Scoring Matrix (1-0)");
+      XLSX.writeFile(wb, `BeeQuiz_Binary_Item_Scoring_Matrix_${filenameDate}.xlsx`);
+      return;
+    }
+
+    // CSV Fallback if SheetJS is missing
+    const escapeCsv = (str) => {
+      if (str === null || str === undefined) return '""';
+      const clean = String(str).replace(/<[^>]*>/g, '').replace(/"/g, '""').trim();
+      return `"${clean}"`;
+    };
+
+    const csvLines = [];
+    csvLines.push(["No", "Participant Name", ...activeQuizQuestions.map(q => `Q${q.id}`), "Raw Score", "Final Score"].map(escapeCsv).join(","));
+
+    userLogs.forEach((u, idx) => {
+      let rawScore = 0;
+      const binaries = activeQuizQuestions.map(q => {
+        const studentVal = u.answers ? u.answers[q.id] : null;
+        let isCorrect = false;
+        if (q.type === "rearrange") {
+          isCorrect = studentVal && (
+            normalizeSentence(studentVal) === normalizeSentence(q.target) ||
+            (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
+          );
+        } else {
+          isCorrect = studentVal === q.correct || 
+                      (q.options && q.options[q.correct] && studentVal && studentVal.toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                      (studentVal && q.correct && studentVal.toLowerCase() === q.correct.toLowerCase());
+        }
+        if (isCorrect) rawScore++;
+        return isCorrect ? 1 : 0;
+      });
+      csvLines.push([idx + 1, escapeCsv(u.name), ...binaries, rawScore, rawScore * 2].join(","));
+    });
+
+    csvLines.push(["", "Total Correct", ...questionStats.map(qs => qs.correctCount), "", ""].map(escapeCsv).join(","));
+    csvLines.push("");
+    csvLines.push([escapeCsv("Analysis:")].join(","));
+    csvLines.push([escapeCsv("Total Questions: 50 questions")].join(","));
+    csvLines.push([escapeCsv(`Total Test Takers: ${totalStudents} students`)].join(","));
+    csvLines.push([escapeCsv("Analysis Criteria:")].join(","));
+    csvLines.push([escapeCsv("• ≥ 85% correct = Too Easy")].join(","));
+    csvLines.push([escapeCsv("• 41%–84% correct = Ideal / Balanced")].join(","));
+    csvLines.push([escapeCsv("• ≤ 40% correct = Too Difficult")].join(","));
+    csvLines.push([escapeCsv("Summary of Results")].join(","));
+    csvLines.push([escapeCsv(`Too Easy Questions: [${tooEasyList.join(", ")}]`)].join(","));
+    csvLines.push([escapeCsv(`Ideal Questions: [${idealList.join(", ")}]`)].join(","));
+    csvLines.push([escapeCsv(`Too Difficult Questions: [${tooDifficultList.join(", ")}]`)].join(","));
+    csvLines.push([escapeCsv("Recommendations")].join(","));
+    csvLines.push([escapeCsv("• Too easy questions should be replaced with more contextual sentences or stronger distractors.")].join(","));
+    csvLines.push([escapeCsv("• Too difficult questions need clearer instructions or adjusted vocabulary / difficulty.")].join(","));
+    csvLines.push([escapeCsv("• Ideal category questions should be retained as they optimally discriminate student mastery.")].join(","));
+
+    const csvContent = "\uFEFF" + csvLines.join("\r\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `BeeQuiz_Binary_Item_Scoring_Matrix_${filenameDate}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   }
 
   function renderAdminUserLogs(filterQuery = "") {
@@ -3297,6 +3880,7 @@
 
     userLogCount.textContent = userLogs.length;
     if (headerUserCount) headerUserCount.textContent = userLogs.length;
+    if (binaryMatrixCount) binaryMatrixCount.textContent = userLogs.length;
     totalStudentsStat.textContent = userLogs.length;
     totalAttemptsBadge.textContent = `${userLogs.length} attempts`;
 
@@ -3367,6 +3951,7 @@
         syncSubmissionDeleteToServer(uid);
         renderAdminUserLogs(userLogSearch.value);
         renderQuestionAnalyticsDashboard();
+        renderBinaryMatrixTable();
       }
     }
   });
@@ -4793,7 +5378,122 @@
     XLSX.utils.book_append_sheet(wb, wsMatrix, matrixSheetName);
 
     // -------------------------------------------------------------------------
-    // SHEETS 4..N: DEDICATED INDIVIDUAL WORKSHEET FOR EACH STUDENT (huga, boby, etc.)
+    // SHEET 4: BINARY ITEM SCORING MATRIX (1/0) & PSYCHOMETRIC CALIBRATION
+    // -------------------------------------------------------------------------
+    const binaryHeader1 = [
+      "No",
+      "Participant Name",
+      "QUESTION NUMBER",
+      ...Array(activeQuizQuestions.length - 1).fill(""),
+      "Raw",
+      "Score"
+    ];
+    const binaryHeader2 = [
+      "",
+      "",
+      ...activeQuizQuestions.map(q => q.id),
+      "Score",
+      ""
+    ];
+    const binarySheetData = [binaryHeader1, binaryHeader2];
+
+    const binaryQStats = activeQuizQuestions.map(q => {
+      let correctCount = 0;
+      userLogs.forEach(u => {
+        const studentVal = u.answers ? u.answers[q.id] : null;
+        let isCorrect = false;
+        if (q.type === "rearrange") {
+          isCorrect = studentVal && (
+            normalizeSentence(studentVal) === normalizeSentence(q.target) ||
+            (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
+          );
+        } else {
+          isCorrect = studentVal === q.correct || 
+                      (q.options && q.options[q.correct] && studentVal && studentVal.toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                      (studentVal && q.correct && studentVal.toLowerCase() === q.correct.toLowerCase());
+        }
+        if (isCorrect) correctCount++;
+      });
+      const pct = userLogs.length > 0 ? (correctCount / userLogs.length) * 100 : 0;
+      let cat = "ideal";
+      if (pct >= 85) cat = "easy";
+      else if (pct <= 40) cat = "hard";
+      return { id: q.id, correctCount, pct, cat };
+    });
+
+    let bTotalRaw = 0;
+    let bTotalScore = 0;
+
+    userLogs.forEach((u, idx) => {
+      let rScore = 0;
+      const bRow = activeQuizQuestions.map(q => {
+        const studentVal = u.answers ? u.answers[q.id] : null;
+        let isCorrect = false;
+        if (q.type === "rearrange") {
+          isCorrect = studentVal && (
+            normalizeSentence(studentVal) === normalizeSentence(q.target) ||
+            (Array.isArray(q.alternateTargets) && q.alternateTargets.some(alt => normalizeSentence(studentVal) === normalizeSentence(alt)))
+          );
+        } else {
+          isCorrect = studentVal === q.correct || 
+                      (q.options && q.options[q.correct] && studentVal && studentVal.toLowerCase() === q.options[q.correct].toLowerCase()) ||
+                      (studentVal && q.correct && studentVal.toLowerCase() === q.correct.toLowerCase());
+        }
+        if (isCorrect) rScore++;
+        return isCorrect ? 1 : 0;
+      });
+      const fScore = rScore * 2;
+      bTotalRaw += rScore;
+      bTotalScore += fScore;
+      binarySheetData.push([idx + 1, u.name, ...bRow, rScore, fScore]);
+    });
+
+    binarySheetData.push([
+      "",
+      "Total Correct",
+      ...binaryQStats.map(qs => qs.correctCount),
+      bTotalRaw,
+      bTotalScore
+    ]);
+    binarySheetData.push([]);
+    binarySheetData.push(["Analysis:"]);
+    binarySheetData.push(["Total Questions:", `${activeQuizQuestions.length} questions`]);
+    binarySheetData.push(["Total Test Takers:", `${userLogs.length} students`]);
+    binarySheetData.push([]);
+    binarySheetData.push(["Analysis Criteria:"]);
+    binarySheetData.push(["• ≥ 85% correct = Too Easy"]);
+    binarySheetData.push(["• 41%–84% correct = Ideal / Balanced"]);
+    binarySheetData.push(["• ≤ 40% correct = Too Difficult"]);
+    binarySheetData.push([]);
+    binarySheetData.push(["Summary of Results"]);
+    binarySheetData.push([`Too Easy Questions: [${binaryQStats.filter(qs => qs.cat === "easy").map(qs => qs.id).join(", ")}]`]);
+    binarySheetData.push([`Ideal Questions: [${binaryQStats.filter(qs => qs.cat === "ideal").map(qs => qs.id).join(", ")}]`]);
+    binarySheetData.push([`Too Difficult Questions: [${binaryQStats.filter(qs => qs.cat === "hard").map(qs => qs.id).join(", ")}]`]);
+    binarySheetData.push([]);
+    binarySheetData.push(["Recommendations"]);
+    binarySheetData.push(["• Too easy questions should be replaced with more contextual sentences or stronger distractors."]);
+    binarySheetData.push(["• Too difficult questions need clearer instructions or adjusted vocabulary / difficulty."]);
+    binarySheetData.push(["• Ideal category questions should be retained as they optimally discriminate student mastery."]);
+
+    const wsBinary = XLSX.utils.aoa_to_sheet(binarySheetData);
+    wsBinary['!merges'] = [
+      { s: { r: 0, c: 0 }, e: { r: 1, c: 0 } },
+      { s: { r: 0, c: 1 }, e: { r: 1, c: 1 } },
+      { s: { r: 0, c: 2 }, e: { r: 0, c: 1 + activeQuizQuestions.length } },
+      { s: { r: 0, c: 2 + activeQuizQuestions.length }, e: { r: 1, c: 2 + activeQuizQuestions.length } },
+      { s: { r: 0, c: 3 + activeQuizQuestions.length }, e: { r: 1, c: 3 + activeQuizQuestions.length } }
+    ];
+    const bColWidths = [{ wch: 6 }, { wch: 24 }];
+    for (let i = 0; i < activeQuizQuestions.length; i++) bColWidths.push({ wch: 4 });
+    bColWidths.push({ wch: 11 });
+    bColWidths.push({ wch: 11 });
+    wsBinary['!cols'] = bColWidths;
+
+    const binarySheetName = sanitizeExcelSheetName("Binary Matrix (1-0)", usedSheetNames);
+    XLSX.utils.book_append_sheet(wb, wsBinary, binarySheetName);
+
+    // -------------------------------------------------------------------------
+    // SHEETS 5..N: DEDICATED INDIVIDUAL WORKSHEET FOR EACH STUDENT (huga, boby, etc.)
     // -------------------------------------------------------------------------
     userLogs.forEach(student => {
       const studentAnswers = student.answers || {};

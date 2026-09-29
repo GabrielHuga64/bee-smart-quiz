@@ -21,8 +21,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- App Stylesheet (v24 pinned header fix) -->
-  <link rel="stylesheet" href="style.css?v=20260929_v24_pinned_header">
+  <!-- App Stylesheet (v25 binary matrix feature) -->
+  <link rel="stylesheet" href="style.css?v=20260929_v25_binary_matrix">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
 </head>
 <body class="notranslate" translate="no">
@@ -842,6 +842,12 @@
             <button type="button" id="headerNavAnalysisBtn" class="btn btn-outline btn-sm" title="View question psychometrics, difficulty, and item replacement" style="font-weight: 700 !important; cursor: pointer !important;">
               📊 Question Analysis
             </button>
+            <button type="button" id="headerNavBinaryMatrixBtn" class="btn btn-outline btn-sm" title="View 1/0 Binary Scoring Matrix &amp; Document Analysis" style="font-weight: 700 !important; cursor: pointer !important;">
+              📑 Binary Matrix (1/0)
+            </button>
+            <button id="exportBinaryMatrixBtn" class="btn btn-primary btn-sm btn-excel" title="Download Excel Document with 1/0 Binary Scoring Matrix, Item Totals, and Full English Analysis" style="font-weight: 800 !important; background: #059669 !important; color: #FFFFFF !important; border: 1.5px solid #047857 !important; cursor: pointer !important; box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3) !important;">
+              📥 Matrix Document (.xlsx)
+            </button>
             <button id="syncDbBtn" class="btn btn-outline btn-sm" title="Sync live data with server database">
               🔄 Sync DB
             </button>
@@ -871,12 +877,15 @@
         </div>
 
         <!-- Dashboard Navigation Tabs (Hardened with explicit flex and height inline styles) -->
-        <div class="dashboard-tabs" role="tablist" style="display: flex !important; flex-direction: row !important; flex-shrink: 0 !important; min-height: 52px !important; height: 52px !important; margin: 0 !important; gap: 10px !important; background: #E2E8F0 !important; border: 2px solid #CBD5E1 !important; border-radius: 14px !important; padding: 5px !important; box-sizing: border-box !important; position: relative !important; z-index: 10 !important;">
-          <button type="button" id="tabUserLogs" class="tab-btn active" role="tab" aria-selected="true" aria-controls="userLogsPanel" style="flex: 1 1 0 !important; min-height: 42px !important; height: 42px !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; font-family: var(--font-heading, sans-serif) !important; font-size: 0.98rem !important; font-weight: 800 !important; cursor: pointer !important; border-radius: 10px !important; border: none !important; background: #FFFFFF !important; color: #EA580C !important; box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;">
-            📋 Student Scores &amp; Test Logs (<span id="userLogCount">4</span>)
+        <div class="dashboard-tabs" role="tablist" style="display: flex !important; flex-direction: row !important; flex-shrink: 0 !important; min-height: 52px !important; height: 52px !important; margin: 0 !important; gap: 10px !important; background: #E2E8F0 !important; border: 2px solid #CBD5E1 !important; border-radius: 14px !important; padding: 5px !important; box-sizing: border-box !important; position: relative !important; z-index: 10 !important; overflow-x: auto !important;">
+          <button type="button" id="tabUserLogs" class="tab-btn active" role="tab" aria-selected="true" aria-controls="userLogsPanel" style="flex: 1 1 0 !important; min-height: 42px !important; height: 42px !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; font-family: var(--font-heading, sans-serif) !important; font-size: 0.95rem !important; font-weight: 800 !important; cursor: pointer !important; border-radius: 10px !important; border: none !important; background: #FFFFFF !important; color: #EA580C !important; box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;">
+            📋 Student Scores (<span id="userLogCount">4</span>)
           </button>
-          <button type="button" id="tabQuestionAnalytics" class="tab-btn" role="tab" aria-selected="false" aria-controls="questionAnalyticsPanel" style="flex: 1 1 0 !important; min-height: 42px !important; height: 42px !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; font-family: var(--font-heading, sans-serif) !important; font-size: 0.98rem !important; font-weight: 800 !important; cursor: pointer !important; border-radius: 10px !important; border: none !important; background: transparent !important; color: #475569 !important; box-shadow: none !important;">
-            📊 Question Analysis &amp; Difficulty (<span id="totalAttemptsBadge">4 attempts</span>)
+          <button type="button" id="tabQuestionAnalytics" class="tab-btn" role="tab" aria-selected="false" aria-controls="questionAnalyticsPanel" style="flex: 1 1 0 !important; min-height: 42px !important; height: 42px !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; font-family: var(--font-heading, sans-serif) !important; font-size: 0.95rem !important; font-weight: 800 !important; cursor: pointer !important; border-radius: 10px !important; border: none !important; background: transparent !important; color: #475569 !important; box-shadow: none !important;">
+            📊 Question Analysis (<span id="totalAttemptsBadge">4 attempts</span>)
+          </button>
+          <button type="button" id="tabBinaryMatrix" class="tab-btn" role="tab" aria-selected="false" aria-controls="binaryMatrixPanel" style="flex: 1 1 0 !important; min-height: 42px !important; height: 42px !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; font-family: var(--font-heading, sans-serif) !important; font-size: 0.95rem !important; font-weight: 800 !important; cursor: pointer !important; border-radius: 10px !important; border: none !important; background: transparent !important; color: #475569 !important; box-shadow: none !important;">
+            📑 Binary Matrix (1/0) (<span id="binaryMatrixCount">4</span>)
           </button>
         </div>
       </div>
@@ -1100,7 +1109,90 @@
         <div id="questionAnalyticsContainer" class="question-analytics-list hidden">
           <!-- Injected dynamically by JS -->
         </div>
-      </div> <!-- end dashboard-scrollable-body -->
+      </div> <!-- end questionAnalyticsPanel -->
+
+      <!-- TAB 3: Binary Item Scoring Matrix (Right Answer = 1, Wrong Answer = 0) & Document Analysis -->
+      <div id="binaryMatrixPanel" class="tab-panel" role="tabpanel" aria-labelledby="tabBinaryMatrix">
+        
+        <!-- Fast Switch Navigation Banner & Excel Download -->
+        <div class="panel-switch-nav-bar" style="display: flex !important; justify-content: space-between !important; align-items: center !important; background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%) !important; border: 2px solid #6EE7B7 !important; border-radius: 12px !important; padding: 12px 18px !important; margin-bottom: 16px !important; gap: 14px !important; flex-wrap: wrap !important; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.1) !important;">
+          <div class="panel-switch-nav-left" style="display: flex !important; align-items: center !important; gap: 14px !important; flex-wrap: wrap !important;">
+            <button type="button" id="downloadBinaryMatrixExcelBtn" class="btn btn-primary" title="Download Excel Document (.xlsx) with 1/0 scoring matrix and full English analysis" style="background: #059669 !important; color: #FFFFFF !important; font-size: 1rem !important; font-weight: 800 !important; padding: 10px 22px !important; border-radius: 8px !important; border: 1.5px solid #047857 !important; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3) !important; cursor: pointer !important; display: inline-flex !important; align-items: center !important; gap: 8px !important;">
+              📥 Download Binary Matrix Document (.xlsx)
+            </button>
+            <button type="button" id="backToLogsFromMatrixBtn" class="btn btn-outline" style="font-weight: 700; cursor: pointer; padding: 9px 16px; border-radius: 8px; border: 1.5px solid #10B981; color: #065F46; background: #FFFFFF;">
+              ⬅️ Back to Student Scores
+            </button>
+            <span style="font-size: 0.9rem; color: #065F46; font-weight: 600;">
+              Document Format: <strong>Right Answer = 1, Wrong Answer = 0</strong>
+            </span>
+          </div>
+          <div class="panel-switch-nav-right">
+            <span style="background: #FFFFFF; border: 1.5px solid #6EE7B7; color: #047857; font-weight: 700; font-size: 0.85rem; padding: 6px 14px; border-radius: 999px;">📑 Document: Binary Scoring Matrix</span>
+          </div>
+        </div>
+
+        <!-- Summary Metric Pills -->
+        <div class="table-summary-badges" style="margin-bottom: 14px; display: flex; gap: 10px; flex-wrap: wrap;">
+          <span class="badge-stat" style="background: #F0FDF4; border-color: #86EFAC; color: #166534; font-weight: 700;">🟢 Too Easy (≥85%): <strong id="matrixEasyCount">0</strong> items</span>
+          <span class="badge-stat" style="background: #FEFCE8; border-color: #FDE047; color: #854D0E; font-weight: 700;">⚖️ Ideal / Balanced (41%–84%): <strong id="matrixIdealCount">0</strong> items</span>
+          <span class="badge-stat" style="background: #FEF2F2; border-color: #FCA5A5; color: #991B1B; font-weight: 700;">🔴 Too Difficult (≤40%): <strong id="matrixHardCount">0</strong> items</span>
+          <span class="badge-stat" style="background: #F8FAFC; border-color: #CBD5E1; color: #334155;">Total Test Takers: <strong id="matrixStudentCount">0</strong></span>
+        </div>
+
+        <!-- Interactive Binary Matrix Table Container -->
+        <div class="table-responsive" style="max-height: 480px; overflow: auto; border: 2px solid #CBD5E1; border-radius: 12px; margin-bottom: 20px; background: #FFFFFF;">
+          <table class="admin-table binary-matrix-table" id="binaryMatrixTable" style="min-width: 1700px; border-collapse: separate; border-spacing: 0; font-size: 0.84rem; text-align: center;">
+            <thead id="binaryMatrixThead">
+              <!-- Rendered dynamically -->
+            </thead>
+            <tbody id="binaryMatrixTbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+            <tfoot id="binaryMatrixTfoot">
+              <!-- Rendered dynamically -->
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Analysis & Recommendations Document Card (Full English matching classical psychometrics) -->
+        <div class="binary-analysis-doc-card" style="background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: 14px; padding: 22px 26px; margin-bottom: 20px;">
+          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: #0F172A; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            📊 Item Calibration Analysis &amp; Recommendations
+          </h3>
+          
+          <div style="font-size: 0.95rem; line-height: 1.65; color: #334155; margin-bottom: 16px;">
+            <p style="margin-bottom: 4px;"><strong>Analysis:</strong></p>
+            <p style="margin-bottom: 4px;">Total Questions: 50 items</p>
+            <p style="margin-bottom: 12px;">Total Test Takers: <span id="docTotalStudents">0</span> students</p>
+
+            <p style="margin-bottom: 4px;"><strong>Analysis Criteria:</strong></p>
+            <p style="margin-bottom: 4px; color: #166534;">• ≥ 85% correct = Too Easy</p>
+            <p style="margin-bottom: 4px; color: #854D0E;">• 41%–84% correct = Ideal / Balanced</p>
+            <p style="margin-bottom: 12px; color: #991B1B;">• ≤ 40% correct = Too Difficult</p>
+
+            <p style="margin-bottom: 4px;"><strong>Summary of Results:</strong></p>
+            <p style="margin-bottom: 6px;">Too Easy Questions: <span id="docTooEasyList" style="font-family: monospace; background: #DCFCE7; padding: 2px 8px; border-radius: 6px; font-weight: 700; color: #166534;">[-]</span></p>
+            <p style="margin-bottom: 6px;">Ideal Questions: <span id="docIdealList" style="font-family: monospace; background: #FEF9C3; padding: 2px 8px; border-radius: 6px; font-weight: 700; color: #854D0E;">[-]</span></p>
+            <p style="margin-bottom: 14px;">Too Difficult Questions: <span id="docTooDifficultList" style="font-family: monospace; background: #FEE2E2; padding: 2px 8px; border-radius: 6px; font-weight: 700; color: #991B1B;">[-]</span></p>
+
+            <p style="margin-bottom: 6px;"><strong>Recommendations:</strong></p>
+            <ul style="padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: 6px;">
+              <li>• Too easy questions should be replaced with more contextual sentences or stronger distractors.</li>
+              <li>• Too difficult questions need clearer instructions or adjusted vocabulary / difficulty.</li>
+              <li>• Ideal category questions should be retained as they optimally discriminate student mastery.</li>
+            </ul>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 14px;">
+            <button type="button" id="docDownloadExcelBtn" class="btn btn-primary" style="background: #059669; border-color: #047857; font-weight: 700; cursor: pointer; padding: 9px 18px;">
+              📥 Download Excel Document (.xlsx)
+            </button>
+          </div>
+        </div>
+
+      </div> <!-- end binaryMatrixPanel -->
+    </div> <!-- end dashboard-scrollable-body -->
 
       <div class="dashboard-footer" style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin-top: 14px !important; padding-top: 14px !important; border-top: 1.5px solid #E2E8F0 !important; flex-shrink: 0 !important;">
         <button type="button" id="footerSwitchTabBtn" class="btn btn-outline btn-footer-nav" title="Switch between Student Scores and Question Analysis" style="font-weight: 700 !important; font-size: 0.92rem !important; padding: 10px 18px !important; cursor: pointer !important;">
@@ -1261,6 +1353,6 @@
   <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
   <script src="assets/xlsx.full.min.js"></script>
   <!-- App Script (50 Questions, 45 Minutes, 1 pt each, Part 4 Word Bank, Part 5 Rearrange) -->
-  <script src="assets/app.js?v=20260929_v24_pinned_header"></script>
+  <script src="assets/app.js?v=20260929_v25_binary_matrix"></script>
 </body>
 </html>
