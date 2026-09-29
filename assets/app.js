@@ -1873,6 +1873,8 @@
   const qaTableContainer = document.getElementById("qaTableContainer");
   const qaTableBody = document.getElementById("qaTableBody");
   const qaTableSearchInput = document.getElementById("qaTableSearchInput");
+  const backToStudentLogsBtn = document.getElementById("backToStudentLogsBtn");
+  const footerSwitchTabBtn = document.getElementById("footerSwitchTabBtn");
   const exportMasterExcelBtn = document.getElementById("exportMasterExcelBtn");
   const exportMasterExcelBtnTab = document.getElementById("exportMasterExcelBtnTab");
   const resetDataBtn = document.getElementById("resetDataBtn");
@@ -3119,6 +3121,8 @@
     renderAdminUserLogs();
     renderQuestionAnalyticsDashboard();
     adminDashboardModal.classList.remove("hidden");
+    tabUserLogs.click();
+    updateTabSwitcherState("logs");
   }
 
   function closeAdminDashboard() {
@@ -3129,6 +3133,17 @@
   closeDashboardModalBtn.addEventListener("click", closeAdminDashboard);
   logoutAdminBtn.addEventListener("click", closeAdminDashboard);
 
+  function updateTabSwitcherState(currentTab) {
+    if (!footerSwitchTabBtn) return;
+    if (currentTab === "analysis") {
+      footerSwitchTabBtn.innerHTML = "⬅️ Back to Student Scores & Test Logs";
+      footerSwitchTabBtn.className = "btn btn-primary btn-footer-nav";
+    } else {
+      footerSwitchTabBtn.innerHTML = "📊 Go to Question Analysis & Difficulty ➡️";
+      footerSwitchTabBtn.className = "btn btn-outline btn-footer-nav";
+    }
+  }
+
   tabUserLogs.addEventListener("click", () => {
     sfx.click();
     tabUserLogs.classList.add("active");
@@ -3137,6 +3152,7 @@
     tabQuestionAnalytics.setAttribute("aria-selected", "false");
     userLogsPanel.classList.add("active");
     questionAnalyticsPanel.classList.remove("active");
+    updateTabSwitcherState("logs");
   });
 
   tabQuestionAnalytics.addEventListener("click", () => {
@@ -3147,7 +3163,26 @@
     tabUserLogs.setAttribute("aria-selected", "false");
     questionAnalyticsPanel.classList.add("active");
     userLogsPanel.classList.remove("active");
+    updateTabSwitcherState("analysis");
   });
+
+  if (backToStudentLogsBtn) {
+    backToStudentLogsBtn.addEventListener("click", () => {
+      sfx.click();
+      tabUserLogs.click();
+    });
+  }
+
+  if (footerSwitchTabBtn) {
+    footerSwitchTabBtn.addEventListener("click", () => {
+      sfx.click();
+      if (questionAnalyticsPanel.classList.contains("active")) {
+        tabUserLogs.click();
+      } else {
+        tabQuestionAnalytics.click();
+      }
+    });
+  }
 
   function renderAdminUserLogs(filterQuery = "") {
     const rawUserLogs = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "[]");

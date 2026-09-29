@@ -864,10 +864,10 @@
       <!-- Dashboard Navigation Tabs -->
       <div class="dashboard-tabs" role="tablist">
         <button id="tabUserLogs" class="tab-btn active" role="tab" aria-selected="true" aria-controls="userLogsPanel">
-          📋 Test Data History Database (<span id="userLogCount">4</span>)
+          📋 Student Scores & Test Logs (<span id="userLogCount">4</span>)
         </button>
         <button id="tabQuestionAnalytics" class="tab-btn" role="tab" aria-selected="false" aria-controls="questionAnalyticsPanel">
-          📊 Question Analysis (Analisis Soal) & Difficulty (<span id="totalAttemptsBadge">4 attempts</span>)
+          📊 Question Analysis & Difficulty (<span id="totalAttemptsBadge">4 attempts</span>)
         </button>
       </div>
 
@@ -903,6 +903,9 @@
             <span><strong>Teacher Question, Keys & Analysis Downloads:</strong> Export clean exam paper, answer keys with reasons, or 50-question item analysis.</span>
           </div>
           <div class="teacher-resource-buttons">
+            <button id="viewQuestionAnalysisTabBtn" class="btn btn-sm btn-primary" title="Open Question-by-Question Difficulty & Psychometric Analytics">
+              📊 Go to Question Analysis & Difficulty ➡️
+            </button>
             <button id="exportItemAnalysisBtnBanner" class="btn btn-sm btn-excel" title="Download 50-Question Item Difficulty & Psychometric Analysis (.xlsx)">
               📈 Question Analysis (.xlsx)
             </button>
@@ -911,9 +914,6 @@
             </button>
             <button id="exportAnswerKeysBtnBanner" class="btn btn-sm btn-keys" title="Download Master Answer Key & Pedagogical Reasons (Excel)">
               🔑 Download Answer Keys & Reasons (.xlsx)
-            </button>
-            <button id="viewQuestionAnalysisTabBtn" class="btn btn-sm btn-outline" title="Open Question-by-Question Difficulty & Psychometric Analytics">
-              📊 View Question Analysis
             </button>
           </div>
         </div>
@@ -942,6 +942,21 @@
 
       <!-- TAB 2: Question-by-Question Analytics & Item Replacement -->
       <div id="questionAnalyticsPanel" class="tab-panel" role="tabpanel" aria-labelledby="tabQuestionAnalytics">
+        
+        <!-- Fast Switch Navigation Banner back to Student Scores & Test Logs -->
+        <div class="panel-switch-nav-bar">
+          <div class="panel-switch-nav-left">
+            <button type="button" id="backToStudentLogsBtn" class="btn btn-primary btn-nav-switch" title="Go back to Student Test Data History & Scores Table">
+              ⬅️ Back to Student Scores & Test Logs
+            </button>
+            <span class="panel-switch-hint">
+              Currently viewing <strong>50-Question Analysis & Difficulty</strong>. Click button to return to individual student scorecards & answers.
+            </span>
+          </div>
+          <div class="panel-switch-nav-right">
+            <span class="view-indicator-pill">📊 Active: Question Analysis</span>
+          </div>
+        </div>
         
         <!-- EXCEL-STYLE ITEM DIFFICULTY ANALYSIS & PEDAGOGICAL RECOMMENDATIONS -->
         <div class="item-analysis-summary-card">
@@ -1076,6 +1091,9 @@
       </div>
 
       <div class="dashboard-footer">
+        <button type="button" id="footerSwitchTabBtn" class="btn btn-outline btn-footer-nav" title="Switch between Student Scores and Question Analysis">
+          📊 Go to Question Analysis & Difficulty ➡️
+        </button>
         <button id="logoutAdminBtn" class="btn btn-secondary">
           Close Admin
         </button>
@@ -1231,6 +1249,6 @@
   <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
   <script src="assets/xlsx.full.min.js"></script>
   <!-- App Script (50 Questions, 45 Minutes, 1 pt each, Part 4 Word Bank, Part 5 Rearrange) -->
-  <script src="assets/app.js?v=20260929_v18_question_analysis"></script>
+  <script src="assets/app.js?v=20260929_v19_tab_navigation_fix"></script>
 </body>
 </html>

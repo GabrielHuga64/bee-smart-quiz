@@ -335,7 +335,7 @@ ADMIN DASHBOARD CAPABILITIES:
 6. TECHNICAL & DEPLOYMENT CHECKLIST
 ================================================================================
 ✅ GitHub Pages Status : Active & Deployed
-✅ Cache-Busting Tag   : 20260929_v18_question_analysis
+✅ Cache-Busting Tag   : 20260929_v19_tab_navigation_fix
 ✅ Auto-Translate Lock : Enforced (<meta name="google" content="notranslate">, translate="no", notranslate)
 ✅ Scoring Logic       : Standardized 1 pt per question (50 raw / 100 scaled)
 ✅ Dropdown Mechanism  : One-Word-Only rule verified and functional
