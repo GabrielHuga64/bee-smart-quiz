@@ -21,8 +21,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- App Stylesheet (v25 binary matrix feature) -->
-  <link rel="stylesheet" href="style.css?v=20260929_v25_binary_matrix">
+  <!-- App Stylesheet (v27 binary matrix & criteria update) -->
+  <link rel="stylesheet" href="style.css?v=20260929_v27_search_interactivity">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
 </head>
 <body class="notranslate" translate="no">
@@ -1123,6 +1123,7 @@
             <button type="button" id="backToLogsFromMatrixBtn" class="btn btn-outline" style="font-weight: 700; cursor: pointer; padding: 9px 16px; border-radius: 8px; border: 1.5px solid #10B981; color: #065F46; background: #FFFFFF;">
               ⬅️ Back to Student Scores
             </button>
+            <input type="text" id="binaryMatrixSearchInput" class="form-input form-input-sm" placeholder="🔍 Search participant..." style="max-width: 210px; padding: 7px 12px; font-size: 0.85rem; border-radius: 8px; border: 1.5px solid #6EE7B7; background: #FFFFFF; font-weight: 600;">
             <span style="font-size: 0.9rem; color: #065F46; font-weight: 600;">
               Document Format: <strong>Right Answer = 1, Wrong Answer = 0</strong>
             </span>
@@ -1353,6 +1354,6 @@
   <!-- SheetJS Library for Multi-Sheet Excel (.xlsx) Generation -->
   <script src="assets/xlsx.full.min.js"></script>
   <!-- App Script (50 Questions, 45 Minutes, 1 pt each, Part 4 Word Bank, Part 5 Rearrange) -->
-  <script src="assets/app.js?v=20260929_v26_criteria_80_20"></script>
+  <script src="assets/app.js?v=20260929_v27_search_interactivity"></script>
 </body>
 </html>

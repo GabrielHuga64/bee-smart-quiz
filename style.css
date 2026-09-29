@@ -4057,6 +4057,23 @@ body {
   box-shadow: 0 2px 10px rgba(5, 150, 105, 0.18) !important;
 }
 
+.binary-matrix-table tbody tr:hover td {
+  background-color: #F8FAFC !important;
+}
+
+.binary-matrix-table tbody tr:hover td.cell-one {
+  background-color: #DCFCE7 !important;
+}
+
+.binary-matrix-table tbody tr:hover td.cell-zero {
+  background-color: #FEE2E2 !important;
+}
+
+.binary-matrix-table tbody tr:hover td.sticky-col-name {
+  background-color: #F0FDF4 !important;
+  color: #065F46 !important;
+}
+
 .wb-badge-correct {
   display: inline-flex;
   align-items: center;

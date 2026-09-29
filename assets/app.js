@@ -1902,6 +1902,7 @@
   const docTooEasyList = document.getElementById("docTooEasyList");
   const docIdealList = document.getElementById("docIdealList");
   const docTooDifficultList = document.getElementById("docTooDifficultList");
+  const binaryMatrixSearchInput = document.getElementById("binaryMatrixSearchInput");
 
   // Replace Question Modal Elements
   const replaceQuestionModal = document.getElementById("replaceQuestionModal");
@@ -3228,6 +3229,7 @@
       binaryMatrixPanel.classList.remove("active");
       binaryMatrixPanel.style.setProperty("display", "none", "important");
     }
+    renderAdminUserLogs(userLogSearch ? userLogSearch.value : "");
     if (dashboardScrollableBody) {
       dashboardScrollableBody.scrollTop = 0;
     }
@@ -3286,6 +3288,7 @@
       binaryMatrixPanel.classList.remove("active");
       binaryMatrixPanel.style.setProperty("display", "none", "important");
     }
+    renderQuestionAnalyticsDashboard();
     if (dashboardScrollableBody) {
       dashboardScrollableBody.scrollTop = 0;
     }
@@ -3344,7 +3347,7 @@
       questionAnalyticsPanel.classList.remove("active");
       questionAnalyticsPanel.style.setProperty("display", "none", "important");
     }
-    renderBinaryMatrixTable();
+    renderBinaryMatrixTable(binaryMatrixSearchInput ? binaryMatrixSearchInput.value : "");
     if (dashboardScrollableBody) {
       dashboardScrollableBody.scrollTop = 0;
     }
@@ -3448,14 +3451,35 @@
     });
   }
 
+  if (binaryMatrixSearchInput) {
+    binaryMatrixSearchInput.addEventListener("input", (e) => {
+      renderBinaryMatrixTable(e.target.value);
+    });
+  }
+
+  if (binaryMatrixTbody) {
+    binaryMatrixTbody.addEventListener("click", (e) => {
+      const inspectTarget = e.target.closest("[data-uid]");
+      if (inspectTarget) {
+        const uid = inspectTarget.dataset.uid;
+        openInspectModal(uid);
+      }
+    });
+  }
+
   // =========================================================================
   // LIVE 1/0 BINARY SCORING MATRIX & DOCUMENT TABLE RENDERER
   // (Right Answer = 1, Wrong Answer = 0; Logic matching psychological document)
   // =========================================================================
-  function renderBinaryMatrixTable() {
+  function renderBinaryMatrixTable(filterQuery = "") {
     const rawUserLogs = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "[]");
     const userLogs = rawUserLogs.map(getNormalizedStudentRecord);
     const totalStudents = userLogs.length;
+
+    const query = filterQuery.toLowerCase().trim();
+    const displayStudents = query 
+      ? userLogs.filter(u => u.name.toLowerCase().includes(query))
+      : userLogs;
 
     if (binaryMatrixCount) binaryMatrixCount.textContent = totalStudents;
     if (matrixStudentCount) matrixStudentCount.textContent = totalStudents;
@@ -3543,8 +3567,16 @@
             </td>
           </tr>
         `;
+      } else if (displayStudents.length === 0) {
+        binaryMatrixTbody.innerHTML = `
+          <tr>
+            <td colspan="${activeQuizQuestions.length + 4}" style="text-align: center; color: #94A3B8; padding: 28px;">
+              No participants matching "${escapeHtml(query)}".
+            </td>
+          </tr>
+        `;
       } else {
-        binaryMatrixTbody.innerHTML = userLogs.map((u, idx) => {
+        binaryMatrixTbody.innerHTML = displayStudents.map((u, idx) => {
           let studentRaw = 0;
           const cells = activeQuizQuestions.map(q => {
             const studentVal = u.answers ? u.answers[q.id] : null;
@@ -3570,7 +3602,12 @@
           return `
             <tr>
               <td class="sticky-col-no">${idx + 1}</td>
-              <td class="sticky-col-name">${escapeHtml(u.name)}</td>
+              <td class="sticky-col-name" style="cursor: pointer;" data-uid="${u.id}" title="Click to inspect ${escapeHtml(u.name)}'s test sheet">
+                <span class="btn-inspect-user" data-uid="${u.id}" style="cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+                  <strong>${escapeHtml(u.name)}</strong>
+                  <small style="font-size: 0.75rem; color: #2563EB;">🔍</small>
+                </span>
+              </td>
               ${cells}
               <td class="cell-raw-score">${studentRaw}</td>
               <td class="cell-final-score">${studentFinal}</td>
@@ -4462,6 +4499,8 @@
     sfx.celebrate();
     closeReplaceQuestionModal();
     renderQuestionAnalyticsDashboard();
+    renderBinaryMatrixTable(binaryMatrixSearchInput ? binaryMatrixSearchInput.value : "");
+    renderAdminUserLogs(userLogSearch ? userLogSearch.value : "");
     alert(`Question #${qId} has been successfully replaced with the new balanced item and deployed to database!`);
   });
 
@@ -5918,6 +5957,7 @@
       initDatabase();
       renderAdminUserLogs();
       renderQuestionAnalyticsDashboard();
+      renderBinaryMatrixTable();
       alert("Database and original questions restored to clean 4-student baseline.");
     }
   });
